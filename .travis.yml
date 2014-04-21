@@ -1,5 +1,5 @@
 language: objective-c
-xcode_project: CollectionFactory.xcodeproj
+xcode_workspace: CollectionFactory.xcworkspace
 xcode_scheme: CollectionFactory
 before_install: 
     - export LC_ALL="en_US.UTF-8"
