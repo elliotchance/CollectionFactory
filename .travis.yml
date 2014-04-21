@@ -1,3 +1,6 @@
 language: objective-c
 xcode_project: CollectionFactory.xcodeproj
 xcode_scheme: CollectionFactory
+before_install: 
+    - export LC_ALL="en_US.UTF-8"
+    - gem install cocoapods
