@@ -28,23 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FA12475741524924AE455195"
-               BuildableName = "libPods-CollectionFactoryTests-OCHamcrestExtensions.a"
-               BlueprintName = "Pods-CollectionFactoryTests-OCHamcrestExtensions"
-               ReferencedContainer = "container:Pods/Pods.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ACAFE4C6907E45A4B49D8612"
-               BuildableName = "libPods-CollectionFactoryTests-OCMock.a"
-               BlueprintName = "Pods-CollectionFactoryTests-OCMock"
+               BlueprintIdentifier = "E697799D49684F57A527D642"
+               BuildableName = "libPods-CollectionFactoryTests.a"
+               BlueprintName = "Pods-CollectionFactoryTests"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
