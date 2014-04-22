@@ -19,4 +19,11 @@
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
++ (NSDictionary *)dictionaryWithJsonData:(NSData *)rawJson
+{
+    return (NSDictionary *)[CollectionFactory parseWithJsonData:rawJson
+                                                        options:0
+                                               mustBeOfSubclass:[NSDictionary class]];
+}
+
 @end

@@ -37,7 +37,7 @@
 - (void)testCanCreateDictionaryFromJsonData
 {
     NSData *data = [@"{\"a\":\"abc\"}" dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *dictionary = [CollectionFactory dictionaryWithJsonData:data];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithJsonData:data];
     assertThat(dictionary, hasEntry(@"a", @"abc"));
 }
 
