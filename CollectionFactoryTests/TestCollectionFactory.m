@@ -28,18 +28,6 @@
 
 @implementation TestCollectionFactory
 
-- (void)testCanReturnAValueFromAKeyCreatedFromAJSONString
-{
-    NSMutableDictionary *dictionary = [CollectionFactory mutableDictionaryWithJsonString:@"{\"a\":\"abc\"}"];
-    assertTrue([[[dictionary valueForKey:@"a"] description] isEqualToString:@"abc"]);
-}
-
-- (void)testMutableDictionaryWithJsonFileThatDoesntExistReturnsNil
-{
-    NSMutableDictionary *dictionary = [CollectionFactory mutableDictionaryWithJsonFile:@"no_way_this_exists"];
-    assertThat(dictionary, nilValue());
-}
-
 - (void)testArrayWithJSONString
 {
     NSArray *array = [CollectionFactory arrayWithJsonString:@"[123,\"abc\"]"];
@@ -52,22 +40,10 @@
     assertThat(array, nilValue());
 }
 
-- (void)testWillReturnNilWhenTryingToCreateADictionaryFromANonDictionaryString
-{
-    NSMutableDictionary *dictionary = [CollectionFactory mutableDictionaryWithJsonString:@"[123]"];
-    assertThat(dictionary, nilValue());
-}
-
 - (void)testWillReturnNilWhenTryingToCreateAnArrayWithInvalidJson
 {
     NSArray *array = [CollectionFactory arrayWithJsonString:@"[123"];
     assertThat(array, nilValue());
-}
-
-- (void)testWillReturnNilWhenTryingToCreateADictionaryWithInvalidJson
-{
-    NSMutableDictionary *dictionary = [CollectionFactory mutableDictionaryWithJsonString:@"{"];
-    assertThat(dictionary, nilValue());
 }
 
 - (void)testCanRenderADictionaryFromAnObject
@@ -87,14 +63,6 @@
 {
     NSData *data = [@"{\"a\":\"abc\"}" dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *dictionary = [CollectionFactory dictionaryWithJsonData:data];
-    assertThat(dictionary, hasEntry(@"a", @"abc"));
-}
-
-- (void)testCanCreateMutableDictionaryFromJsonData
-{
-    NSData *data = [@"{\"a\":\"abc\"}" dataUsingEncoding:NSUTF8StringEncoding];
-    NSMutableDictionary *dictionary = [CollectionFactory mutableDictionaryWithJsonData:data];
-    [dictionary setValue:@"b" forKey:@"b"];
     assertThat(dictionary, hasEntry(@"a", @"abc"));
 }
 

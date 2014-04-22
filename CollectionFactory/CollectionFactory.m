@@ -1,31 +1,6 @@
 #import <objc/runtime.h>
-#import "CollectionFactory.h"
 
 @implementation CollectionFactory
-
-+ (NSMutableDictionary *)mutableDictionaryWithJsonString:(NSString *)rawJson
-{
-    NSUInteger length = [rawJson length];
-    NSData *data = [NSData dataWithBytes:[rawJson cStringUsingEncoding:NSStringEncodingConversionAllowLossy]
-                                  length:length];
-    return [CollectionFactory mutableDictionaryWithJsonData:data];
-}
-
-+ (NSMutableDictionary *)mutableDictionaryWithJsonData:(NSData *)rawJson
-{
-    return (NSMutableDictionary *)[self parseWithJsonData:rawJson
-                                                  options:NSJSONReadingMutableContainers
-                                         mustBeOfSubclass:[NSDictionary class]];
-}
-
-+ (NSMutableDictionary *)mutableDictionaryWithJsonFile:(NSString *)jsonFile
-{
-    NSData *rawJson = [[NSData alloc] initWithContentsOfFile:jsonFile];
-    if(nil == rawJson) {
-        return nil;
-    }
-    return [CollectionFactory mutableDictionaryWithJsonData:rawJson];
-}
 
 + (NSArray *)arrayWithJsonData:(NSData *)rawJson
 {
