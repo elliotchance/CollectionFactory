@@ -30,4 +30,11 @@
     assertThat([array jsonString], equalTo(@"[\"abc\",123]"));
 }
 
+- (void)testArrayWithJSONData
+{
+    NSData *data = [NSData da]
+    NSArray *array = [NSArray arrayWithJsonString:@"[123,\"abc\"]"];
+    assertThat(array, contains([NSNumber numberWithInt:123], @"abc", nil));
+}
+
 @end
