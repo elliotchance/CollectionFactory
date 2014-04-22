@@ -1,4 +1,4 @@
-#import "Test.h"
+#import "CollectionFactoryTestCase.h"
 
 @interface SomeObject : NSObject
 
@@ -21,7 +21,7 @@
 
 @end
 
-@interface TestCollectionFactoryForDictionary : XCTestCase
+@interface TestCollectionFactoryForDictionary : CollectionFactoryTestCase
 
 @end
 
@@ -39,6 +39,12 @@
     NSData *data = [@"{\"a\":\"abc\"}" dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *dictionary = [NSDictionary dictionaryWithJsonData:data];
     assertThat(dictionary, hasEntry(@"a", @"abc"));
+}
+
+- (void)testCanGenerateJsonString
+{
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"def", @"abc", nil];
+    assertThat([dictionary jsonString], equalTo(@"{\"abc\":\"def\"}"));
 }
 
 @end

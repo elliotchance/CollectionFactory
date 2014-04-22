@@ -4,5 +4,6 @@
 
 + (NSDictionary *)dictionaryWithObject:(id)object;
 + (NSDictionary *)dictionaryWithJsonData:(NSData *)rawJson;
+- (NSString *)jsonString;
 
 @end

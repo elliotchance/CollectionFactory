@@ -6,3 +6,9 @@
 #define HC_SHORTHAND
 #endif
 #import <OCHamcrestExtensions/OCHamcrest.h>
+
+@interface CollectionFactoryTestCase : XCTestCase
+
+- (void)testCanGenerateJsonString;
+
+@end

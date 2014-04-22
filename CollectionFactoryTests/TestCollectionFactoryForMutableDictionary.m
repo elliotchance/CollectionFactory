@@ -1,6 +1,6 @@
-#import "Test.h"
+#import "CollectionFactoryTestCase.h"
 
-@interface TestCollectionFactoryForMutableDictionary : XCTestCase
+@interface TestCollectionFactoryForMutableDictionary : CollectionFactoryTestCase
 
 @end
 
@@ -36,6 +36,12 @@
     NSMutableDictionary *dictionary = [NSMutableDictionary mutableDictionaryWithJsonData:data];
     [dictionary setValue:@"b" forKey:@"b"];
     assertThat(dictionary, hasEntry(@"a", @"abc"));
+}
+
+- (void)testCanGenerateJsonString
+{
+    NSMutableDictionary *dictionary = [[NSDictionary dictionaryWithObjectsAndKeys:@"def", @"abc", nil] mutableCopy];
+    assertThat([dictionary jsonString], equalTo(@"{\"abc\":\"def\"}"));
 }
 
 @end
