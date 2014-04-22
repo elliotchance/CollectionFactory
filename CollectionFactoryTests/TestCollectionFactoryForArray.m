@@ -24,4 +24,10 @@
     assertThat(array, nilValue());
 }
 
+- (void)testCanRenderAJSONStringFromAnArray
+{
+    NSArray *array = [NSArray arrayWithObjects:@"abc", @123, nil];
+    assertThat([array jsonString], equalTo(@"[\"abc\",123]"));
+}
+
 @end
