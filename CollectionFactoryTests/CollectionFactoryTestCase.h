@@ -7,7 +7,7 @@
 #endif
 #import <OCHamcrestExtensions/OCHamcrest.h>
 
-@interface CollectionFactoryTestCase : XCTestCase
+@protocol CollectionFactoryTestCase <NSObject>
 
 - (void)testCanGenerateJsonString;
 

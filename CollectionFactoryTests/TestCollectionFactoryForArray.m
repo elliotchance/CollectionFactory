@@ -1,6 +1,6 @@
 #import "CollectionFactoryTestCase.h"
 
-@interface TestCollectionFactoryForArray : CollectionFactoryTestCase
+@interface TestCollectionFactoryForArray : XCTestCase <CollectionFactoryTestCase>
 
 @end
 

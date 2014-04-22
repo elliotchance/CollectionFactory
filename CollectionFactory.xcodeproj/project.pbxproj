@@ -18,7 +18,6 @@
 		4DC1699A190635BE00234129 /* NSArray+CollectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DC16998190635BE00234129 /* NSArray+CollectionFactory.h */; };
 		4DC1699B190635BE00234129 /* NSArray+CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC16999190635BE00234129 /* NSArray+CollectionFactory.m */; };
 		4DC1699D1906363400234129 /* TestCollectionFactoryForArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1699C1906363400234129 /* TestCollectionFactoryForArray.m */; };
-		4DC1699F1906400A00234129 /* CollectionFactoryTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1699E1906400A00234129 /* CollectionFactoryTestCase.m */; };
 		5BAA0174DB8C4C13B4FA5C83 /* libPods-CollectionFactoryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 945B3E07BC384568B40C56EA /* libPods-CollectionFactoryTests.a */; };
 		8B1C0EF219026DD900CCD141 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1C0EF119026DD900CCD141 /* Cocoa.framework */; };
 		8B1C0EFC19026DD900CCD141 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B1C0EFA19026DD900CCD141 /* InfoPlist.strings */; };
@@ -49,7 +48,6 @@
 		4DC16998190635BE00234129 /* NSArray+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CollectionFactory.h"; sourceTree = "<group>"; };
 		4DC16999190635BE00234129 /* NSArray+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CollectionFactory.m"; sourceTree = "<group>"; };
 		4DC1699C1906363400234129 /* TestCollectionFactoryForArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForArray.m; sourceTree = "<group>"; };
-		4DC1699E1906400A00234129 /* CollectionFactoryTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionFactoryTestCase.m; sourceTree = "<group>"; };
 		8B1C0EEE19026DD900CCD141 /* CollectionFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CollectionFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B1C0EF119026DD900CCD141 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		8B1C0EF419026DD900CCD141 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -163,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				8B1C0F1E1903271600CCD141 /* CollectionFactoryTestCase.h */,
-				4DC1699E1906400A00234129 /* CollectionFactoryTestCase.m */,
 				8B1C0F0D19026DD900CCD141 /* Supporting Files */,
 				4DC1699C1906363400234129 /* TestCollectionFactoryForArray.m */,
 				4DC169931906352300234129 /* TestCollectionFactoryForDictionary.m */,
@@ -337,7 +334,6 @@
 			files = (
 				4DC169941906352300234129 /* TestCollectionFactoryForDictionary.m in Sources */,
 				4D5E19BC1906326800C781CB /* NSMutableDictionary+CollectionFactory.m in Sources */,
-				4DC1699F1906400A00234129 /* CollectionFactoryTestCase.m in Sources */,
 				4DC1699D1906363400234129 /* TestCollectionFactoryForArray.m in Sources */,
 				4DC169921906349E00234129 /* NSDictionary+CollectionFactory.m in Sources */,
 				4D5E19BE1906333800C781CB /* TestCollectionFactoryForMutableDictionary.m in Sources */,
