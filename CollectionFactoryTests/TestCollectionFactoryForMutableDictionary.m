@@ -1,6 +1,6 @@
 #import "CollectionFactoryTestCase.h"
 
-@interface TestCollectionFactoryForMutableDictionary : XCTestCase <CollectionFactoryTestCase>
+@interface TestCollectionFactoryForMutableDictionary : XCTestCase
 
 @end
 

@@ -1,10 +1,23 @@
 #import "CollectionFactoryTestCase.h"
 
-@interface TestCollectionFactoryForArray : XCTestCase <CollectionFactoryTestCase>
+@interface TestCollectionFactoryForArrayWithJsonString : XCTestCase <CollectionFactoryTestCases>
 
 @end
 
-@implementation TestCollectionFactoryForArray
+@implementation TestCollectionFactoryForArrayWithJsonString
+
+- (void)testWillThrowInvalidArgumentExceptionWhenInputIsNil
+{
+    assertThat([NSArray arrayWithJsonString:nil], willThrow(NSInvalidArgumentException));
+}
+
+- (void)testWillReturnNilWhenJsonStringIsInvalid
+{
+    NSArray *array = [NSArray arrayWithJsonString:@"[123"];
+    assertThat(array, nilValue());
+}
+
+// ---
 
 - (void)testArrayWithJSONString
 {
@@ -15,12 +28,6 @@
 - (void)testWillReturnNilWhenTryingToCreateAnArrayFromANonArrayString
 {
     NSArray *array = [NSArray arrayWithJsonString:@"{}"];
-    assertThat(array, nilValue());
-}
-
-- (void)testWillReturnNilWhenTryingToCreateAnArrayWithInvalidJson
-{
-    NSArray *array = [NSArray arrayWithJsonString:@"[123"];
     assertThat(array, nilValue());
 }
 

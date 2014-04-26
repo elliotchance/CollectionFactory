@@ -21,7 +21,7 @@
 
 @end
 
-@interface TestCollectionFactoryForDictionary : XCTestCase <CollectionFactoryTestCase>
+@interface TestCollectionFactoryForDictionary : XCTestCase
 
 @end
 

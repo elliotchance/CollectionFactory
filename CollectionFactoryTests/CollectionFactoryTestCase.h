@@ -7,8 +7,13 @@
 #endif
 #import <OCHamcrestExtensions/OCHamcrest.h>
 
-@protocol CollectionFactoryTestCase <NSObject>
+// remove this when upgraded to OCHamcrestExtensions v1.0.1
+#import <OCHamcrestExtensions/HCDidThrowException.h>
+#import <OCHamcrestExtensions/HCThrowsException.h>
 
-- (void)testCanGenerateJsonString;
+@protocol CollectionFactoryTestCases <NSObject>
+
+- (void)testWillThrowInvalidArgumentExceptionWhenInputIsNil;
+- (void)testWillReturnNilWhenJsonStringIsInvalid;
 
 @end
