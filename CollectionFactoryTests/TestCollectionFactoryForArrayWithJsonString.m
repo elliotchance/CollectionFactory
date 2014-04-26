@@ -1,5 +1,7 @@
 #import "CollectionFactoryTestCase.h"
 
+#define TESTING_METHOD arrayWithJsonString
+
 @interface TestCollectionFactoryForArrayWithJsonString : XCTestCase <CollectionFactoryTestCases>
 
 @end
@@ -8,28 +10,28 @@
 
 - (void)testWillThrowInvalidArgumentExceptionWhenInputIsNil
 {
-    assertThat([NSArray arrayWithJsonString:nil], willThrow(NSInvalidArgumentException));
+    assertThat([NSArray TESTING_METHOD:nil], willThrow(NSInvalidArgumentException));
 }
 
 - (void)testWillReturnNilWhenJsonStringIsInvalid
 {
-    NSArray *array = [NSArray arrayWithJsonString:INVALID_JSON_STRING];
+    NSArray *array = [NSArray TESTING_METHOD:INVALID_JSON_STRING];
     assertThat(array, nilValue());
 }
 
 - (void)testWillReturnNilWhenJsonStringIsValidButOfDifferentJsonType
 {
-    NSArray *array = [NSArray arrayWithJsonString:@"{}"];
+    NSArray *array = [NSArray TESTING_METHOD:@"{}"];
     assertThat(array, nilValue());
 }
 
-// ---
-
-- (void)testArrayWithJSONString
+- (void)testWillReturnCorrectObjectWhenJsonIsValid
 {
-    NSArray *array = [NSArray arrayWithJsonString:@"[123,\"abc\"]"];
+    NSArray *array = [NSArray TESTING_METHOD:@"[123,\"abc\"]"];
     assertThat(array, contains([NSNumber numberWithInt:123], @"abc", nil));
 }
+
+// ---
 
 - (void)testCanRenderAJSONStringFromAnArray
 {
