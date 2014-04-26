@@ -11,9 +11,12 @@
 #import <OCHamcrestExtensions/HCDidThrowException.h>
 #import <OCHamcrestExtensions/HCThrowsException.h>
 
+#define INVALID_JSON_STRING @"[123"
+
 @protocol CollectionFactoryTestCases <NSObject>
 
 - (void)testWillThrowInvalidArgumentExceptionWhenInputIsNil;
 - (void)testWillReturnNilWhenJsonStringIsInvalid;
+- (void)testWillReturnNilWhenJsonStringIsValidButOfDifferentJsonType;
 
 @end

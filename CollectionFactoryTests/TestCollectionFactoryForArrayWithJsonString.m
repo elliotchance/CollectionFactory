@@ -13,7 +13,13 @@
 
 - (void)testWillReturnNilWhenJsonStringIsInvalid
 {
-    NSArray *array = [NSArray arrayWithJsonString:@"[123"];
+    NSArray *array = [NSArray arrayWithJsonString:INVALID_JSON_STRING];
+    assertThat(array, nilValue());
+}
+
+- (void)testWillReturnNilWhenJsonStringIsValidButOfDifferentJsonType
+{
+    NSArray *array = [NSArray arrayWithJsonString:@"{}"];
     assertThat(array, nilValue());
 }
 
@@ -23,12 +29,6 @@
 {
     NSArray *array = [NSArray arrayWithJsonString:@"[123,\"abc\"]"];
     assertThat(array, contains([NSNumber numberWithInt:123], @"abc", nil));
-}
-
-- (void)testWillReturnNilWhenTryingToCreateAnArrayFromANonArrayString
-{
-    NSArray *array = [NSArray arrayWithJsonString:@"{}"];
-    assertThat(array, nilValue());
 }
 
 - (void)testCanRenderAJSONStringFromAnArray
