@@ -2,7 +2,7 @@
 
 #define TESTING_METHOD arrayWithJsonData
 
-@interface TestCollectionFactoryForArrayWithJsonData : XCTestCase <CollectionFactoryTestCases>
+@interface TestCollectionFactoryForArrayWithJsonData : XCTestCase <CollectionFactoryStaticTestCases>
 
 @end
 

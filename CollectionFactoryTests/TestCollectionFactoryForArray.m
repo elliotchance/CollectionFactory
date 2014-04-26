@@ -6,12 +6,6 @@
 
 @implementation TestCollectionFactoryForArray
 
-- (void)testCanRenderAJSONStringFromAnArray
-{
-    NSArray *array = [NSArray arrayWithObjects:@"abc", @123, nil];
-    assertThat([array jsonString], equalTo(@"[\"abc\",123]"));
-}
-
 - (void)testArrayWithJSONData
 {
     NSData *data = [@"[123,\"abc\"]" dataUsingEncoding:NSUTF8StringEncoding];
