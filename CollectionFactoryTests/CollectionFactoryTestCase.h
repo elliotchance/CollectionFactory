@@ -12,6 +12,7 @@
 #import <OCHamcrestExtensions/HCThrowsException.h>
 
 #define INVALID_JSON_STRING @"[123"
+#define INVALID_JSON_DATA [INVALID_JSON_STRING dataUsingEncoding:NSUTF8StringEncoding]
 
 @protocol CollectionFactoryTestCases <NSObject>
 
