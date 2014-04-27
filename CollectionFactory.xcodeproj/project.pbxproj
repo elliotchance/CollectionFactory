@@ -33,6 +33,7 @@
 		8B25AE7E190CCC13001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE7D190CCC13001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonString.m */; };
 		8B25AE81190CCD16001EAA36 /* NSObject+CollectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B25AE7F190CCD16001EAA36 /* NSObject+CollectionFactory.h */; };
 		8B25AE82190CCD16001EAA36 /* NSObject+CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE80190CCD16001EAA36 /* NSObject+CollectionFactory.m */; };
+		8B25AE84190CCE05001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE83190CCE05001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonData.m */; };
 		8BFB4979190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFB4978190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		8B25AE7D190CCC13001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForMutableDictionaryWithJsonString.m; sourceTree = "<group>"; };
 		8B25AE7F190CCD16001EAA36 /* NSObject+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CollectionFactory.h"; sourceTree = "<group>"; };
 		8B25AE80190CCD16001EAA36 /* NSObject+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CollectionFactory.m"; sourceTree = "<group>"; };
+		8B25AE83190CCE05001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForMutableDictionaryWithJsonData.m; sourceTree = "<group>"; };
 		8BFB4978190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForDictionaryWithJsonData.m; sourceTree = "<group>"; };
 		945B3E07BC384568B40C56EA /* libPods-CollectionFactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CollectionFactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA388D7544A84C27A2001A71 /* Pods-CollectionFactoryTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionFactoryTests.xcconfig"; path = "Pods/Pods-CollectionFactoryTests.xcconfig"; sourceTree = "<group>"; };
@@ -188,9 +190,10 @@
 				4DC1699C1906363400234129 /* TestCollectionFactoryForArrayWithJsonString.m */,
 				8B25AE7B190CBF79001EAA36 /* TestCollectionFactoryForDictionaryToJsonString.m */,
 				8BFB4978190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m */,
-				8B25AE76190CBE02001EAA36 /* TestCollectionFactoryForObject.m */,
 				4D5E19BD1906333800C781CB /* TestCollectionFactoryForMutableDictionary.m */,
+				8B25AE83190CCE05001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonData.m */,
 				8B25AE7D190CCC13001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonString.m */,
+				8B25AE76190CBE02001EAA36 /* TestCollectionFactoryForObject.m */,
 			);
 			path = CollectionFactoryTests;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D5E19BC1906326800C781CB /* NSMutableDictionary+CollectionFactory.m in Sources */,
+				8B25AE84190CCE05001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonData.m in Sources */,
 				8B25AE77190CBE02001EAA36 /* TestCollectionFactoryForObject.m in Sources */,
 				4DC1699D1906363400234129 /* TestCollectionFactoryForArrayWithJsonString.m in Sources */,
 				8B160097190B66F800B6DF09 /* TestCollectionFactoryForArrayToJsonString.m in Sources */,
