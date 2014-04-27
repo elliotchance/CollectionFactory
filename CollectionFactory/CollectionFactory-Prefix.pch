@@ -11,4 +11,5 @@
 #import "NSMutableDictionary+CollectionFactory.h"
 #import "NSDictionary+CollectionFactory.h"
 #import "NSArray+CollectionFactory.h"
+#import "NSObject+CollectionFactory.h"
 #endif
