@@ -1,6 +1,7 @@
 #import "CollectionFactoryTestCase.h"
 
 #define TESTING_METHOD dictionaryWithJsonData
+#define TESTING_CLASS NSDictionary
 
 @interface TestCollectionFactoryForDictionaryWithJsonData : XCTestCase <CollectionFactoryStaticTestCases>
 
@@ -10,10 +11,15 @@
 
 - (void)testWillThrowInvalidArgumentExceptionWhenInputIsNil
 {
-    assertThat([NSDictionary TESTING_METHOD:nil], willThrow(NSInvalidArgumentException));
+    assertThat([TESTING_CLASS TESTING_METHOD:nil], willThrow(NSInvalidArgumentException));
 }
 
-//- (void)testWillReturnNilWhenJsonStringIsInvalid;
+- (void)testWillReturnNilWhenJsonStringIsInvalid
+{
+    TESTING_CLASS *obj = [TESTING_CLASS TESTING_METHOD:INVALID_JSON_DATA];
+    assertThat(obj, nilValue());
+}
+
 //- (void)testWillReturnNilWhenJsonStringIsValidButOfDifferentJsonType;
 //- (void)testWillReturnCorrectObjectWhenJsonIsValid;
 
