@@ -15,4 +15,14 @@
     assertThat(obj, nilValue());
 }
 
+- (void)testCanCreateMutableDictionaryFromValidJsonFile
+{
+    [@"{\"xyz\":456}" writeToFile:@"test.json"
+                       atomically:NO
+                         encoding:NSUTF8StringEncoding
+                            error:nil];
+    TESTING_CLASS *obj = [TESTING_CLASS TESTING_METHOD:@"test.json"];
+    assertThat(obj, hasEntry(@"xyz", [NSNumber numberWithInteger:456]));
+}
+
 @end
