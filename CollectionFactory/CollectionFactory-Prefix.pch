@@ -5,5 +5,11 @@
 //
 
 #ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
+#import "CollectionFactory.h"
+#import "NSMutableDictionary+CollectionFactory.h"
+#import "NSDictionary+CollectionFactory.h"
+#import "NSArray+CollectionFactory.h"
+#import "NSObject+CollectionFactory.h"
 #endif
