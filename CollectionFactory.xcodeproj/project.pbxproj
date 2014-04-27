@@ -30,6 +30,7 @@
 		8B25AE77190CBE02001EAA36 /* TestCollectionFactoryForDictionaryWithObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE76190CBE02001EAA36 /* TestCollectionFactoryForDictionaryWithObject.m */; };
 		8B25AE7A190CBED0001EAA36 /* SomeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE79190CBED0001EAA36 /* SomeObject.m */; };
 		8B25AE7C190CBF79001EAA36 /* TestCollectionFactoryForDictionaryToJsonString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE7B190CBF79001EAA36 /* TestCollectionFactoryForDictionaryToJsonString.m */; };
+		8B25AE7E190CCC13001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE7D190CCC13001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonString.m */; };
 		8BFB4979190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFB4978190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		8B25AE78190CBED0001EAA36 /* SomeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeObject.h; sourceTree = "<group>"; };
 		8B25AE79190CBED0001EAA36 /* SomeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeObject.m; sourceTree = "<group>"; };
 		8B25AE7B190CBF79001EAA36 /* TestCollectionFactoryForDictionaryToJsonString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForDictionaryToJsonString.m; sourceTree = "<group>"; };
+		8B25AE7D190CCC13001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForMutableDictionaryWithJsonString.m; sourceTree = "<group>"; };
 		8BFB4978190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForDictionaryWithJsonData.m; sourceTree = "<group>"; };
 		945B3E07BC384568B40C56EA /* libPods-CollectionFactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CollectionFactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA388D7544A84C27A2001A71 /* Pods-CollectionFactoryTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionFactoryTests.xcconfig"; path = "Pods/Pods-CollectionFactoryTests.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				8BFB4978190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m */,
 				8B25AE76190CBE02001EAA36 /* TestCollectionFactoryForDictionaryWithObject.m */,
 				4D5E19BD1906333800C781CB /* TestCollectionFactoryForMutableDictionary.m */,
+				8B25AE7D190CCC13001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonString.m */,
 			);
 			path = CollectionFactoryTests;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				4D5E19BE1906333800C781CB /* TestCollectionFactoryForMutableDictionary.m in Sources */,
 				8B25AE7C190CBF79001EAA36 /* TestCollectionFactoryForDictionaryToJsonString.m in Sources */,
 				8B25AE7A190CBED0001EAA36 /* SomeObject.m in Sources */,
+				8B25AE7E190CCC13001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

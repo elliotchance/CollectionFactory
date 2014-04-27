@@ -2,6 +2,11 @@
 
 + (NSMutableDictionary *)mutableDictionaryWithJsonString:(NSString *)rawJson
 {
+    if(nil == rawJson) {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException
+                                       reason:@"Argument was be nil"
+                                     userInfo:nil];
+    }
     NSUInteger length = [rawJson length];
     NSData *data = [NSData dataWithBytes:[rawJson cStringUsingEncoding:NSStringEncodingConversionAllowLossy]
                                   length:length];
