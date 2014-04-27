@@ -34,13 +34,6 @@
     assertThat([NSDictionary dictionaryWithObject:obj], hasDescription(expected));
 }
 
-- (void)testCanCreateDictionaryFromJsonData
-{
-    NSData *data = [@"{\"a\":\"abc\"}" dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *dictionary = [NSDictionary dictionaryWithJsonData:data];
-    assertThat(dictionary, hasEntry(@"a", @"abc"));
-}
-
 - (void)testCanGenerateJsonString
 {
     NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"def", @"abc", nil];

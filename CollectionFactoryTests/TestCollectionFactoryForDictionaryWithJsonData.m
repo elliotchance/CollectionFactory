@@ -27,6 +27,11 @@
     assertThat(obj, nilValue());
 }
 
-//- (void)testWillReturnCorrectObjectWhenJsonIsValid;
+- (void)testWillReturnCorrectObjectWhenJsonIsValid
+{
+    NSData *data = [@"{\"a\":\"abc\"}" dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithJsonData:data];
+    assertThat(dictionary, hasEntry(@"a", @"abc"));
+}
 
 @end
