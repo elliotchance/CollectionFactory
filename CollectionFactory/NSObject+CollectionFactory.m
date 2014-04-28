@@ -32,7 +32,13 @@
         return [NSString stringWithFormat:@"\"%@\"", [(NSString *)self stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""]];
     }
     if([self isKindOfClass:[NSNumber class]]) {
-        return [(NSNumber *)self description];
+        NSNumber *number = (NSNumber *)self;
+        if(strcmp([number objCType], @encode(BOOL)) == 0) {
+            if([number boolValue] == YES) {
+                return @"true";
+            }
+        }
+        return [number description];
     }
     return [[self dictionaryValue] jsonString];
 }

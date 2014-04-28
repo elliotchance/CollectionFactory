@@ -15,7 +15,6 @@
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
-#warning untested
 + (NSDictionary *)dictionaryWithJsonString:(NSString *)rawJson
 {
     NSData* data = [rawJson dataUsingEncoding:NSUTF8StringEncoding];

@@ -86,4 +86,10 @@
     assertThat([NSObject objectFromJson:@"{"], nilValue());
 }
 
+- (void)testCanRenderJsonValueFromBooleanNumberYes
+{
+    NSNumber *number = [NSNumber numberWithBool:YES];
+    assertThat([number jsonValue], equalTo(@"true"));
+}
+
 @end
