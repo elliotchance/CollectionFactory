@@ -44,4 +44,10 @@
     assertThat([string jsonValue], equalTo(@"\"my \\\"string\""));
 }
 
+- (void)testCanRenderJsonValueFromNumber
+{
+    NSNumber *number = @123;
+    assertThat([number jsonValue], equalTo(@"123"));
+}
+
 @end
