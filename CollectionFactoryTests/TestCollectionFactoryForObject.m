@@ -81,4 +81,9 @@
     nil));
 }
 
+- (void)testWillReturnNilIfInvalidJsonIsPassedIntoObjectFromJson
+{
+    assertThat([NSObject objectFromJson:@"{"], nilValue());
+}
+
 @end
