@@ -2,9 +2,6 @@ Pod::Spec.new do |s|
   s.name         = "CollectionFactory"
   s.version      = "1.0"
   s.summary      = "Translation between native collections in Objective-C and serialized formats like JSON."
-  s.description  = <<-DESC
-                   Translation between native collections in Objective-C and serialized formats like JSON.
-                   DESC
   s.homepage     = "https://github.com/elliotchance/CollectionFactory"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Elliot Chance" => "elliotchance@gmail.com" }
