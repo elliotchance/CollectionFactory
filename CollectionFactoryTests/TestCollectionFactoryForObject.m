@@ -55,4 +55,9 @@
     assertThat([NSObject objectFromJson:@"123"], equalTo(@123));
 }
 
+- (void)testWillCreateNSStringFromStringInJson
+{
+    assertThat([NSObject objectFromJson:@"\"123\""], equalTo(@"123"));
+}
+
 @end

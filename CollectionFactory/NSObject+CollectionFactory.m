@@ -38,7 +38,10 @@
 
 - (id)objectFromJson:(NSString *)json
 {
-    return @123;
+    if([json characterAtIndex:0] == '"') {
+        return [json substringWithRange:NSMakeRange(1, [json length] - 2)];
+    }
+    return [NSNumber numberWithInt:[json intValue]];
 }
 
 @end
