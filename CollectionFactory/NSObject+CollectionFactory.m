@@ -19,6 +19,7 @@
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
+#warning does not handle bools
 - (NSString *)jsonValue
 {
     if([self isKindOfClass:[NSDictionary class]]) {
@@ -36,10 +37,13 @@
     return [[self dictionaryValue] jsonString];
 }
 
+#warning does not handle floats
+#warning does not handle bools
 - (id)objectFromJson:(NSString *)json
 {
     if([json characterAtIndex:0] == '"') {
-        return [json substringWithRange:NSMakeRange(1, [json length] - 2)];
+        NSString *raw = [json substringWithRange:NSMakeRange(1, [json length] - 2)];
+        return [raw stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
     }
     return [NSNumber numberWithInt:[json intValue]];
 }

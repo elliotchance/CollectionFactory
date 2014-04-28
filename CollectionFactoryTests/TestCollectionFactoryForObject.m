@@ -60,4 +60,9 @@
     assertThat([NSObject objectFromJson:@"\"123\""], equalTo(@"123"));
 }
 
+- (void)testQuotedStringsAreHandledCorrectlyWhenParsing
+{
+    assertThat([NSObject objectFromJson:@"\"ab\\\"c\""], equalTo(@"ab\"c"));
+}
+
 @end
