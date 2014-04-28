@@ -48,6 +48,9 @@
     if([json characterAtIndex:0] == '[') {
         return [NSArray arrayWithJsonString:json];
     }
+    if([json characterAtIndex:0] == '{') {
+        return [NSDictionary dictionaryWithJsonString:json];
+    }
     return [NSNumber numberWithInt:[json intValue]];
 }
 

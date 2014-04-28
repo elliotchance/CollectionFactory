@@ -29,7 +29,7 @@
 - (void)testWillReturnCorrectObjectWhenJsonIsValid
 {
     TESTING_CLASS *obj = [TESTING_CLASS TESTING_METHOD:@"{\"abc\":123}"];
-    assertThat(obj, hasEntry(@"abc", [NSNumber numberWithInt:123]));
+    assertThat(obj, hasEntry(@"abc", @123));
 }
 
 @end

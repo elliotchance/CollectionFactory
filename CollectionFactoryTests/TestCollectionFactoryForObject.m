@@ -73,4 +73,12 @@
     nil));
 }
 
+- (void)testWillCreateDictionaryFromJsonObject
+{
+    assertThat([NSObject objectFromJson:@"{\"abc\":123}"], allOf(
+        instanceOf([NSDictionary class]),
+        hasEntry(@"abc", @123),
+    nil));
+}
+
 @end
