@@ -50,12 +50,12 @@
     assertThat([number jsonValue], equalTo(@"123"));
 }
 
-- (void)testWillCreateNSNumberFromRawNumber
+- (void)testWillCreateNumberFromRawNumber
 {
     assertThat([NSObject objectFromJson:@"123"], equalTo(@123));
 }
 
-- (void)testWillCreateNSStringFromStringInJson
+- (void)testWillCreateStringFromStringInJson
 {
     assertThat([NSObject objectFromJson:@"\"123\""], equalTo(@"123"));
 }
@@ -63,6 +63,14 @@
 - (void)testQuotedStringsAreHandledCorrectlyWhenParsing
 {
     assertThat([NSObject objectFromJson:@"\"ab\\\"c\""], equalTo(@"ab\"c"));
+}
+
+- (void)testWillCreateArrayFromJsonArray
+{
+    assertThat([NSObject objectFromJson:@"[\"abc\",123]"], allOf(
+        instanceOf([NSArray class]),
+        hasItem(@123),
+    nil));
 }
 
 @end

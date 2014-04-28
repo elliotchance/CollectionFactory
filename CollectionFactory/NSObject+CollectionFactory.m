@@ -45,6 +45,9 @@
         NSString *raw = [json substringWithRange:NSMakeRange(1, [json length] - 2)];
         return [raw stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
     }
+    if([json characterAtIndex:0] == '[') {
+        return [NSArray arrayWithJsonString:json];
+    }
     return [NSNumber numberWithInt:[json intValue]];
 }
 
