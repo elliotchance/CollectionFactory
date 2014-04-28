@@ -24,6 +24,9 @@
     if([self isKindOfClass:[NSDictionary class]]) {
         return [(NSDictionary *)self jsonString];
     }
+    if([self isKindOfClass:[NSArray class]]) {
+        return [(NSArray *)self jsonString];
+    }
     return [[self dictionaryValue] jsonString];
 }
 

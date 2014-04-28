@@ -26,4 +26,10 @@
     assertThat([dictionary jsonValue], equalTo(@"{\"abc\":\"def\"}"));
 }
 
+- (void)testCanRenderJsonValueFromArray
+{
+    NSArray *array = [NSArray arrayWithObjects:@"abc", @123, nil];
+    assertThat([array jsonValue], equalTo(@"[\"abc\",123]"));
+}
+
 @end
