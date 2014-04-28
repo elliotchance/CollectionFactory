@@ -20,4 +20,10 @@
     assertThat([obj jsonValue], equalTo(@"{\"string\":\"abc\",\"number\":123}"));
 }
 
+- (void)testCanRenderJsonValueFromDictionary
+{
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"def", @"abc", nil];
+    assertThat([dictionary jsonValue], equalTo(@"{\"abc\":\"def\"}"));
+}
+
 @end

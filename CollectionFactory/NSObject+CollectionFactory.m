@@ -21,6 +21,9 @@
 
 - (NSString *)jsonValue
 {
+    if([self isKindOfClass:[NSDictionary class]]) {
+        return [(NSDictionary *)self jsonString];
+    }
     return [[self dictionaryValue] jsonString];
 }
 
