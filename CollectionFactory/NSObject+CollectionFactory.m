@@ -19,4 +19,21 @@
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
+- (NSString *)jsonValue
+{
+    if([self isKindOfClass:[NSDictionary class]]) {
+        return [(NSDictionary *)self jsonString];
+    }
+    if([self isKindOfClass:[NSArray class]]) {
+        return [(NSArray *)self jsonString];
+    }
+    if([self isKindOfClass:[NSString class]]) {
+        return [NSString stringWithFormat:@"\"%@\"", [(NSString *)self stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""]];
+    }
+    if([self isKindOfClass:[NSNumber class]]) {
+        return [(NSNumber *)self description];
+    }
+    return [[self dictionaryValue] jsonString];
+}
+
 @end
