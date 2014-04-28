@@ -19,4 +19,9 @@
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
+- (NSString *)jsonValue
+{
+    return [[self dictionaryValue] jsonString];
+}
+
 @end

@@ -14,4 +14,10 @@
     assertThat([obj dictionaryValue], hasDescription(expected));
 }
 
+- (void)testCanRenderJsonValueFromObject
+{
+    SomeObject *obj = [SomeObject new];
+    assertThat([obj jsonValue], equalTo(@"{\"string\":\"abc\",\"number\":123}"));
+}
+
 @end
