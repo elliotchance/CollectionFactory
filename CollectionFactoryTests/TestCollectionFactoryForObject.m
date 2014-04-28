@@ -32,4 +32,10 @@
     assertThat([array jsonValue], equalTo(@"[\"abc\",123]"));
 }
 
+- (void)testCanRenderJsonValueFromString
+{
+    NSString *string = @"my string";
+    assertThat([string jsonValue], equalTo(@"\"my string\""));
+}
+
 @end

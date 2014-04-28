@@ -27,6 +27,9 @@
     if([self isKindOfClass:[NSArray class]]) {
         return [(NSArray *)self jsonString];
     }
+    if([self isKindOfClass:[NSString class]]) {
+        return [NSString stringWithFormat:@"\"%@\"", (NSString *)self];
+    }
     return [[self dictionaryValue] jsonString];
 }
 
