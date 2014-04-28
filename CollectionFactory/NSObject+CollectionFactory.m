@@ -1,4 +1,6 @@
 #import <objc/runtime.h>
+#import "NSDictionary+CollectionFactory.h"
+#import "NSArray+CollectionFactory.h"
 
 @implementation NSObject (CollectionFactory)
 

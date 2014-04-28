@@ -1,3 +1,4 @@
+#import "CollectionFactory.h"
 #import "NSArray+CollectionFactory.h"
 
 @implementation NSArray (CollectionFactory)

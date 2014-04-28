@@ -1,3 +1,5 @@
+#import "CollectionFactory.h"
+
 @implementation NSMutableDictionary (CollectionFactory)
 
 + (NSMutableDictionary *)mutableDictionaryWithJsonString:(NSString *)rawJson
