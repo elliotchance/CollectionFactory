@@ -28,7 +28,7 @@
         return [(NSArray *)self jsonString];
     }
     if([self isKindOfClass:[NSString class]]) {
-        return [NSString stringWithFormat:@"\"%@\"", (NSString *)self];
+        return [NSString stringWithFormat:@"\"%@\"", [(NSString *)self stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""]];
     }
     return [[self dictionaryValue] jsonString];
 }

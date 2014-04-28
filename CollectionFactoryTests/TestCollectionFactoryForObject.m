@@ -38,4 +38,10 @@
     assertThat([string jsonValue], equalTo(@"\"my string\""));
 }
 
+- (void)testJsonValueFromStringWillEscapeDoubleQuotes
+{
+    NSString *string = @"my \"string";
+    assertThat([string jsonValue], equalTo(@"\"my \\\"string\""));
+}
+
 @end
