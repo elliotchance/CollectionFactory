@@ -33,6 +33,7 @@ NSDictionary
 ------------
 
  * `+ dictionaryWithJsonData:` - create an `NSDictionary` from a JSON data.
+ * `+ dictionaryWithJsonString:` - create an `NSDictionary` from a JSON string.
  
 ### NSMutableDictionary
 
