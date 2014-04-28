@@ -43,7 +43,6 @@
     return [[self dictionaryValue] jsonString];
 }
 
-#warning does not handle floats
 - (id)objectFromJson:(NSString *)json
 {
     if([json isEqualToString:@"true"]) {
@@ -61,6 +60,9 @@
     }
     if([json characterAtIndex:0] == '{') {
         return [NSDictionary dictionaryWithJsonString:json];
+    }
+    if([json rangeOfString:@"."].location != NSNotFound) {
+        return [NSNumber numberWithDouble:[json doubleValue]];
     }
     return [NSNumber numberWithInt:[json intValue]];
 }

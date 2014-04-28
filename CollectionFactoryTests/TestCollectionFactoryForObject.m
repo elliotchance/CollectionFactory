@@ -112,4 +112,9 @@
     assertTrue(strcmp([number objCType], @encode(BOOL)) == 0);
 }
 
+- (void)testWillCreateNumberFromRawFloatingNumber
+{
+    assertThat([NSObject objectFromJson:@"12.3"], equalTo(@12.3));
+}
+
 @end
