@@ -36,4 +36,9 @@
     return [[self dictionaryValue] jsonString];
 }
 
+- (id)objectFromJson:(NSString *)json
+{
+    return @123;
+}
+
 @end

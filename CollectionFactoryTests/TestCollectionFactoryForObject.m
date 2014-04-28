@@ -50,4 +50,9 @@
     assertThat([number jsonValue], equalTo(@"123"));
 }
 
+- (void)testWillCreateNSNumberFromRawNumber
+{
+    assertThat([NSObject objectFromJson:@"123"], equalTo(@123));
+}
+
 @end
