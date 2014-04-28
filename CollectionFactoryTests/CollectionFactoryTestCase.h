@@ -1,5 +1,6 @@
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
+#import "CollectionFactory.h"
 
 // All tests should be using hamcrest with extensions :)
 #ifndef HC_SHORTHAND
