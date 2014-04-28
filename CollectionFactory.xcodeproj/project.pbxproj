@@ -51,6 +51,7 @@
 /* Begin PBXFileReference section */
 		4D1173ED190DEAD40037E9E0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		4D1173EE190DF55F0037E9E0 /* TestCollectionFactoryForDictionaryWithJsonString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForDictionaryWithJsonString.m; sourceTree = "<group>"; };
+		4D1173F0190E07650037E9E0 /* Pluralizer.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Pluralizer.podspec; sourceTree = "<group>"; };
 		4D5E19B81906326800C781CB /* NSMutableDictionary+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+CollectionFactory.h"; sourceTree = "<group>"; };
 		4D5E19B91906326800C781CB /* NSMutableDictionary+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+CollectionFactory.m"; sourceTree = "<group>"; };
 		4DC1698E1906349E00234129 /* NSDictionary+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CollectionFactory.h"; sourceTree = "<group>"; };
@@ -116,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				4D1173ED190DEAD40037E9E0 /* README.md */,
+				4D1173F0190E07650037E9E0 /* Pluralizer.podspec */,
 				8B1C0EF719026DD900CCD141 /* CollectionFactory */,
 				8B1C0F0C19026DD900CCD141 /* CollectionFactoryTests */,
 				8B1C0EF019026DD900CCD141 /* Frameworks */,
