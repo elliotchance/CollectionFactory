@@ -15,4 +15,10 @@
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
++ (NSDictionary *)dictionaryWithJsonString:(NSString *)rawJson
+{
+    NSData* data = [rawJson dataUsingEncoding:NSUTF8StringEncoding];
+    return [NSDictionary dictionaryWithJsonData:data];
+}
+
 @end

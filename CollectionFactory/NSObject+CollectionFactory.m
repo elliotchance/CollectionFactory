@@ -31,9 +31,40 @@
         return [NSString stringWithFormat:@"\"%@\"", [(NSString *)self stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""]];
     }
     if([self isKindOfClass:[NSNumber class]]) {
-        return [(NSNumber *)self description];
+        NSNumber *number = (NSNumber *)self;
+        if(strcmp([number objCType], @encode(BOOL)) == 0) {
+            if([number boolValue] == YES) {
+                return @"true";
+            }
+            return @"false";
+        }
+        return [number description];
     }
     return [[self dictionaryValue] jsonString];
+}
+
+- (id)objectFromJson:(NSString *)json
+{
+    if([json isEqualToString:@"true"]) {
+        return [NSNumber numberWithBool:YES];
+    }
+    if([json isEqualToString:@"false"]) {
+        return [NSNumber numberWithBool:NO];
+    }
+    if([json characterAtIndex:0] == '"') {
+        NSString *raw = [json substringWithRange:NSMakeRange(1, [json length] - 2)];
+        return [raw stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
+    }
+    if([json characterAtIndex:0] == '[') {
+        return [NSArray arrayWithJsonString:json];
+    }
+    if([json characterAtIndex:0] == '{') {
+        return [NSDictionary dictionaryWithJsonString:json];
+    }
+    if([json rangeOfString:@"."].location != NSNotFound) {
+        return [NSNumber numberWithDouble:[json doubleValue]];
+    }
+    return [NSNumber numberWithInt:[json intValue]];
 }
 
 @end

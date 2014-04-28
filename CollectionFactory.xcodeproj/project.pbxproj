@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D1173EF190DF55F0037E9E0 /* TestCollectionFactoryForDictionaryWithJsonString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1173EE190DF55F0037E9E0 /* TestCollectionFactoryForDictionaryWithJsonString.m */; };
 		4D5E19BA1906326800C781CB /* NSMutableDictionary+CollectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D5E19B81906326800C781CB /* NSMutableDictionary+CollectionFactory.h */; };
 		4D5E19BB1906326800C781CB /* NSMutableDictionary+CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E19B91906326800C781CB /* NSMutableDictionary+CollectionFactory.m */; };
 		4D5E19BC1906326800C781CB /* NSMutableDictionary+CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5E19B91906326800C781CB /* NSMutableDictionary+CollectionFactory.m */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		4D1173ED190DEAD40037E9E0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		4D1173EE190DF55F0037E9E0 /* TestCollectionFactoryForDictionaryWithJsonString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForDictionaryWithJsonString.m; sourceTree = "<group>"; };
 		4D5E19B81906326800C781CB /* NSMutableDictionary+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+CollectionFactory.h"; sourceTree = "<group>"; };
 		4D5E19B91906326800C781CB /* NSMutableDictionary+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+CollectionFactory.m"; sourceTree = "<group>"; };
 		4DC1698E1906349E00234129 /* NSDictionary+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CollectionFactory.h"; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				4DC1699C1906363400234129 /* TestCollectionFactoryForArrayWithJsonString.m */,
 				8B25AE7B190CBF79001EAA36 /* TestCollectionFactoryForDictionaryToJsonString.m */,
 				8BFB4978190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m */,
+				4D1173EE190DF55F0037E9E0 /* TestCollectionFactoryForDictionaryWithJsonString.m */,
 				8B25AE83190CCE05001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonData.m */,
 				8B25AE85190CF54E001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonFile.m */,
 				8B25AE7D190CCC13001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonString.m */,
@@ -377,6 +380,7 @@
 				8B25AE7C190CBF79001EAA36 /* TestCollectionFactoryForDictionaryToJsonString.m in Sources */,
 				8B25AE7A190CBED0001EAA36 /* SomeObject.m in Sources */,
 				8B25AE7E190CCC13001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonString.m in Sources */,
+				4D1173EF190DF55F0037E9E0 /* TestCollectionFactoryForDictionaryWithJsonString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

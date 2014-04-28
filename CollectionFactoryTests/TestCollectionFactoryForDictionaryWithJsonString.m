@@ -1,13 +1,13 @@
 #import "CollectionFactoryTestCase.h"
 
-#define TESTING_METHOD mutableDictionaryWithJsonString
-#define TESTING_CLASS NSMutableDictionary
+#define TESTING_METHOD dictionaryWithJsonString
+#define TESTING_CLASS NSDictionary
 
-@interface TestCollectionFactoryForMutableDictionaryWithJsonString : XCTestCase <CollectionFactoryStaticTestCases>
+@interface TestCollectionFactoryForDictionaryWithJsonString : XCTestCase <CollectionFactoryStaticTestCases>
 
 @end
 
-@implementation TestCollectionFactoryForMutableDictionaryWithJsonString
+@implementation TestCollectionFactoryForDictionaryWithJsonString
 
 - (void)testWillThrowInvalidArgumentExceptionWhenInputIsNil
 {
