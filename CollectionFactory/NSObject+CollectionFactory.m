@@ -19,7 +19,6 @@
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
-#warning does not handle bools
 - (NSString *)jsonValue
 {
     if([self isKindOfClass:[NSDictionary class]]) {
@@ -37,6 +36,7 @@
             if([number boolValue] == YES) {
                 return @"true";
             }
+            return @"false";
         }
         return [number description];
     }
