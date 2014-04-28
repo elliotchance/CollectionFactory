@@ -98,4 +98,9 @@
     assertThat([number jsonValue], equalTo(@"false"));
 }
 
+- (void)testWillCreateNumberFromTrueInJson
+{
+    assertThat([NSObject objectFromJson:@"true"], equalTo(@YES));
+}
+
 @end
