@@ -44,11 +44,13 @@
 }
 
 #warning does not handle floats
-#warning does not handle bools
 - (id)objectFromJson:(NSString *)json
 {
     if([json isEqualToString:@"true"]) {
         return [NSNumber numberWithBool:YES];
+    }
+    if([json isEqualToString:@"false"]) {
+        return [NSNumber numberWithBool:NO];
     }
     if([json characterAtIndex:0] == '"') {
         NSString *raw = [json substringWithRange:NSMakeRange(1, [json length] - 2)];

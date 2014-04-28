@@ -100,7 +100,16 @@
 
 - (void)testWillCreateNumberFromTrueInJson
 {
-    assertThat([NSObject objectFromJson:@"true"], equalTo(@YES));
+    NSNumber *number = [NSObject objectFromJson:@"true"];
+    assertThat(number, allOf(instanceOf([NSNumber class]), equalTo(@YES), nil));
+    assertTrue(strcmp([number objCType], @encode(BOOL)) == 0);
+}
+
+- (void)testWillCreateNumberFromFalseInJson
+{
+    NSNumber *number = [NSObject objectFromJson:@"false"];
+    assertThat(number, allOf(instanceOf([NSNumber class]), equalTo(@NO), nil));
+    assertTrue(strcmp([number objCType], @encode(BOOL)) == 0);
 }
 
 @end
