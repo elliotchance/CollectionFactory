@@ -122,4 +122,9 @@
     assertThat([NSObject objectFromJson:@" []"], instanceOf([NSArray class]));
 }
 
+- (void)testWillTrimNewlinesOffJsonStringToCorrectlyIdentifyObjectType
+{
+    assertThat([NSObject objectFromJson:@"\n[]"], instanceOf([NSArray class]));
+}
+
 @end
