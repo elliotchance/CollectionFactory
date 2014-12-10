@@ -117,4 +117,9 @@
     assertThat([NSObject objectFromJson:@"12.3"], equalTo(@12.3));
 }
 
+- (void)testWillTrimSpacesOffJsonStringToCorrectlyIdentifyObjectType
+{
+    assertThat([NSObject objectFromJson:@" []"], instanceOf([NSArray class]));
+}
+
 @end
