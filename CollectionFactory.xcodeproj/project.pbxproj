@@ -49,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4522437A7870318A287521E9 /* Pods-CollectionFactoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionFactoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionFactoryTests/Pods-CollectionFactoryTests.release.xcconfig"; sourceTree = "<group>"; };
 		4D1173ED190DEAD40037E9E0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		4D1173EE190DF55F0037E9E0 /* TestCollectionFactoryForDictionaryWithJsonString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForDictionaryWithJsonString.m; sourceTree = "<group>"; };
 		4D1173F1190E08C30037E9E0 /* CollectionFactory.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = CollectionFactory.podspec; sourceTree = "<group>"; };
@@ -87,7 +88,7 @@
 		8B25AE85190CF54E001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForMutableDictionaryWithJsonFile.m; sourceTree = "<group>"; };
 		8BFB4978190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForDictionaryWithJsonData.m; sourceTree = "<group>"; };
 		945B3E07BC384568B40C56EA /* libPods-CollectionFactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CollectionFactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA388D7544A84C27A2001A71 /* Pods-CollectionFactoryTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionFactoryTests.xcconfig"; path = "Pods/Pods-CollectionFactoryTests.xcconfig"; sourceTree = "<group>"; };
+		A041E6440C2DC2A9858B7256 /* Pods-CollectionFactoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionFactoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionFactoryTests/Pods-CollectionFactoryTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +114,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		59F43F85DE4B9323A5BC5EAB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A041E6440C2DC2A9858B7256 /* Pods-CollectionFactoryTests.debug.xcconfig */,
+				4522437A7870318A287521E9 /* Pods-CollectionFactoryTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8B1C0EE419026DD900CCD141 = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +132,7 @@
 				8B1C0F0C19026DD900CCD141 /* CollectionFactoryTests */,
 				8B1C0EF019026DD900CCD141 /* Frameworks */,
 				8B1C0EEF19026DD900CCD141 /* Products */,
-				CA388D7544A84C27A2001A71 /* Pods-CollectionFactoryTests.xcconfig */,
+				59F43F85DE4B9323A5BC5EAB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -277,11 +287,6 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Elliot Chance";
-				TargetAttributes = {
-					8B1C0F0419026DD900CCD141 = {
-						TestTargetID = 8B1C0EED19026DD900CCD141;
-					};
-				};
 			};
 			buildConfigurationList = 8B1C0EE819026DD900CCD141 /* Build configuration list for PBXProject "CollectionFactory" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -348,7 +353,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-CollectionFactoryTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CollectionFactoryTests/Pods-CollectionFactoryTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -419,10 +424,6 @@
 		8B1C0F1419026DD900CCD141 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -433,34 +434,24 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		8B1C0F1519026DD900CCD141 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -473,23 +464,18 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
 		8B1C0F1719026DD900CCD141 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -504,7 +490,6 @@
 		8B1C0F1819026DD900CCD141 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -518,42 +503,24 @@
 		};
 		8B1C0F1A19026DD900CCD141 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA388D7544A84C27A2001A71 /* Pods-CollectionFactoryTests.xcconfig */;
+			baseConfigurationReference = A041E6440C2DC2A9858B7256 /* Pods-CollectionFactoryTests.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CollectionFactory.framework/Versions/A/CollectionFactory";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CollectionFactory/CollectionFactory-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = "CollectionFactoryTests/CollectionFactoryTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
 		};
 		8B1C0F1B19026DD900CCD141 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA388D7544A84C27A2001A71 /* Pods-CollectionFactoryTests.xcconfig */;
+			baseConfigurationReference = 4522437A7870318A287521E9 /* Pods-CollectionFactoryTests.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CollectionFactory.framework/Versions/A/CollectionFactory";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CollectionFactory/CollectionFactory-Prefix.pch";
 				INFOPLIST_FILE = "CollectionFactoryTests/CollectionFactoryTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;

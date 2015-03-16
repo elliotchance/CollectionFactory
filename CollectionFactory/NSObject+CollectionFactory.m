@@ -46,6 +46,7 @@
 
 - (id)objectFromJson:(NSString *)json
 {
+    json = [json stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if([json isEqualToString:@"true"]) {
         return [NSNumber numberWithBool:YES];
     }
