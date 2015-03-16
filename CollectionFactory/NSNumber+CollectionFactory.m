@@ -5,6 +5,7 @@
 
 + (NSNumber *)numberWithJsonString:(NSString *)jsonString
 {
+    jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if ([jsonString isEqualToString:@"true"]) {
         return @YES;
     }

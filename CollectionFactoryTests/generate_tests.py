@@ -4,6 +4,14 @@ import json
 from os import listdir
 
 
+def output_test(out, test_name, lines):
+    out.write('- (void)%s\n' % test_name)
+    out.write('{\n')
+    out.write('\n'.join(lines))
+    out.write('\n')
+    out.write('}\n\n')
+
+
 def parse_class(out, className, classTests):
     total = 0
     init_name = className[2:].lower()
@@ -11,11 +19,12 @@ def parse_class(out, className, classTests):
         init_name = 'mutable%s%s' % (className[9].upper(), className[10:])
     
     # Invalid JSON string to object
-    out.write('- (void)testInvalidJsonStringTo%s\n' % className[2:])
-    out.write('{\n')
-    out.write('    %s *object = [%s %sWithJsonString:@"[123"];\n' % (className, className, init_name))
-    out.write('    assertThat(object, nilValue());\n')
-    out.write('}\n\n')
+    output_test(out,
+        'InvalidJsonStringTo%s' % className[2:], (
+            '    %s *object = [%s %sWithJsonString:@"[123"];' % (className, className, init_name),
+            '    assertThat(object, nilValue());'
+        )
+    )
     
     # Invalid JSON data to object
     out.write('- (void)testInvalidJsonDataTo%s\n' % className[2:])
@@ -48,18 +57,22 @@ def parse_class(out, className, classTests):
                 continue
             object = '[%s mutableCopy]' % object
             testName = 'Mutable%s' % testName
+
+        # Surround the JSON with spaces to make sure they are trimmed off
+        # correctly.
+        padded_json = ' \\t\\n\\r%s \\t\\n\\r' % testConditions['json']
         
         # JSON string to object
         out.write('- (void)testJsonStringTo%s\n' % testName)
         out.write('{\n')
-        out.write('    %s *object = [%s %sWithJsonString:@"%s"];\n' % (className, className, init_name, testConditions['json']))
+        out.write('    %s *object = [%s %sWithJsonString:@"%s"];\n' % (className, className, init_name, padded_json))
         out.write('    assertThat(object, equalTo(%s));\n' % object)
         out.write('}\n\n')
         
         # JSON data to object
         out.write('- (void)testJsonDataTo%s\n' % testName)
         out.write('{\n')
-        out.write('    NSData *data = [@"%s" dataUsingEncoding:NSUTF8StringEncoding];\n' % testConditions['json'])
+        out.write('    NSData *data = [@"%s" dataUsingEncoding:NSUTF8StringEncoding];\n' % padded_json)
         out.write('    %s *object = [%s %sWithJsonData:data];\n' % (className, className, init_name))
         out.write('    assertThat(object, equalTo(%s));\n' % object)
         out.write('}\n\n')

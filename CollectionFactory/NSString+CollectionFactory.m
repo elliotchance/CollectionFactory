@@ -5,6 +5,7 @@
 
 + (NSString *)stringWithJsonString:(NSString *)jsonString
 {
+    jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if (!jsonString) {
         return nil;
     }
