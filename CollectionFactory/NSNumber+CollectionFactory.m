@@ -1,4 +1,5 @@
 #import "NSNumber+CollectionFactory.h"
+#import "NSObject+CollectionFactory.h"
 
 @implementation NSNumber (CollectionFactory)
 
@@ -7,7 +8,10 @@
     if ([jsonString isEqualToString:@"true"]) {
         return @YES;
     }
-    return @NO;
+    if ([jsonString isEqualToString:@"false"]) {
+        return @NO;
+    }
+    return [NSNumber numberWithDouble:[jsonString doubleValue]];
 }
 
 + (NSNumber *)numberWithJsonData:(NSData *)jsonData
@@ -19,10 +23,14 @@
 
 - (NSData *)jsonData
 {
-    if ([self boolValue]) {
-        return [@"true" dataUsingEncoding:NSUTF8StringEncoding];
+    if (strcmp([self objCType], @encode(BOOL)) == 0) {
+        if ([self boolValue]) {
+            return [@"true" dataUsingEncoding:NSUTF8StringEncoding];
+        }
+        return [@"false" dataUsingEncoding:NSUTF8StringEncoding];
     }
-    return [@"false" dataUsingEncoding:NSUTF8StringEncoding];
+    
+    return [[self jsonString] dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 @end

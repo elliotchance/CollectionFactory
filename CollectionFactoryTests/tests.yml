@@ -6,3 +6,6 @@ tests:
     No:
       object: "[NSNumber numberWithBool:NO]"
       string: "false"
+    Double:
+      object: "[NSNumber numberWithDouble:1.23]"
+      string: "1.23"
