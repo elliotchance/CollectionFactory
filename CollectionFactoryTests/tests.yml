@@ -1,0 +1,8 @@
+tests:
+  NSNumber:
+    Yes:
+      object: "[NSNumber numberWithBool:YES]"
+      string: "true"
+    No:
+      object: "[NSNumber numberWithBool:NO]"
+      string: "false"

@@ -68,4 +68,9 @@
     return [NSNumber numberWithInt:[json intValue]];
 }
 
+- (NSData *)jsonData
+{
+    return nil;
+}
+
 @end

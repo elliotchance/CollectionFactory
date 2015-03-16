@@ -38,6 +38,7 @@
 		8BA29D151AB6C92200F623AB /* TestCollectionFactoryForNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA29D141AB6C92200F623AB /* TestCollectionFactoryForNumber.m */; };
 		8BA29D191AB6CA8000F623AB /* NSNumber+CollectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA29D161AB6CA8000F623AB /* NSNumber+CollectionFactory.h */; };
 		8BA29D1A1AB6CA8000F623AB /* NSNumber+CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA29D171AB6CA8000F623AB /* NSNumber+CollectionFactory.m */; };
+		8BA29D1F1AB6CFE900F623AB /* CollectionFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA29D1E1AB6CFE900F623AB /* CollectionFactoryTests.m */; };
 		8BFB4979190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFB4978190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,9 @@
 		8BA29D141AB6C92200F623AB /* TestCollectionFactoryForNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForNumber.m; sourceTree = "<group>"; };
 		8BA29D161AB6CA8000F623AB /* NSNumber+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+CollectionFactory.h"; sourceTree = "<group>"; };
 		8BA29D171AB6CA8000F623AB /* NSNumber+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+CollectionFactory.m"; sourceTree = "<group>"; };
+		8BA29D1C1AB6CC2E00F623AB /* tests.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = tests.yml; sourceTree = "<group>"; };
+		8BA29D1D1AB6CCE300F623AB /* generate_tests.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = generate_tests.py; sourceTree = "<group>"; };
+		8BA29D1E1AB6CFE900F623AB /* CollectionFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionFactoryTests.m; sourceTree = "<group>"; };
 		8BFB4978190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForDictionaryWithJsonData.m; sourceTree = "<group>"; };
 		945B3E07BC384568B40C56EA /* libPods-CollectionFactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CollectionFactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D051D8495545F4D3D53DA044 /* Pods-CollectionFactoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionFactoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionFactoryTests/Pods-CollectionFactoryTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 		8B1C0F0C19026DD900CCD141 /* CollectionFactoryTests */ = {
 			isa = PBXGroup;
 			children = (
+				8BA29D1E1AB6CFE900F623AB /* CollectionFactoryTests.m */,
 				8B1C0F1E1903271600CCD141 /* CollectionFactoryTestCase.h */,
 				8B25AE78190CBED0001EAA36 /* SomeObject.h */,
 				8B25AE79190CBED0001EAA36 /* SomeObject.m */,
@@ -211,6 +216,8 @@
 				8B25AE7D190CCC13001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonString.m */,
 				8BA29D141AB6C92200F623AB /* TestCollectionFactoryForNumber.m */,
 				8B25AE76190CBE02001EAA36 /* TestCollectionFactoryForObject.m */,
+				8BA29D1C1AB6CC2E00F623AB /* tests.yml */,
+				8BA29D1D1AB6CCE300F623AB /* generate_tests.py */,
 			);
 			path = CollectionFactoryTests;
 			sourceTree = "<group>";
@@ -274,6 +281,7 @@
 			buildConfigurationList = 8B1C0F1919026DD900CCD141 /* Build configuration list for PBXNativeTarget "CollectionFactoryTests" */;
 			buildPhases = (
 				72A100EC368145D49B676657 /* Check Pods Manifest.lock */,
+				8BA29D201AB6D2C600F623AB /* ShellScript */,
 				8B1C0F0119026DD900CCD141 /* Sources */,
 				8B1C0F0219026DD900CCD141 /* Frameworks */,
 				8B1C0F0319026DD900CCD141 /* Resources */,
@@ -356,6 +364,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		8BA29D201AB6D2C600F623AB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd CollectionFactoryTests\npython generate_tests.py";
+		};
 		D681C735926C4D0AB20577F8 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -391,6 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BA29D1F1AB6CFE900F623AB /* CollectionFactoryTests.m in Sources */,
 				4D5E19BC1906326800C781CB /* NSMutableDictionary+CollectionFactory.m in Sources */,
 				8B25AE84190CCE05001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonData.m in Sources */,
 				8BA29D151AB6C92200F623AB /* TestCollectionFactoryForNumber.m in Sources */,

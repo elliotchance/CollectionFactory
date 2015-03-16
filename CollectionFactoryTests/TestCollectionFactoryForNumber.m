@@ -24,4 +24,10 @@
     assertThat([number jsonString], equalTo(@"false"));
 }
 
+- (void)testFalseWillBeConvertedFromJsonString
+{
+    NSNumber *number = [NSNumber numberWithJsonString:@"true"];
+    assertThat(number, equalTo(@YES));
+}
+
 @end
