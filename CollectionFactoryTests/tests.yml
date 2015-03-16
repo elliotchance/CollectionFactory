@@ -62,8 +62,8 @@ tests:
       object: '@[@123, @"foo"]'
       json: '[123,\"foo\"]'
 
-    # Make sure that we are explicitly parsing an array it will return `nil` if
-    # the JSON is valid but not of the correct type.
+    # Make sure that we are explicitly parsing an array so it will return `nil`
+    # if the JSON is valid but not of the correct type.
     InvalidArray:
       object: 'nil'
       json: '{\"abc\":\"def\"}'
@@ -72,6 +72,12 @@ tests:
     Dictionary:
       object: '@{@"abc": @"def"}'
       json: '{\"abc\":\"def\"}'
+
+    # Make sure that we are explicitly parsing a dictionary so it will return
+    # `nil` if the JSON is valid but not of the correct type.
+    InvalidDictionary:
+      object: 'nil'
+      json: '[123,\"foo\"]'
 
   # NSNumber is the only class where it's Mutable counterpart does not exist and
   # so no mutable tests will be generated for it.
