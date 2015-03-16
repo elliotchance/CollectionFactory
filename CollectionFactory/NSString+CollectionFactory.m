@@ -5,6 +5,8 @@
 
 + (NSString *)stringWithJsonString:(NSString *)jsonString
 {
+    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\\"
+                                                       withString:@""];
     NSRange range = NSMakeRange(1, [jsonString length] - 2);
     return [jsonString substringWithRange:range];
 }
@@ -23,7 +25,9 @@
 
 - (NSString *)jsonString
 {
-    return [NSString stringWithFormat:@"\"%@\"", self];
+    NSString *escaped = [self stringByReplacingOccurrencesOfString:@"\""
+                                                        withString:@"\\\""];
+    return [NSString stringWithFormat:@"\"%@\"", escaped];
 }
 
 @end

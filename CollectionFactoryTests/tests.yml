@@ -16,3 +16,6 @@ tests:
     String:
       object: '@"foo bar"'
       json: '\"foo bar\"'
+    EscapedString:
+      object: '@"foo \"bar"'
+      json: '\"foo \\\"bar\"'
