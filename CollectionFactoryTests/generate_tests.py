@@ -22,12 +22,14 @@ out.write('@implementation CollectionFactoryTests\n\n')
 
 for className, classTests in tests_file['tests'].items():
     for testName, testConditions in classTests.items():
+        # object to JSON string
         out.write('- (void)test%sToJsonString\n' % testName)
         out.write('{\n')
         out.write('    %s *object = %s;\n' % (className, testConditions['object']))
         out.write('    assertThat([object jsonString], equalTo(@"%s"));\n' % (testConditions['string']))
         out.write('}\n\n')
         
+        # object to JSON data
         out.write('- (void)test%sToJsonData\n' % testName)
         out.write('{\n')
         out.write('    %s *object = %s;\n' % (className, testConditions['object']))
@@ -35,7 +37,14 @@ for className, classTests in tests_file['tests'].items():
         out.write('    assertThat(string, equalTo(@"%s"));\n' % (testConditions['string']))
         out.write('}\n\n')
         
-        total += 2
+        # JSON string to object
+        out.write('- (void)testJsonStringTo%s\n' % testName)
+        out.write('{\n')
+        out.write('    %s *object = [%s numberWithJsonString:@"%s"];\n' % (className, className, testConditions['string']))
+        out.write('    assertThat(object, equalTo(%s));\n' % (testConditions['object']))
+        out.write('}\n\n')
+        
+        total += 3
 
 out.write('@end\n\n')
 

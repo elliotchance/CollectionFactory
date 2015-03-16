@@ -4,7 +4,10 @@
 
 + (NSNumber *)numberWithJsonString:(NSString *)jsonString
 {
-    return @YES;
+    if ([jsonString isEqualToString:@"true"]) {
+        return @YES;
+    }
+    return @NO;
 }
 
 - (NSData *)jsonData
