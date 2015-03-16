@@ -36,6 +36,8 @@
 		8B25AE84190CCE05001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE83190CCE05001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonData.m */; };
 		8B25AE86190CF54E001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE85190CF54E001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonFile.m */; };
 		8BA29D151AB6C92200F623AB /* TestCollectionFactoryForNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA29D141AB6C92200F623AB /* TestCollectionFactoryForNumber.m */; };
+		8BA29D191AB6CA8000F623AB /* NSNumber+CollectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA29D161AB6CA8000F623AB /* NSNumber+CollectionFactory.h */; };
+		8BA29D1A1AB6CA8000F623AB /* NSNumber+CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA29D171AB6CA8000F623AB /* NSNumber+CollectionFactory.m */; };
 		8BFB4979190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BFB4978190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,8 @@
 		8B25AE83190CCE05001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForMutableDictionaryWithJsonData.m; sourceTree = "<group>"; };
 		8B25AE85190CF54E001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForMutableDictionaryWithJsonFile.m; sourceTree = "<group>"; };
 		8BA29D141AB6C92200F623AB /* TestCollectionFactoryForNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForNumber.m; sourceTree = "<group>"; };
+		8BA29D161AB6CA8000F623AB /* NSNumber+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+CollectionFactory.h"; sourceTree = "<group>"; };
+		8BA29D171AB6CA8000F623AB /* NSNumber+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+CollectionFactory.m"; sourceTree = "<group>"; };
 		8BFB4978190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForDictionaryWithJsonData.m; sourceTree = "<group>"; };
 		945B3E07BC384568B40C56EA /* libPods-CollectionFactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CollectionFactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D051D8495545F4D3D53DA044 /* Pods-CollectionFactoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionFactoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionFactoryTests/Pods-CollectionFactoryTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 				4DC1698F1906349E00234129 /* NSDictionary+CollectionFactory.m */,
 				4D5E19B81906326800C781CB /* NSMutableDictionary+CollectionFactory.h */,
 				4D5E19B91906326800C781CB /* NSMutableDictionary+CollectionFactory.m */,
+				8BA29D161AB6CA8000F623AB /* NSNumber+CollectionFactory.h */,
+				8BA29D171AB6CA8000F623AB /* NSNumber+CollectionFactory.m */,
 				8B25AE7F190CCD16001EAA36 /* NSObject+CollectionFactory.h */,
 				8B25AE80190CCD16001EAA36 /* NSObject+CollectionFactory.m */,
 				8B1C0EF819026DD900CCD141 /* Supporting Files */,
@@ -235,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DC1699A190635BE00234129 /* NSArray+CollectionFactory.h in Headers */,
+				8BA29D191AB6CA8000F623AB /* NSNumber+CollectionFactory.h in Headers */,
 				8B25AE81190CCD16001EAA36 /* NSObject+CollectionFactory.h in Headers */,
 				4DC169901906349E00234129 /* NSDictionary+CollectionFactory.h in Headers */,
 				4D5E19BA1906326800C781CB /* NSMutableDictionary+CollectionFactory.h in Headers */,
@@ -373,6 +380,7 @@
 			files = (
 				4DC169911906349E00234129 /* NSDictionary+CollectionFactory.m in Sources */,
 				4DC1699B190635BE00234129 /* NSArray+CollectionFactory.m in Sources */,
+				8BA29D1A1AB6CA8000F623AB /* NSNumber+CollectionFactory.m in Sources */,
 				4D5E19BB1906326800C781CB /* NSMutableDictionary+CollectionFactory.m in Sources */,
 				8B25AE82190CCD16001EAA36 /* NSObject+CollectionFactory.m in Sources */,
 				8B1C0F0019026DD900CCD141 /* CollectionFactory.m in Sources */,
