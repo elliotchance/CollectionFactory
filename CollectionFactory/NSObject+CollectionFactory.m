@@ -20,7 +20,7 @@
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
-- (NSString *)jsonValue
+- (NSString *)jsonString
 {
     if([self isKindOfClass:[NSDictionary class]]) {
         return [(NSDictionary *)self jsonString];

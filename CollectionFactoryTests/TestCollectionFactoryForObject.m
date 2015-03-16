@@ -17,37 +17,37 @@
 - (void)testCanRenderJsonValueFromObject
 {
     SomeObject *obj = [SomeObject new];
-    assertThat([obj jsonValue], equalTo(@"{\"string\":\"abc\",\"number\":123}"));
+    assertThat([obj jsonString], equalTo(@"{\"string\":\"abc\",\"number\":123}"));
 }
 
 - (void)testCanRenderJsonValueFromDictionary
 {
     NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"def", @"abc", nil];
-    assertThat([dictionary jsonValue], equalTo(@"{\"abc\":\"def\"}"));
+    assertThat([dictionary jsonString], equalTo(@"{\"abc\":\"def\"}"));
 }
 
 - (void)testCanRenderJsonValueFromArray
 {
     NSArray *array = [NSArray arrayWithObjects:@"abc", @123, nil];
-    assertThat([array jsonValue], equalTo(@"[\"abc\",123]"));
+    assertThat([array jsonString], equalTo(@"[\"abc\",123]"));
 }
 
 - (void)testCanRenderJsonValueFromString
 {
     NSString *string = @"my string";
-    assertThat([string jsonValue], equalTo(@"\"my string\""));
+    assertThat([string jsonString], equalTo(@"\"my string\""));
 }
 
 - (void)testJsonValueFromStringWillEscapeDoubleQuotes
 {
     NSString *string = @"my \"string";
-    assertThat([string jsonValue], equalTo(@"\"my \\\"string\""));
+    assertThat([string jsonString], equalTo(@"\"my \\\"string\""));
 }
 
 - (void)testCanRenderJsonValueFromNumber
 {
     NSNumber *number = @123;
-    assertThat([number jsonValue], equalTo(@"123"));
+    assertThat([number jsonString], equalTo(@"123"));
 }
 
 - (void)testWillCreateNumberFromRawNumber
@@ -89,13 +89,13 @@
 - (void)testCanRenderJsonValueFromBooleanNumberYes
 {
     NSNumber *number = [NSNumber numberWithBool:YES];
-    assertThat([number jsonValue], equalTo(@"true"));
+    assertThat([number jsonString], equalTo(@"true"));
 }
 
 - (void)testCanRenderJsonValueFromBooleanNumberNo
 {
     NSNumber *number = [NSNumber numberWithBool:NO];
-    assertThat([number jsonValue], equalTo(@"false"));
+    assertThat([number jsonString], equalTo(@"false"));
 }
 
 - (void)testWillCreateNumberFromTrueInJson

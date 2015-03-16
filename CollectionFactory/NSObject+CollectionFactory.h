@@ -3,7 +3,7 @@
 @interface NSObject (CollectionFactory)
 
 - (NSDictionary *)dictionaryValue;
-- (NSString *)jsonValue;
+- (NSString *)jsonString;
 - (id)objectFromJson:(NSString *)json;
 
 @end
