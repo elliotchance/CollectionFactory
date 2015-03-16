@@ -9,11 +9,6 @@
 
 @implementation TestCollectionFactoryForMutableDictionaryWithJsonString
 
-- (void)testWillThrowInvalidArgumentExceptionWhenInputIsNil
-{
-    assertThat([TESTING_CLASS TESTING_METHOD:nil], willThrow(NSInvalidArgumentException));
-}
-
 - (void)testWillReturnNilWhenJsonStringIsInvalid
 {
     TESTING_CLASS *obj = [TESTING_CLASS TESTING_METHOD:INVALID_JSON_STRING];

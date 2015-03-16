@@ -16,9 +16,7 @@
 		4DC169921906349E00234129 /* NSDictionary+CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1698F1906349E00234129 /* NSDictionary+CollectionFactory.m */; };
 		4DC1699A190635BE00234129 /* NSArray+CollectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DC16998190635BE00234129 /* NSArray+CollectionFactory.h */; };
 		4DC1699B190635BE00234129 /* NSArray+CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC16999190635BE00234129 /* NSArray+CollectionFactory.m */; };
-		4DC1699D1906363400234129 /* TestCollectionFactoryForArrayWithJsonString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1699C1906363400234129 /* TestCollectionFactoryForArrayWithJsonString.m */; };
 		5BAA0174DB8C4C13B4FA5C83 /* libPods-CollectionFactoryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 945B3E07BC384568B40C56EA /* libPods-CollectionFactoryTests.a */; };
-		8B160093190B660400B6DF09 /* TestCollectionFactoryForArrayWithJsonData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B160092190B660400B6DF09 /* TestCollectionFactoryForArrayWithJsonData.m */; };
 		8B1C0EF219026DD900CCD141 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1C0EF119026DD900CCD141 /* Cocoa.framework */; };
 		8B1C0EFC19026DD900CCD141 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B1C0EFA19026DD900CCD141 /* InfoPlist.strings */; };
 		8B1C0F0019026DD900CCD141 /* CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1C0EFF19026DD900CCD141 /* CollectionFactory.m */; };
@@ -69,8 +67,6 @@
 		4DC1698F1906349E00234129 /* NSDictionary+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CollectionFactory.m"; sourceTree = "<group>"; };
 		4DC16998190635BE00234129 /* NSArray+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CollectionFactory.h"; sourceTree = "<group>"; };
 		4DC16999190635BE00234129 /* NSArray+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CollectionFactory.m"; sourceTree = "<group>"; };
-		4DC1699C1906363400234129 /* TestCollectionFactoryForArrayWithJsonString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForArrayWithJsonString.m; sourceTree = "<group>"; };
-		8B160092190B660400B6DF09 /* TestCollectionFactoryForArrayWithJsonData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForArrayWithJsonData.m; sourceTree = "<group>"; };
 		8B1C0EEE19026DD900CCD141 /* CollectionFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CollectionFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B1C0EF119026DD900CCD141 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		8B1C0EF419026DD900CCD141 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -222,8 +218,6 @@
 				8B25AE78190CBED0001EAA36 /* SomeObject.h */,
 				8B25AE79190CBED0001EAA36 /* SomeObject.m */,
 				8B1C0F0D19026DD900CCD141 /* Supporting Files */,
-				8B160092190B660400B6DF09 /* TestCollectionFactoryForArrayWithJsonData.m */,
-				4DC1699C1906363400234129 /* TestCollectionFactoryForArrayWithJsonString.m */,
 				8B25AE7B190CBF79001EAA36 /* TestCollectionFactoryForDictionaryToJsonString.m */,
 				8BFB4978190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m */,
 				4D1173EE190DF55F0037E9E0 /* TestCollectionFactoryForDictionaryWithJsonString.m */,
@@ -439,10 +433,8 @@
 				8B25AE86190CF54E001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonFile.m in Sources */,
 				8BA29D2A1AB7104E00F623AB /* NSMutableString+CollectionFactory.m in Sources */,
 				8B25AE77190CBE02001EAA36 /* TestCollectionFactoryForObject.m in Sources */,
-				4DC1699D1906363400234129 /* TestCollectionFactoryForArrayWithJsonString.m in Sources */,
 				8BFB4979190B952D002720B6 /* TestCollectionFactoryForDictionaryWithJsonData.m in Sources */,
 				4DC169921906349E00234129 /* NSDictionary+CollectionFactory.m in Sources */,
-				8B160093190B660400B6DF09 /* TestCollectionFactoryForArrayWithJsonData.m in Sources */,
 				8B25AE7C190CBF79001EAA36 /* TestCollectionFactoryForDictionaryToJsonString.m in Sources */,
 				8B25AE7A190CBED0001EAA36 /* SomeObject.m in Sources */,
 				8B25AE7E190CCC13001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonString.m in Sources */,

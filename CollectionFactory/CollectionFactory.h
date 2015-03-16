@@ -9,7 +9,7 @@
 
 @interface CollectionFactory : NSObject
 
-+ (id)parseWithJsonData:(NSData *)rawJson
++ (id)parseWithJsonData:(NSData *)jsonData
                 options:(NSJSONReadingOptions)options
        mustBeOfSubclass:(Class)class;
 

@@ -2,11 +2,17 @@
 
 @implementation CollectionFactory
 
-+ (id)parseWithJsonData:(NSData *)rawJson
++ (id)parseWithJsonData:(NSData *)jsonData
                 options:(NSJSONReadingOptions)options
        mustBeOfSubclass:(Class)class
 {
-    id json = [NSJSONSerialization JSONObjectWithData:rawJson
+    // NSJSONSerialization will throw an NSInvalidArgumentException if
+    // `jsonData` is nil but we want to always return `nil` on error.
+    if (nil == jsonData) {
+        return nil;
+    }
+    
+    id json = [NSJSONSerialization JSONObjectWithData:jsonData
                                               options:options
                                                 error:nil];
     if(![[json class] isSubclassOfClass:class]) {
