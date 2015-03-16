@@ -70,7 +70,7 @@
 
 - (NSData *)jsonData
 {
-    return nil;
+    return [[self jsonString] dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 @end

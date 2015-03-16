@@ -19,3 +19,7 @@ tests:
     EscapedString:
       object: '@"foo \"bar"'
       json: '\"foo \\\"bar\"'
+  NSArray:
+    Array:
+      object: '@[@123, @"foo"]'
+      json: '[123,\"foo\"]'

@@ -18,11 +18,6 @@
     return [NSString stringWithJsonString:string];
 }
 
-- (NSData *)jsonData
-{
-    return [[self jsonString] dataUsingEncoding:NSUTF8StringEncoding];
-}
-
 - (NSString *)jsonString
 {
     NSString *escaped = [self stringByReplacingOccurrencesOfString:@"\""
