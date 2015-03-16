@@ -9,3 +9,6 @@ tests:
     Double:
       object: "[NSNumber numberWithDouble:1.23]"
       string: "1.23"
+    Integer:
+      object: "[NSNumber numberWithInt:123]"
+      string: "123"
