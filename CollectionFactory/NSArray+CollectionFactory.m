@@ -4,6 +4,10 @@
 
 + (NSArray *)arrayWithJsonData:(NSData *)rawJson
 {
+    if (!rawJson) {
+        return nil;
+    }
+    
     return (NSArray *)[CollectionFactory parseWithJsonData:rawJson
                                                    options:0
                                           mustBeOfSubclass:[NSArray class]];

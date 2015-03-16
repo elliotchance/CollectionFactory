@@ -30,7 +30,7 @@ for className, classTests in tests_file['tests'].items():
     out.write('    assertThat(object, nilValue());\n')
     out.write('}\n\n')
     
-    # JSON data to object
+    # Invalid JSON data to object
     out.write('- (void)testInvalidJsonDataTo%s\n' % className[2:])
     out.write('{\n')
     out.write('    NSData *data = [@"[123" dataUsingEncoding:NSUTF8StringEncoding];\n')
@@ -38,7 +38,21 @@ for className, classTests in tests_file['tests'].items():
     out.write('    assertThat(object, nilValue());\n')
     out.write('}\n\n')
         
-    total += 2
+    # Nil JSON string to object
+    out.write('- (void)testNilJsonStringTo%s\n' % className[2:])
+    out.write('{\n')
+    out.write('    %s *object = [%s %sWithJsonString:nil];\n' % (className, className, init_name))
+    out.write('    assertThat(object, nilValue());\n')
+    out.write('}\n\n')
+        
+    # Nil JSON data to object
+    out.write('- (void)testNilJsonDataTo%s\n' % className[2:])
+    out.write('{\n')
+    out.write('    %s *object = [%s %sWithJsonData:nil];\n' % (className, className, init_name))
+    out.write('    assertThat(object, nilValue());\n')
+    out.write('}\n\n')
+        
+    total += 4
     
     for testName, testConditions in classTests.items():
         # object to JSON string
