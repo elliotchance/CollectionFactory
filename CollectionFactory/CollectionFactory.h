@@ -4,6 +4,8 @@
 #import "NSObject+CollectionFactory.h"
 #import "NSNumber+CollectionFactory.h"
 #import "NSString+CollectionFactory.h"
+#import "NSMutableString+CollectionFactory.h"
+#import "NSMutableArray+CollectionFactory.h"
 
 @interface CollectionFactory : NSObject
 
