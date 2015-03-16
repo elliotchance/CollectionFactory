@@ -43,6 +43,10 @@
 # 
 # Note: When it generates mutable tests it will wrap the `object` in a
 # [mutableCopy] to generate its mutable version.
+#
+# If the `object` is "nil" then test are only generated to assert that the JSON
+# string/data will return `nil` and not test the other direction (since this
+# would be impossible.)
 
 tests:
   NSString:
@@ -57,6 +61,12 @@ tests:
     Array:
       object: '@[@123, @"foo"]'
       json: '[123,\"foo\"]'
+
+    # Make sure that we are explicitly parsing an array it will return `nil` if
+    # the JSON is valid but not of the correct type.
+    InvalidArray:
+      object: 'nil'
+      json: '{\"abc\":\"def\"}'
 
   NSDictionary:
     Dictionary:

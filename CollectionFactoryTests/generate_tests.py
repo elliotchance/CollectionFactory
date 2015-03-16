@@ -42,25 +42,12 @@ def parse_class(out, className, classTests):
     total += 4
     
     for testName, testConditions in classTests.items():
-        testName = ('Mutable%s' % testName) if ('Mutable' in className) else testName
         object = testConditions['object']
         if 'Mutable' in className:
+            if object == 'nil':
+                continue
             object = '[%s mutableCopy]' % object
-        
-        # object to JSON string
-        out.write('- (void)test%sToJsonString\n' % testName)
-        out.write('{\n')
-        out.write('    %s *object = %s;\n' % (className, object))
-        out.write('    assertThat([object jsonString], equalTo(@"%s"));\n' % testConditions['json'])
-        out.write('}\n\n')
-        
-        # object to JSON data
-        out.write('- (void)test%sToJsonData\n' % testName)
-        out.write('{\n')
-        out.write('    %s *object = %s;\n' % (className, object))
-        out.write('    NSString *string = [[NSString alloc] initWithData:[object jsonData]\n                                             encoding:NSUTF8StringEncoding];\n')
-        out.write('    assertThat(string, equalTo(@"%s"));\n' % (testConditions['json']))
-        out.write('}\n\n')
+            testName = 'Mutable%s' % testName
         
         # JSON string to object
         out.write('- (void)testJsonStringTo%s\n' % testName)
@@ -75,6 +62,25 @@ def parse_class(out, className, classTests):
         out.write('    NSData *data = [@"%s" dataUsingEncoding:NSUTF8StringEncoding];\n' % testConditions['json'])
         out.write('    %s *object = [%s %sWithJsonData:data];\n' % (className, className, init_name))
         out.write('    assertThat(object, equalTo(%s));\n' % object)
+        out.write('}\n\n')
+        
+        # If there was no 'object' key the following test do not apply.
+        if object == 'nil':
+            continue
+        
+        # object to JSON string
+        out.write('- (void)test%sToJsonString\n' % testName)
+        out.write('{\n')
+        out.write('    %s *object = %s;\n' % (className, object))
+        out.write('    assertThat([object jsonString], equalTo(@"%s"));\n' % testConditions['json'])
+        out.write('}\n\n')
+        
+        # object to JSON data
+        out.write('- (void)test%sToJsonData\n' % testName)
+        out.write('{\n')
+        out.write('    %s *object = %s;\n' % (className, object))
+        out.write('    NSString *string = [[NSString alloc] initWithData:[object jsonData]\n                                             encoding:NSUTF8StringEncoding];\n')
+        out.write('    assertThat(string, equalTo(@"%s"));\n' % testConditions['json'])
         out.write('}\n\n')
         
         total += 4
