@@ -21,6 +21,25 @@ out.write('@end\n\n')
 out.write('@implementation CollectionFactoryTests\n\n')
 
 for className, classTests in tests_file['tests'].items():
+    init_name = className[2:].lower()
+        
+    # Invalid JSON string to object
+    out.write('- (void)testInvalidJsonStringTo%s\n' % className[2:])
+    out.write('{\n')
+    out.write('    %s *object = [%s %sWithJsonString:@"[123"];\n' % (className, className, init_name))
+    out.write('    assertThat(object, nilValue());\n')
+    out.write('}\n\n')
+    
+    # JSON data to object
+    out.write('- (void)testInvalidJsonDataTo%s\n' % className[2:])
+    out.write('{\n')
+    out.write('    NSData *data = [@"[123" dataUsingEncoding:NSUTF8StringEncoding];\n')
+    out.write('    %s *object = [%s %sWithJsonData:data];\n' % (className, className, init_name))
+    out.write('    assertThat(object, nilValue());\n')
+    out.write('}\n\n')
+        
+    total += 2
+    
     for testName, testConditions in classTests.items():
         # object to JSON string
         out.write('- (void)test%sToJsonString\n' % testName)
@@ -36,8 +55,6 @@ for className, classTests in tests_file['tests'].items():
         out.write('    NSString *string = [[NSString alloc] initWithData:[object jsonData]\n                                             encoding:NSUTF8StringEncoding];\n')
         out.write('    assertThat(string, equalTo(@"%s"));\n' % (testConditions['json']))
         out.write('}\n\n')
-        
-        init_name = className[2:].lower()
         
         # JSON string to object
         out.write('- (void)testJsonStringTo%s\n' % testName)

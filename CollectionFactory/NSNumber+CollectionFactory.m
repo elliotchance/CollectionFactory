@@ -11,6 +11,12 @@
     if ([jsonString isEqualToString:@"false"]) {
         return @NO;
     }
+    
+    BOOL test = [[NSScanner scannerWithString:jsonString] scanInt:nil];
+    if (!test) {
+        return nil;
+    }
+    
     return [NSNumber numberWithDouble:[jsonString doubleValue]];
 }
 

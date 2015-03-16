@@ -5,6 +5,11 @@
 
 + (NSString *)stringWithJsonString:(NSString *)jsonString
 {
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^\".*\"$" options:0 error:nil];
+    if (![regex firstMatchInString:jsonString options:0 range:NSMakeRange(0, jsonString.length)]) {
+        return nil;
+    }
+    
     jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\\"
                                                        withString:@""];
     NSRange range = NSMakeRange(1, [jsonString length] - 2);
