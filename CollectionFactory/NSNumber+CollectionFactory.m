@@ -10,6 +10,13 @@
     return @NO;
 }
 
++ (NSNumber *)numberWithJsonData:(NSData *)jsonData
+{
+    NSString *string = [[NSString alloc] initWithData:jsonData
+                                             encoding:NSUTF8StringEncoding];
+    return [NSNumber numberWithJsonString:string];
+}
+
 - (NSData *)jsonData
 {
     if ([self boolValue]) {

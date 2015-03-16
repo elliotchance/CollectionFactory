@@ -44,7 +44,15 @@ for className, classTests in tests_file['tests'].items():
         out.write('    assertThat(object, equalTo(%s));\n' % (testConditions['object']))
         out.write('}\n\n')
         
-        total += 3
+        # JSON data to object
+        out.write('- (void)testJsonDataTo%s\n' % testName)
+        out.write('{\n')
+        out.write('    NSData *data = [@"%s" dataUsingEncoding:NSUTF8StringEncoding];\n' % testConditions['string'])
+        out.write('    %s *object = [%s numberWithJsonData:data];\n' % (className, className))
+        out.write('    assertThat(object, equalTo(%s));\n' % (testConditions['object']))
+        out.write('}\n\n')
+        
+        total += 4
 
 out.write('@end\n\n')
 
