@@ -26,7 +26,7 @@ for className, classTests in tests_file['tests'].items():
         out.write('- (void)test%sToJsonString\n' % testName)
         out.write('{\n')
         out.write('    %s *object = %s;\n' % (className, testConditions['object']))
-        out.write('    assertThat([object jsonString], equalTo(@"%s"));\n' % (testConditions['string']))
+        out.write('    assertThat([object jsonString], equalTo(@"%s"));\n' % (testConditions['json']))
         out.write('}\n\n')
         
         # object to JSON data
@@ -34,21 +34,23 @@ for className, classTests in tests_file['tests'].items():
         out.write('{\n')
         out.write('    %s *object = %s;\n' % (className, testConditions['object']))
         out.write('    NSString *string = [[NSString alloc] initWithData:[object jsonData]\n                                             encoding:NSUTF8StringEncoding];\n')
-        out.write('    assertThat(string, equalTo(@"%s"));\n' % (testConditions['string']))
+        out.write('    assertThat(string, equalTo(@"%s"));\n' % (testConditions['json']))
         out.write('}\n\n')
+        
+        init_name = className[2:].lower()
         
         # JSON string to object
         out.write('- (void)testJsonStringTo%s\n' % testName)
         out.write('{\n')
-        out.write('    %s *object = [%s numberWithJsonString:@"%s"];\n' % (className, className, testConditions['string']))
+        out.write('    %s *object = [%s %sWithJsonString:@"%s"];\n' % (className, className, init_name, testConditions['json']))
         out.write('    assertThat(object, equalTo(%s));\n' % (testConditions['object']))
         out.write('}\n\n')
         
         # JSON data to object
         out.write('- (void)testJsonDataTo%s\n' % testName)
         out.write('{\n')
-        out.write('    NSData *data = [@"%s" dataUsingEncoding:NSUTF8StringEncoding];\n' % testConditions['string'])
-        out.write('    %s *object = [%s numberWithJsonData:data];\n' % (className, className))
+        out.write('    NSData *data = [@"%s" dataUsingEncoding:NSUTF8StringEncoding];\n' % testConditions['json'])
+        out.write('    %s *object = [%s %sWithJsonData:data];\n' % (className, className, init_name))
         out.write('    assertThat(object, equalTo(%s));\n' % (testConditions['object']))
         out.write('}\n\n')
         

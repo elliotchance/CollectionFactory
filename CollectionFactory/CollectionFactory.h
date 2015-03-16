@@ -3,6 +3,7 @@
 #import "NSMutableDictionary+CollectionFactory.h"
 #import "NSObject+CollectionFactory.h"
 #import "NSNumber+CollectionFactory.h"
+#import "NSString+CollectionFactory.h"
 
 @interface CollectionFactory : NSObject
 

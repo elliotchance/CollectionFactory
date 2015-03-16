@@ -2,13 +2,17 @@ tests:
   NSNumber:
     Yes:
       object: "[NSNumber numberWithBool:YES]"
-      string: "true"
+      json: "true"
     No:
       object: "[NSNumber numberWithBool:NO]"
-      string: "false"
+      json: "false"
     Double:
       object: "[NSNumber numberWithDouble:1.23]"
-      string: "1.23"
+      json: "1.23"
     Integer:
       object: "[NSNumber numberWithInt:123]"
-      string: "123"
+      json: "123"
+  NSString:
+    String:
+      object: '@"foo bar"'
+      json: '\"foo bar\"'
