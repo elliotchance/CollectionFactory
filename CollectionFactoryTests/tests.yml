@@ -106,6 +106,9 @@ tests:
     ObjectDoubleQuotes:
       object: '@"foo \"bar"'
       json: '\"foo \\\"bar\"'
+    ObjectArray:
+      object: '@[@123, @"foo"]'
+      json: '[123,\"foo\"]'
 
   NSNumber:
     Yes:
