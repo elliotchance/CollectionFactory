@@ -103,6 +103,9 @@ tests:
     ObjectString:
       object: '@"foo bar"'
       json: '\"foo bar\"'
+    ObjectDoubleQuotes:
+      object: '@"foo \"bar"'
+      json: '\"foo \\\"bar\"'
 
   NSNumber:
     Yes:
