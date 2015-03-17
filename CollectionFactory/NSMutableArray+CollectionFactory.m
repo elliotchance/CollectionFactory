@@ -14,7 +14,11 @@
 
 + (NSMutableArray *)mutableArrayWithJsonFile:(NSString *)jsonFile
 {
-    return nil;
+    NSArray *array = [NSObject objectWithJsonFile:jsonFile];
+    if (!array) {
+        return nil;
+    }
+    return [array mutableCopy];
 }
 
 @end

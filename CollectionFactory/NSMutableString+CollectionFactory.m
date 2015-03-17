@@ -1,5 +1,4 @@
-#import "NSString+CollectionFactory.h"
-#import "NSMutableString+CollectionFactory.h"
+#import "CollectionFactory.h"
 
 @implementation NSMutableString (CollectionFactory)
 
@@ -15,7 +14,8 @@
 
 + (NSMutableString *)mutableStringWithJsonFile:(NSString *)jsonFile
 {
-    return nil;
+    return [CollectionFactory parseWithFile:jsonFile
+                           mustBeOfSubclass:[NSString class]];
 }
 
 @end

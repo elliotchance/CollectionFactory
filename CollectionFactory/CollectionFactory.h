@@ -10,8 +10,13 @@
 
 @interface CollectionFactory : NSObject
 
++ (BOOL)isJsonString:(NSString *)string;
+
 + (id)parseWithJsonData:(NSData *)jsonData
                 options:(NSJSONReadingOptions)options
        mustBeOfSubclass:(Class)class;
+
++ (id)parseWithFile:(NSString *)file
+   mustBeOfSubclass:(Class)class;
 
 @end

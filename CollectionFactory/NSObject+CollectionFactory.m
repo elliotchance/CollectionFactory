@@ -96,7 +96,11 @@
 
 + (id)objectWithJsonFile:(NSString *)jsonFile
 {
-    return nil;
+    NSData *jsonData = [[NSData alloc] initWithContentsOfFile:jsonFile];
+    if(nil == jsonData) {
+        return nil;
+    }
+    return [NSObject objectWithJsonData:jsonData];
 }
 
 @end

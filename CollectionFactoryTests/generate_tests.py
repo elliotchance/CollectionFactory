@@ -5,7 +5,7 @@ from os import listdir
 
 
 def output_test(out, test_name, lines):
-    out.write('- (void)%s\n' % test_name)
+    out.write('- (void)test%s\n' % test_name)
     out.write('{\n')
     out.write('\n'.join(lines))
     out.write('\n')
@@ -80,6 +80,13 @@ def parse_class(out, className, classTests):
         out.write('    %s *object = [%s %sWithJsonData:data];\n' % (className, className, init_name))
         out.write('    assertThat(object, equalTo(%s));\n' % object)
         out.write('}\n\n')
+    
+        # From file
+        output_test(out, '%sJsonFileTo%s' % (className[2:], testName), (
+            '    [@"%s" writeToFile:@"test.json" atomically:NO encoding:NSUTF8StringEncoding error:nil];' % padded_json,
+            '    %s *object = [%s %sWithJsonFile:@"test.json"];' % (className, className, init_name),
+            '    assertThat(object, equalTo(%s));\n' % object
+        ))
         
         # If there was no 'object' key the following test do not apply.
         if object == 'nil':

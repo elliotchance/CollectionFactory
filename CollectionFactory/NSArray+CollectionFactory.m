@@ -27,7 +27,7 @@
 
 + (NSArray *)arrayWithJsonFile:(NSString *)jsonFile
 {
-    return nil;
+    return [NSArray arrayWithJsonData:[NSData dataWithContentsOfFile:jsonFile]];
 }
 
 @end

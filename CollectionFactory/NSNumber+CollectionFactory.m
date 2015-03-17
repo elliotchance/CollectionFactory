@@ -1,5 +1,4 @@
-#import "NSNumber+CollectionFactory.h"
-#import "NSObject+CollectionFactory.h"
+#import "CollectionFactory.h"
 
 @implementation NSNumber (CollectionFactory)
 
@@ -42,7 +41,8 @@
 
 + (NSNumber *)numberWithJsonFile:(NSString *)jsonFile
 {
-    return nil;
+    return [CollectionFactory parseWithFile:jsonFile
+                           mustBeOfSubclass:[NSNumber class]];
 }
 
 @end

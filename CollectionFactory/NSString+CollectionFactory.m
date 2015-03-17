@@ -1,14 +1,14 @@
-#import "NSString+CollectionFactory.h"
-#import "NSObject+CollectionFactory.h"
+#import "CollectionFactory.h"
 
 @implementation NSString (CollectionFactory)
 
 + (NSString *)stringWithJsonString:(NSString *)jsonString
 {
-    jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if (!jsonString) {
         return nil;
     }
+    
+    jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^\".*\"$"
                                                                            options:0
@@ -41,7 +41,8 @@
 
 + (NSString *)stringWithJsonFile:(NSString *)jsonFile
 {
-    return nil;
+    return [CollectionFactory parseWithFile:jsonFile
+                           mustBeOfSubclass:[NSString class]];
 }
 
 @end

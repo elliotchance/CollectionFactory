@@ -26,7 +26,8 @@
 
 + (NSDictionary *)dictionaryWithJsonFile:(NSString *)jsonFile
 {
-    return nil;
+    return [CollectionFactory parseWithFile:jsonFile
+                           mustBeOfSubclass:[NSDictionary class]];
 }
 
 @end
