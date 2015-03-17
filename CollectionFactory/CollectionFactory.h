@@ -6,6 +6,7 @@
 #import "NSString+CollectionFactory.h"
 #import "NSMutableString+CollectionFactory.h"
 #import "NSMutableArray+CollectionFactory.h"
+#import "NSNull+CollectionFactory.h"
 
 @interface CollectionFactory : NSObject
 

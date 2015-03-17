@@ -52,6 +52,9 @@
     
     jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
+    if([jsonString isEqualToString:@"null"]) {
+        return [NSNull null];
+    }
     if([jsonString isEqualToString:@"true"]) {
         return [NSNumber numberWithBool:YES];
     }
