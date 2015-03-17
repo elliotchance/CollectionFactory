@@ -97,6 +97,9 @@ tests:
     ObjectInteger:
       object: "@123"
       json: "123"
+    ObjectDouble:
+      object: "@1.23"
+      json: "1.23"
 
   NSNumber:
     Yes:
