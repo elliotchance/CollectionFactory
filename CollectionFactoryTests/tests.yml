@@ -88,10 +88,12 @@ tests:
     ObjectNull:
       object: "[NSNull null]"
       json: "null"
-
     ObjectYes:
       object: "@YES"
       json: "true"
+    ObjectNo:
+      object: "@NO"
+      json: "false"
 
   NSNumber:
     Yes:
