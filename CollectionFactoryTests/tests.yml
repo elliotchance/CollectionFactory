@@ -47,6 +47,9 @@
 # If the `object` is "nil" then test are only generated to assert that the JSON
 # string/data will return `nil` and not test the other direction (since this
 # would be impossible.)
+# 
+# Each of the JSON values will be wrapped in a variety of whitespace characters
+# to ensure they do not mess with the string/data to object conversions.
 
 tests:
   NSString:

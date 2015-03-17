@@ -19,12 +19,10 @@ def parse_class(out, className, classTests):
         init_name = 'mutable%s%s' % (className[9].upper(), className[10:])
     
     # Invalid JSON string to object
-    output_test(out,
-        'InvalidJsonStringTo%s' % className[2:], (
-            '    %s *object = [%s %sWithJsonString:@"[123"];' % (className, className, init_name),
-            '    assertThat(object, nilValue());'
-        )
-    )
+    output_test(out, 'InvalidJsonStringTo%s' % className[2:], (
+        '    %s *object = [%s %sWithJsonString:@"[123"];' % (className, className, init_name),
+        '    assertThat(object, nilValue());'
+    ))
     
     # Invalid JSON data to object
     out.write('- (void)testInvalidJsonDataTo%s\n' % className[2:])
