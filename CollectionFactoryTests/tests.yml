@@ -94,6 +94,9 @@ tests:
     ObjectNo:
       object: "@NO"
       json: "false"
+    ObjectInteger:
+      object: "@123"
+      json: "123"
 
   NSNumber:
     Yes:
