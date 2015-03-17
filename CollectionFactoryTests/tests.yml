@@ -109,6 +109,9 @@ tests:
     ObjectArray:
       object: '@[@123, @"foo"]'
       json: '[123,\"foo\"]'
+    ObjectDictionary:
+      object: '@{@"abc": @"def"}'
+      json: '{\"abc\":\"def\"}'
 
   NSNumber:
     Yes:
