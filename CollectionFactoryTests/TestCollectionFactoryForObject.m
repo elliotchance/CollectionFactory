@@ -38,17 +38,6 @@
     assertThat([string jsonString], equalTo(@"\"my string\""));
 }
 
-- (void)testCanRenderJsonValueFromNumber
-{
-    NSNumber *number = @123;
-    assertThat([number jsonString], equalTo(@"123"));
-}
-
-- (void)testWillCreateNumberFromRawNumber
-{
-    assertThat([NSObject objectWithJsonString:@"123"], equalTo(@123));
-}
-
 - (void)testWillCreateStringFromStringInJson
 {
     assertThat([NSObject objectWithJsonString:@"\"123\""], equalTo(@"123"));

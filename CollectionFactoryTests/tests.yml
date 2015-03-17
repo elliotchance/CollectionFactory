@@ -100,6 +100,9 @@ tests:
     ObjectDouble:
       object: "@1.23"
       json: "1.23"
+    ObjectString:
+      object: '@"foo bar"'
+      json: '\"foo bar\"'
 
   NSNumber:
     Yes:
