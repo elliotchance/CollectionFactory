@@ -82,8 +82,13 @@ tests:
       object: 'nil'
       json: '[123,\"foo\"]'
 
-  # NSNumber is the only class where it's Mutable counterpart does not exist and
-  # so no mutable tests will be generated for it.
+  # NSObject and NSNumber do not have a Mutable counterpart so no mutable tests
+  # will be genrated for them.
+  NSObject:
+    ObjectYes:
+      object: "@YES"
+      json: "true"
+
   NSNumber:
     Yes:
       object: "[NSNumber numberWithBool:YES]"

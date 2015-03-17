@@ -44,33 +44,51 @@
     return [[self dictionaryValue] jsonString];
 }
 
-- (id)objectFromJson:(NSString *)json
++ (id)objectWithJsonString:(NSString *)jsonString
 {
-    if([json isEqualToString:@"true"]) {
+    if (nil == jsonString) {
+        return nil;
+    }
+    
+    jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if([jsonString isEqualToString:@"true"]) {
         return [NSNumber numberWithBool:YES];
     }
-    if([json isEqualToString:@"false"]) {
+    if([jsonString isEqualToString:@"false"]) {
         return [NSNumber numberWithBool:NO];
     }
-    if([json characterAtIndex:0] == '"') {
-        NSString *raw = [json substringWithRange:NSMakeRange(1, [json length] - 2)];
-        return [raw stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
+    if([jsonString characterAtIndex:0] == '"') {
+        NSString *raw = [jsonString substringWithRange:NSMakeRange(1, [jsonString length] - 2)];
+        return [raw stringByReplacingOccurrencesOfString:@"\\\""
+                                              withString:@"\""];
     }
-    if([json characterAtIndex:0] == '[') {
-        return [NSArray arrayWithJsonString:json];
+    if([jsonString characterAtIndex:0] == '[') {
+        return [NSArray arrayWithJsonString:jsonString];
     }
-    if([json characterAtIndex:0] == '{') {
-        return [NSDictionary dictionaryWithJsonString:json];
+    if([jsonString characterAtIndex:0] == '{') {
+        return [NSDictionary dictionaryWithJsonString:jsonString];
     }
-    if([json rangeOfString:@"."].location != NSNotFound) {
-        return [NSNumber numberWithDouble:[json doubleValue]];
+    if([jsonString rangeOfString:@"."].location != NSNotFound) {
+        return [NSNumber numberWithDouble:[jsonString doubleValue]];
     }
-    return [NSNumber numberWithInt:[json intValue]];
+    return [NSNumber numberWithInt:[jsonString intValue]];
 }
 
 - (NSData *)jsonData
 {
     return [[self jsonString] dataUsingEncoding:NSUTF8StringEncoding];
+}
+
++ (id)objectWithJsonData:(NSData *)jsonData
+{
+    if (nil == jsonData) {
+        return nil;
+    }
+    
+    NSString *string = [[NSString alloc] initWithData:jsonData
+                                             encoding:NSUTF8StringEncoding];
+    return [NSObject objectWithJsonString:string];
 }
 
 @end

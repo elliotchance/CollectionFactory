@@ -46,22 +46,22 @@
 
 - (void)testWillCreateNumberFromRawNumber
 {
-    assertThat([NSObject objectFromJson:@"123"], equalTo(@123));
+    assertThat([NSObject objectWithJsonString:@"123"], equalTo(@123));
 }
 
 - (void)testWillCreateStringFromStringInJson
 {
-    assertThat([NSObject objectFromJson:@"\"123\""], equalTo(@"123"));
+    assertThat([NSObject objectWithJsonString:@"\"123\""], equalTo(@"123"));
 }
 
 - (void)testQuotedStringsAreHandledCorrectlyWhenParsing
 {
-    assertThat([NSObject objectFromJson:@"\"ab\\\"c\""], equalTo(@"ab\"c"));
+    assertThat([NSObject objectWithJsonString:@"\"ab\\\"c\""], equalTo(@"ab\"c"));
 }
 
 - (void)testWillCreateArrayFromJsonArray
 {
-    assertThat([NSObject objectFromJson:@"[\"abc\",123]"], allOf(
+    assertThat([NSObject objectWithJsonString:@"[\"abc\",123]"], allOf(
         instanceOf([NSArray class]),
         hasItem(@123),
     nil));
@@ -69,7 +69,7 @@
 
 - (void)testWillCreateDictionaryFromJsonObject
 {
-    assertThat([NSObject objectFromJson:@"{\"abc\":123}"], allOf(
+    assertThat([NSObject objectWithJsonString:@"{\"abc\":123}"], allOf(
         instanceOf([NSDictionary class]),
         hasEntry(@"abc", @123),
     nil));
@@ -77,7 +77,7 @@
 
 - (void)testWillReturnNilIfInvalidJsonIsPassedIntoObjectFromJson
 {
-    assertThat([NSObject objectFromJson:@"{"], nilValue());
+    assertThat([NSObject objectWithJsonString:@"{"], nilValue());
 }
 
 - (void)testCanRenderJsonValueFromBooleanNumberYes
@@ -94,21 +94,21 @@
 
 - (void)testWillCreateNumberFromTrueInJson
 {
-    NSNumber *number = [NSObject objectFromJson:@"true"];
+    NSNumber *number = [NSObject objectWithJsonString:@"true"];
     assertThat(number, allOf(instanceOf([NSNumber class]), equalTo(@YES), nil));
     assertTrue(strcmp([number objCType], @encode(BOOL)) == 0);
 }
 
 - (void)testWillCreateNumberFromFalseInJson
 {
-    NSNumber *number = [NSObject objectFromJson:@"false"];
+    NSNumber *number = [NSObject objectWithJsonString:@"false"];
     assertThat(number, allOf(instanceOf([NSNumber class]), equalTo(@NO), nil));
     assertTrue(strcmp([number objCType], @encode(BOOL)) == 0);
 }
 
 - (void)testWillCreateNumberFromRawFloatingNumber
 {
-    assertThat([NSObject objectFromJson:@"12.3"], equalTo(@12.3));
+    assertThat([NSObject objectWithJsonString:@"12.3"], equalTo(@12.3));
 }
 
 @end

@@ -118,7 +118,7 @@ out.write('@implementation CollectionFactoryTests\n\n')
 for className, classTests in tests_file['tests'].items():
     total += parse_class(out, className, classTests)
     
-    if className != 'NSNumber':
+    if className != 'NSNumber' and className != 'NSObject':
         total += parse_class(out, 'NSMutable%s' % className[2:], classTests)
 
 out.write('@end\n\n')
