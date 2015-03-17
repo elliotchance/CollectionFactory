@@ -25,4 +25,9 @@
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
++ (NSArray *)arrayWithJsonFile:(NSString *)jsonFile
+{
+    return nil;
+}
+
 @end

@@ -4,5 +4,6 @@
 
 + (NSString *)stringWithJsonString:(NSString *)jsonString;
 + (NSString *)stringWithJsonData:(NSData *)jsonData;
++ (NSString *)stringWithJsonFile:(NSString *)jsonFile;
 
 @end

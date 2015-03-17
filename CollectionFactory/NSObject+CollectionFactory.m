@@ -94,4 +94,9 @@
     return [NSObject objectWithJsonString:string];
 }
 
++ (id)objectWithJsonFile:(NSString *)jsonFile
+{
+    return nil;
+}
+
 @end

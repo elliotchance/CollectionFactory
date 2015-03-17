@@ -13,4 +13,9 @@
     return [[NSString stringWithJsonData:jsonData] mutableCopy];
 }
 
++ (NSMutableString *)mutableStringWithJsonFile:(NSString *)jsonFile
+{
+    return nil;
+}
+
 @end

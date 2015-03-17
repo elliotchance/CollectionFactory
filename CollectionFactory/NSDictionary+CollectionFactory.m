@@ -24,4 +24,9 @@
     return [NSDictionary dictionaryWithJsonData:data];
 }
 
++ (NSDictionary *)dictionaryWithJsonFile:(NSString *)jsonFile
+{
+    return nil;
+}
+
 @end

@@ -40,4 +40,9 @@
     return [[self jsonString] dataUsingEncoding:NSUTF8StringEncoding];
 }
 
++ (NSNumber *)numberWithJsonFile:(NSString *)jsonFile
+{
+    return nil;
+}
+
 @end

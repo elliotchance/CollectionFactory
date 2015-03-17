@@ -39,4 +39,9 @@
     return [NSString stringWithFormat:@"\"%@\"", escaped];
 }
 
++ (NSString *)stringWithJsonFile:(NSString *)jsonFile
+{
+    return nil;
+}
+
 @end

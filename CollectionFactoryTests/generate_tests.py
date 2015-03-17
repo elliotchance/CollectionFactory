@@ -45,7 +45,13 @@ def parse_class(out, className, classTests):
     out.write('    %s *object = [%s %sWithJsonData:nil];\n' % (className, className, init_name))
     out.write('    assertThat(object, nilValue());\n')
     out.write('}\n\n')
-        
+    
+    # File does not exist
+    output_test(out, 'MissingJsonFileTo%s' % className[2:], (
+        '    %s *object = [%s %sWithJsonFile:@"does_not_exist"];' % (className, className, init_name),
+        '    assertThat(object, nilValue());'
+    ))
+    
     total += 4
     
     for testName, testConditions in classTests.items():

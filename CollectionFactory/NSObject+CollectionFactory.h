@@ -7,5 +7,6 @@
 - (NSData *)jsonData;
 + (id)objectWithJsonString:(NSString *)jsonString;
 + (id)objectWithJsonData:(NSData *)jsonData;
++ (id)objectWithJsonFile:(NSString *)jsonFile;
 
 @end
