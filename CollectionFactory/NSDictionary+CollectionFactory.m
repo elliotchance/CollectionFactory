@@ -5,9 +5,9 @@
 
 + (NSDictionary *)dictionaryWithJsonData:(NSData *)jsonData
 {
-    return (NSDictionary *)[CollectionFactory parseWithJsonData:jsonData
-                                                        options:0
-                                               mustBeOfSubclass:[NSDictionary class]];
+    return [CollectionFactory parseWithJsonData:jsonData
+                               mustBeOfSubclass:[NSDictionary class]
+                                    makeMutable:NO];
 }
 
 - (NSString *)jsonString
@@ -18,16 +18,18 @@
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
-+ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonData
++ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString
 {
-    NSData *data = [jsonData dataUsingEncoding:NSUTF8StringEncoding];
-    return [NSDictionary dictionaryWithJsonData:data];
+    return [CollectionFactory parseWithJsonString:jsonString
+                                 mustBeOfSubclass:[NSDictionary class]
+                                      makeMutable:NO];
 }
 
 + (NSDictionary *)dictionaryWithJsonFile:(NSString *)jsonFile
 {
-    return [CollectionFactory parseWithFile:jsonFile
-                           mustBeOfSubclass:[NSDictionary class]];
+    return [CollectionFactory parseWithJsonFile:jsonFile
+                               mustBeOfSubclass:[NSDictionary class]
+                                    makeMutable:NO];
 }
 
 @end

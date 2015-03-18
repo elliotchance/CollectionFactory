@@ -2,30 +2,17 @@
 
 @implementation CollectionFactory
 
-+ (BOOL)isJsonString:(NSString *)string
-{
-    NSRegularExpression *regex;
-    regex = [NSRegularExpression regularExpressionWithPattern:@"^\".*\"$"
-                                                      options:0
-                                                        error:nil];
-    return [regex firstMatchInString:string
-                             options:0
-                               range:NSMakeRange(0, string.length)] != nil;
-}
-
-+ (id)parseWithJsonData:(NSData *)jsonData
-                options:(NSJSONReadingOptions)options
-       mustBeOfSubclass:(Class)class
++ (id)parseWithJsonString:(NSString *)jsonString
+         mustBeOfSubclass:(Class)theClass
+              makeMutable:(BOOL)makeMutable
 {
     // NSJSONSerialization will throw an NSInvalidArgumentException if
     // `jsonData` is nil but we want to always return `nil` on error.
-    if (nil == jsonData) {
+    if (nil == jsonString) {
         return nil;
     }
     
     // Trim off any surrounding spaces.
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData
-                                                 encoding:NSUTF8StringEncoding];
     NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     jsonString = [jsonString stringByTrimmingCharactersInSet:whitespace];
     
@@ -35,29 +22,53 @@
     jsonString = [NSString stringWithFormat:@"[%@]", jsonString];
     
     // Now try to decode the JSON.
-    jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSArray *parsed = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                      options:options
+                                                      options:0
                                                         error:nil];
     id json = [parsed objectAtIndex:0];
     
     // The result object must be a subclass of what we expect it to be,
-    // otherwise this is considered a failure and we return nil.
-    if(![[json class] isSubclassOfClass:class]) {
+    // otherwise this is considered a failure and we return nil. If `theClass`
+    // is `nil` then we do not do type checking.
+    if(nil != theClass && ![[json class] isSubclassOfClass:theClass]) {
         return nil;
     }
     
     // Everything checks out.
+    if (makeMutable) {
+        return [json mutableCopy];
+    }
     return json;
 }
 
-+ (id)parseWithFile:(NSString *)file
-   mustBeOfSubclass:(Class)class
++ (id)parseWithJsonFile:(NSString *)file
+       mustBeOfSubclass:(Class)class
+            makeMutable:(BOOL)makeMutable
 {
     NSData *data = [NSData dataWithContentsOfFile:file];
+    if (nil == data) {
+        return nil;
+    }
+    
     return [CollectionFactory parseWithJsonData:data
-                                        options:0
-                               mustBeOfSubclass:class];
+                               mustBeOfSubclass:class
+                                    makeMutable:makeMutable];
+}
+
++ (id)parseWithJsonData:(NSData *)jsonData
+       mustBeOfSubclass:(Class)theClass
+            makeMutable:(BOOL)makeMutable
+{
+    if (nil == jsonData) {
+        return nil;
+    }
+    
+    NSString *string = [[NSString alloc] initWithData:jsonData
+                                             encoding:NSUTF8StringEncoding];
+    return [CollectionFactory parseWithJsonString:string
+                                 mustBeOfSubclass:theClass
+                                      makeMutable:makeMutable];
 }
 
 @end

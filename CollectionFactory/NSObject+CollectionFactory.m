@@ -46,36 +46,9 @@
 
 + (id)objectWithJsonString:(NSString *)jsonString
 {
-    if (nil == jsonString) {
-        return nil;
-    }
-    
-    jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-    if([jsonString isEqualToString:@"null"]) {
-        return [NSNull null];
-    }
-    if([jsonString isEqualToString:@"true"]) {
-        return [NSNumber numberWithBool:YES];
-    }
-    if([jsonString isEqualToString:@"false"]) {
-        return [NSNumber numberWithBool:NO];
-    }
-    if([jsonString characterAtIndex:0] == '"') {
-        NSString *raw = [jsonString substringWithRange:NSMakeRange(1, [jsonString length] - 2)];
-        return [raw stringByReplacingOccurrencesOfString:@"\\\""
-                                              withString:@"\""];
-    }
-    if([jsonString characterAtIndex:0] == '[') {
-        return [NSArray arrayWithJsonString:jsonString];
-    }
-    if([jsonString characterAtIndex:0] == '{') {
-        return [NSDictionary dictionaryWithJsonString:jsonString];
-    }
-    if([jsonString rangeOfString:@"."].location != NSNotFound) {
-        return [NSNumber numberWithDouble:[jsonString doubleValue]];
-    }
-    return [NSNumber numberWithInt:[jsonString intValue]];
+    return [CollectionFactory parseWithJsonString:jsonString
+                                 mustBeOfSubclass:nil
+                                      makeMutable:NO];
 }
 
 - (NSData *)jsonData
@@ -85,22 +58,16 @@
 
 + (id)objectWithJsonData:(NSData *)jsonData
 {
-    if (nil == jsonData) {
-        return nil;
-    }
-    
-    NSString *string = [[NSString alloc] initWithData:jsonData
-                                             encoding:NSUTF8StringEncoding];
-    return [NSObject objectWithJsonString:string];
+    return [CollectionFactory parseWithJsonData:jsonData
+                               mustBeOfSubclass:nil
+                                    makeMutable:NO];
 }
 
 + (id)objectWithJsonFile:(NSString *)jsonFile
 {
-    NSData *jsonData = [[NSData alloc] initWithContentsOfFile:jsonFile];
-    if(nil == jsonData) {
-        return nil;
-    }
-    return [NSObject objectWithJsonData:jsonData];
+    return [CollectionFactory parseWithJsonFile:jsonFile
+                               mustBeOfSubclass:nil
+                                    makeMutable:NO];
 }
 
 @end

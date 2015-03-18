@@ -4,21 +4,23 @@
 
 + (NSMutableArray *)mutableArrayWithJsonData:(NSData *)jsonData
 {
-    return [[NSArray arrayWithJsonData:jsonData] mutableCopy];
+    return [CollectionFactory parseWithJsonData:jsonData
+                               mustBeOfSubclass:[NSArray class]
+                                    makeMutable:YES];
 }
 
 + (NSMutableArray *)mutableArrayWithJsonString:(NSString *)jsonString
 {
-    return [[NSArray arrayWithJsonString:jsonString] mutableCopy];
+    return [CollectionFactory parseWithJsonString:jsonString
+                                 mustBeOfSubclass:[NSArray class]
+                                      makeMutable:YES];
 }
 
 + (NSMutableArray *)mutableArrayWithJsonFile:(NSString *)jsonFile
 {
-    NSArray *array = [NSObject objectWithJsonFile:jsonFile];
-    if (!array) {
-        return nil;
-    }
-    return [array mutableCopy];
+    return [CollectionFactory parseWithJsonFile:jsonFile
+                               mustBeOfSubclass:[NSArray class]
+                                    makeMutable:YES];
 }
 
 @end

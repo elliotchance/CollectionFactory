@@ -4,45 +4,40 @@
 
 + (NSString *)stringWithJsonString:(NSString *)jsonString
 {
-    if (!jsonString) {
-        return nil;
-    }
-    
-    jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^\".*\"$"
-                                                                           options:0
-                                                                             error:nil];
-    if (![regex firstMatchInString:jsonString
-                           options:0
-                             range:NSMakeRange(0, jsonString.length)]) {
-        return nil;
-    }
-    
-    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\\"
-                                                       withString:@""];
-    NSRange range = NSMakeRange(1, [jsonString length] - 2);
-    return [jsonString substringWithRange:range];
+    return [CollectionFactory parseWithJsonString:jsonString
+                                 mustBeOfSubclass:[NSString class]
+                                      makeMutable:NO];
 }
 
 + (NSString *)stringWithJsonData:(NSData *)jsonData
 {
-    NSString *string = [[NSString alloc] initWithData:jsonData
-                                             encoding:NSUTF8StringEncoding];
-    return [NSString stringWithJsonString:string];
+    return [CollectionFactory parseWithJsonData:jsonData
+                               mustBeOfSubclass:[NSString class]
+                                    makeMutable:NO];
 }
 
 - (NSString *)jsonString
 {
-    NSString *escaped = [self stringByReplacingOccurrencesOfString:@"\""
-                                                        withString:@"\\\""];
-    return [NSString stringWithFormat:@"\"%@\"", escaped];
+    // We use the NSJSONSerialization so we don't have to encode all the special
+    // characters like \n manually.
+    NSData *data = [NSJSONSerialization dataWithJSONObject:@[self]
+                                                   options:0
+                                                     error:nil];
+    
+    // Since NSJSONSerialization does not encode single values like NSString, we
+    // have to wrap it in an array and chop off the geenrated square brackets.
+    NSString *string = [[NSString alloc] initWithData:data
+                                             encoding:NSUTF8StringEncoding];
+    
+    NSRange range = NSMakeRange(1, string.length - 2);
+    return [string substringWithRange:range];
 }
 
 + (NSString *)stringWithJsonFile:(NSString *)jsonFile
 {
-    return [CollectionFactory parseWithFile:jsonFile
-                           mustBeOfSubclass:[NSString class]];
+    return [CollectionFactory parseWithJsonFile:jsonFile
+                               mustBeOfSubclass:[NSString class]
+                                    makeMutable:NO];
 }
 
 @end

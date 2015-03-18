@@ -56,9 +56,9 @@ tests:
     String:
       object: '@"foo bar"'
       json: '\"foo bar\"'
-    DoubleQuotes:
-      object: '@"foo \"bar"'
-      json: '\"foo \\\"bar\"'
+    EscapedString:
+      object: '@"foo \n\"bar"'
+      json: '\"foo \\n\\\"bar\"'
 
   NSArray:
     Array:

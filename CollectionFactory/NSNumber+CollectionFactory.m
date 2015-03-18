@@ -4,27 +4,16 @@
 
 + (NSNumber *)numberWithJsonString:(NSString *)jsonString
 {
-    jsonString = [jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    if ([jsonString isEqualToString:@"true"]) {
-        return @YES;
-    }
-    if ([jsonString isEqualToString:@"false"]) {
-        return @NO;
-    }
-    
-    BOOL test = [[NSScanner scannerWithString:jsonString] scanInt:nil];
-    if (!test) {
-        return nil;
-    }
-    
-    return [NSNumber numberWithDouble:[jsonString doubleValue]];
+    return [CollectionFactory parseWithJsonString:jsonString
+                                 mustBeOfSubclass:[NSNumber class]
+                                      makeMutable:NO];
 }
 
 + (NSNumber *)numberWithJsonData:(NSData *)jsonData
 {
-    NSString *string = [[NSString alloc] initWithData:jsonData
-                                             encoding:NSUTF8StringEncoding];
-    return [NSNumber numberWithJsonString:string];
+    return [CollectionFactory parseWithJsonData:jsonData
+                               mustBeOfSubclass:[NSNumber class]
+                                    makeMutable:NO];
 }
 
 - (NSData *)jsonData
@@ -41,8 +30,9 @@
 
 + (NSNumber *)numberWithJsonFile:(NSString *)jsonFile
 {
-    return [CollectionFactory parseWithFile:jsonFile
-                           mustBeOfSubclass:[NSNumber class]];
+    return [CollectionFactory parseWithJsonFile:jsonFile
+                               mustBeOfSubclass:[NSNumber class]
+                                    makeMutable:NO];
 }
 
 @end

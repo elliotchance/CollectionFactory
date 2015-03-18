@@ -1,47 +1,78 @@
 CollectionFactory
 =================
 
-Translation between native collections in Objective-C and serialized formats like JSON.
+Translation between native collections in Objective-C and serialized formats
+like JSON.
 
-Static methods always return `nil` if an error occurs (such as JSON could not be passed or was an invalid expected type)
+Static methods always return `nil` if an error occurs (such as JSON could not be
+passed, was nil, or was an invalid expected type).
 
-You may see the method `[- jsonString]`, this is an internal method you should not call directly. use the provided `[- jsonValue]` provided.
 
-NSObject
---------
+Converting to JSON
+------------------
 
- * `+ objectFromJson:` - convert JSON string into an object.
- * `- dictionaryValue` - convert an objects properties into an `NSDictionary`.
- * `- jsonValue` - translate any object into JSON.
- 
-### [- jsonValue]
+You can use `jsonString` or `jsonData` to get the NSString or NSData encoded
+versions in JSON respectively.
 
-The kind of class is tested in this order:
+```objc
+NSDictionary *d = @{@"foo": @"bar"};
 
- * `NSDictionary`: A JSON object is returned based on the key/values of the dictionary.
- * `NSArray`: A JSON array is returned with the items in the array.
- * `NSString`: A safely double-quoted string is returned.
- * `NSNumber`: Raw number is returned.
- * If none of the above match then the object is converted using `[- dictionaryValue]` and then the JSON for that dictionary is returned.
- 
-### [+ objectFromJson:]
+// {"foo":"bar"}
+NSString *jsonString = [d jsonString];
 
-This is the opposite of `[- jsonValue]`, it will perform the same checks in reverse.
+// The same value as above but as a NSData
+NSData *jsonData = [d jsonData];
+```
 
-NSArray
--------
+Both methods are available on `NSNull`, `NSNumber`, `NSArray`, `NSDictionary`,
+`NSObject`, and `NSString`.
 
- * `+ arrayWithJsonString:` - create an `NSArray` from a JSON string.
- * `+ arrayWithJsonData:` - create an `NSArray` from a JSON data.
 
-NSDictionary
-------------
+Converting from JSON
+--------------------
 
- * `+ dictionaryWithJsonData:` - create an `NSDictionary` from a JSON data.
- * `+ dictionaryWithJsonString:` - create an `NSDictionary` from a JSON string.
- 
-### NSMutableDictionary
+The simplest way to convert JSON to an object is to run it through NSObject:
 
- * `+ mutableDictionaryWithJsonString:` - create an `NSMutableDictionary` from a JSON string.
- * `+ mutableDictionaryWithJsonData:` - create an `NSMutableDictionary` from a JSON data.
- * `+ mutableDictionaryWithJsonFile:` - create an `NSMutableDictionary` from a file that contains JSON.
+```objc
+NSString *json = @"{\"foo\":\"bar\"}";
+id object = [NSObject objectWithJsonString:json];
+```
+
+However, if you know the type of the incoming value you should use the
+respective class factory (rather than blindly casting):
+
+```objc
+NSString *json = @"{\"foo\":\"bar\"}";
+NSDictionary *d = [NSDictionary dictionaryWithJsonString:json];
+```
+
+When using a specific class it will not accept a valid JSON value of an
+unexpected type to prevent bugs occuring, for example:
+
+```objc
+NSString *json = @"{\"foo\":\"bar\"}";
+
+// `a` is `nil` because we only intend to decode a JSON array.
+NSArray *a = [NSArray arrayWithJsonString:json];
+
+// `b` is an instance of `NSDictionary` but future code will be treating it like
+// an `NSArray` which will surely cause very bad things to happen...
+NSArray *b = [NSObject objectWithJsonString:json];
+```
+
+### Creating Mutable Objects
+
+For every factory method there is a mutable counterpart used for generating
+objects that be safely editly directly after unpacking.
+
+```objc
+NSString *json = @"{\"foo\":\"bar\"}";
+NSDictionary *d = [NSDictionary dictionaryWithJsonString:json];
+NSMutableDictionary *md = [NSMutableDictionary mutableDictionaryWithJsonString:json];
+```
+
+### Creating Objects From Files
+
+You can read JSON an as entire file and unpack it with the respective methods:
+
+  * [NSDictionary dictionaryWithJsonFile:@"foo.json"];

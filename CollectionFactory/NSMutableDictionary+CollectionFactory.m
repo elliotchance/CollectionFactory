@@ -4,30 +4,23 @@
 
 + (NSMutableDictionary *)mutableDictionaryWithJsonString:(NSString *)jsonString
 {
-    if(nil == jsonString) {
-        return nil;
-    }
-    
-    NSUInteger length = [jsonString length];
-    NSData *data = [NSData dataWithBytes:[jsonString cStringUsingEncoding:NSStringEncodingConversionAllowLossy]
-                                  length:length];
-    return [NSMutableDictionary mutableDictionaryWithJsonData:data];
+    return [CollectionFactory parseWithJsonString:jsonString
+                                 mustBeOfSubclass:[NSMutableDictionary class]
+                                      makeMutable:YES];
 }
 
 + (NSMutableDictionary *)mutableDictionaryWithJsonData:(NSData *)jsonData
 {
-    return (NSMutableDictionary *)[CollectionFactory parseWithJsonData:jsonData
-                                                               options:NSJSONReadingMutableContainers
-                                                      mustBeOfSubclass:[NSDictionary class]];
+    return [CollectionFactory parseWithJsonData:jsonData
+                               mustBeOfSubclass:[NSMutableDictionary class]
+                                    makeMutable:YES];
 }
 
 + (NSMutableDictionary *)mutableDictionaryWithJsonFile:(NSString *)jsonFile
 {
-    NSData *rawJson = [[NSData alloc] initWithContentsOfFile:jsonFile];
-    if(nil == rawJson) {
-        return nil;
-    }
-    return [NSMutableDictionary mutableDictionaryWithJsonData:rawJson];
+    return [CollectionFactory parseWithJsonFile:jsonFile
+                               mustBeOfSubclass:[NSMutableDictionary class]
+                                    makeMutable:YES];
 }
 
 @end
