@@ -21,10 +21,17 @@
     // way.
     jsonString = [NSString stringWithFormat:@"[%@]", jsonString];
     
+    // If the result is to be mutable we need to make sure all the containers
+    // that are generated are mutaable - not just the top level.
+    NSUInteger options = 0;
+    if (makeMutable) {
+        options = NSJSONReadingMutableContainers;
+    }
+    
     // Now try to decode the JSON.
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSArray *parsed = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                      options:0
+                                                      options:options
                                                         error:nil];
     id json = [parsed objectAtIndex:0];
     
@@ -36,9 +43,6 @@
     }
     
     // Everything checks out.
-    if (makeMutable) {
-        return [json mutableCopy];
-    }
     return json;
 }
 

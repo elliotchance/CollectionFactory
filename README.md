@@ -73,6 +73,17 @@ NSMutableDictionary *md = [NSMutableDictionary mutableDictionaryWithJsonString:j
 
 ### Creating Objects From Files
 
-You can read JSON an as entire file and unpack it with the respective methods:
+Each factory method also has a way to generate the object directly from a file:
 
-  * [NSDictionary dictionaryWithJsonFile:@"foo.json"];
+```objc
+NSArray *foo = [NSArray arrayWithJsonFile:@"foo.json"];
+```
+
+If the file does not exist, there was an error parsing or the JSON was the wrong
+type then `nil` will be returned.
+
+Futhermore you can create mutable objects from files:
+
+```objc
+NSMutableArray *foo = [NSMutableArray mutableArrayWithJsonFile:@"foo.json"];
+```

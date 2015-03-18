@@ -16,16 +16,15 @@
                                     makeMutable:NO];
 }
 
-- (NSData *)jsonData
+- (NSString *)jsonString
 {
-    if (strcmp([self objCType], @encode(BOOL)) == 0) {
-        if ([self boolValue]) {
-            return [@"true" dataUsingEncoding:NSUTF8StringEncoding];
+    if(strcmp([self objCType], @encode(BOOL)) == 0) {
+        if([self boolValue] == YES) {
+            return @"true";
         }
-        return [@"false" dataUsingEncoding:NSUTF8StringEncoding];
+        return @"false";
     }
-    
-    return [[self jsonString] dataUsingEncoding:NSUTF8StringEncoding];
+    return [self description];
 }
 
 + (NSNumber *)numberWithJsonFile:(NSString *)jsonFile

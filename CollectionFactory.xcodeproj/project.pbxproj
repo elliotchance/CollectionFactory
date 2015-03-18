@@ -23,11 +23,10 @@
 		8B1C0F0819026DD900CCD141 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1C0EF119026DD900CCD141 /* Cocoa.framework */; };
 		8B1C0F0B19026DD900CCD141 /* CollectionFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1C0EEE19026DD900CCD141 /* CollectionFactory.framework */; };
 		8B1C0F1119026DD900CCD141 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B1C0F0F19026DD900CCD141 /* InfoPlist.strings */; };
-		8B25AE77190CBE02001EAA36 /* TestCollectionFactoryForObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE76190CBE02001EAA36 /* TestCollectionFactoryForObject.m */; };
+		8B25AE77190CBE02001EAA36 /* ObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE76190CBE02001EAA36 /* ObjectTests.m */; };
 		8B25AE7A190CBED0001EAA36 /* SomeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE79190CBED0001EAA36 /* SomeObject.m */; };
 		8B25AE81190CCD16001EAA36 /* NSObject+CollectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B25AE7F190CCD16001EAA36 /* NSObject+CollectionFactory.h */; };
 		8B25AE82190CCD16001EAA36 /* NSObject+CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE80190CCD16001EAA36 /* NSObject+CollectionFactory.m */; };
-		8B25AE86190CF54E001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE85190CF54E001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonFile.m */; };
 		8BA29D191AB6CA8000F623AB /* NSNumber+CollectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA29D161AB6CA8000F623AB /* NSNumber+CollectionFactory.h */; };
 		8BA29D1A1AB6CA8000F623AB /* NSNumber+CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA29D171AB6CA8000F623AB /* NSNumber+CollectionFactory.m */; };
 		8BA29D1F1AB6CFE900F623AB /* CollectionFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA29D1E1AB6CFE900F623AB /* CollectionFactoryTests.m */; };
@@ -79,12 +78,11 @@
 		8B1C0F0E19026DD900CCD141 /* CollectionFactoryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CollectionFactoryTests-Info.plist"; sourceTree = "<group>"; };
 		8B1C0F1019026DD900CCD141 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8B1C0F1E1903271600CCD141 /* CollectionFactoryTestCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionFactoryTestCase.h; sourceTree = "<group>"; };
-		8B25AE76190CBE02001EAA36 /* TestCollectionFactoryForObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForObject.m; sourceTree = "<group>"; };
+		8B25AE76190CBE02001EAA36 /* ObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectTests.m; sourceTree = "<group>"; };
 		8B25AE78190CBED0001EAA36 /* SomeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeObject.h; sourceTree = "<group>"; };
 		8B25AE79190CBED0001EAA36 /* SomeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeObject.m; sourceTree = "<group>"; };
 		8B25AE7F190CCD16001EAA36 /* NSObject+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CollectionFactory.h"; sourceTree = "<group>"; };
 		8B25AE80190CCD16001EAA36 /* NSObject+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CollectionFactory.m"; sourceTree = "<group>"; };
-		8B25AE85190CF54E001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionFactoryForMutableDictionaryWithJsonFile.m; sourceTree = "<group>"; };
 		8BA29D161AB6CA8000F623AB /* NSNumber+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+CollectionFactory.h"; sourceTree = "<group>"; };
 		8BA29D171AB6CA8000F623AB /* NSNumber+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+CollectionFactory.m"; sourceTree = "<group>"; };
 		8BA29D1C1AB6CC2E00F623AB /* tests.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = tests.yml; sourceTree = "<group>"; };
@@ -210,15 +208,14 @@
 		8B1C0F0C19026DD900CCD141 /* CollectionFactoryTests */ = {
 			isa = PBXGroup;
 			children = (
-				8BA29D1E1AB6CFE900F623AB /* CollectionFactoryTests.m */,
 				8B1C0F1E1903271600CCD141 /* CollectionFactoryTestCase.h */,
+				8BA29D1E1AB6CFE900F623AB /* CollectionFactoryTests.m */,
+				8BA29D1D1AB6CCE300F623AB /* generate_tests.py */,
+				8B25AE76190CBE02001EAA36 /* ObjectTests.m */,
 				8B25AE78190CBED0001EAA36 /* SomeObject.h */,
 				8B25AE79190CBED0001EAA36 /* SomeObject.m */,
 				8B1C0F0D19026DD900CCD141 /* Supporting Files */,
-				8B25AE85190CF54E001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonFile.m */,
-				8B25AE76190CBE02001EAA36 /* TestCollectionFactoryForObject.m */,
 				8BA29D1C1AB6CC2E00F623AB /* tests.yml */,
-				8BA29D1D1AB6CCE300F623AB /* generate_tests.py */,
 			);
 			path = CollectionFactoryTests;
 			sourceTree = "<group>";
@@ -424,9 +421,8 @@
 				8BA29D1F1AB6CFE900F623AB /* CollectionFactoryTests.m in Sources */,
 				4D5E19BC1906326800C781CB /* NSMutableDictionary+CollectionFactory.m in Sources */,
 				8BA29D341AB81E9500F623AB /* NSNull+CollectionFactory.m in Sources */,
-				8B25AE86190CF54E001EAA36 /* TestCollectionFactoryForMutableDictionaryWithJsonFile.m in Sources */,
 				8BA29D2A1AB7104E00F623AB /* NSMutableString+CollectionFactory.m in Sources */,
-				8B25AE77190CBE02001EAA36 /* TestCollectionFactoryForObject.m in Sources */,
+				8B25AE77190CBE02001EAA36 /* ObjectTests.m in Sources */,
 				4DC169921906349E00234129 /* NSDictionary+CollectionFactory.m in Sources */,
 				8B25AE7A190CBED0001EAA36 /* SomeObject.m in Sources */,
 				8BA29D251AB6DFF900F623AB /* NSString+CollectionFactory.m in Sources */,

@@ -12,10 +12,18 @@
 
 - (NSString *)jsonString
 {
-    NSData *data = [NSJSONSerialization dataWithJSONObject:self
-                                                   options:0
-                                                     error:nil];
-    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    // Encode each of the elements.
+    NSMutableString *json = [@"{" mutableCopy];
+    for (NSString *key in self) {
+        id item = [self objectForKey:key];
+        [json appendFormat:@"\"%@\":%@,", key, [item jsonString]];
+    }
+    
+    // Replace the last "," with the closing "}".
+    [json replaceCharactersInRange:NSMakeRange(json.length - 1, 1)
+                        withString:@"}"];
+    
+    return json;
 }
 
 + (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString

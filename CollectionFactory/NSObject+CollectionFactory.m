@@ -3,7 +3,7 @@
 
 @implementation NSObject (CollectionFactory)
 
-- (NSDictionary *)dictionaryValue
+- (NSDictionary *)jsonDictionary
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
@@ -22,26 +22,10 @@
 
 - (NSString *)jsonString
 {
-    if([self isKindOfClass:[NSDictionary class]]) {
-        return [(NSDictionary *)self jsonString];
-    }
-    if([self isKindOfClass:[NSArray class]]) {
-        return [(NSArray *)self jsonString];
-    }
-    if([self isKindOfClass:[NSString class]]) {
-        return [NSString stringWithFormat:@"\"%@\"", [(NSString *)self stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""]];
-    }
-    if([self isKindOfClass:[NSNumber class]]) {
-        NSNumber *number = (NSNumber *)self;
-        if(strcmp([number objCType], @encode(BOOL)) == 0) {
-            if([number boolValue] == YES) {
-                return @"true";
-            }
-            return @"false";
-        }
-        return [number description];
-    }
-    return [[self dictionaryValue] jsonString];
+    // This means its a subclass of NSObject that we do not have an explict way
+    // to encode so we will pull the attributes from the object and encode it
+    // like a dictionary.
+    return [[self jsonDictionary] jsonString];
 }
 
 + (id)objectWithJsonString:(NSString *)jsonString
