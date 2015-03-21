@@ -2,8 +2,11 @@
 
 @interface NSObject (CollectionFactory)
 
-- (NSDictionary *)dictionaryValue;
-- (NSString *)jsonValue;
-- (id)objectFromJson:(NSString *)json;
+- (NSDictionary *)jsonDictionary;
+- (NSString *)jsonString;
+- (NSData *)jsonData;
++ (id)objectWithJsonString:(NSString *)jsonString;
++ (id)objectWithJsonData:(NSData *)jsonData;
++ (id)objectWithJsonFile:(NSString *)jsonFile;
 
 @end

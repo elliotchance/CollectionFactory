@@ -2,33 +2,25 @@
 
 @implementation NSMutableDictionary (CollectionFactory)
 
-+ (NSMutableDictionary *)mutableDictionaryWithJsonString:(NSString *)rawJson
++ (NSMutableDictionary *)mutableDictionaryWithJsonString:(NSString *)jsonString
 {
-    if(nil == rawJson) {
-        @throw [NSException exceptionWithName:NSInvalidArgumentException
-                                       reason:@"Argument was be nil"
-                                     userInfo:nil];
-    }
-    NSUInteger length = [rawJson length];
-    NSData *data = [NSData dataWithBytes:[rawJson cStringUsingEncoding:NSStringEncodingConversionAllowLossy]
-                                  length:length];
-    return [NSMutableDictionary mutableDictionaryWithJsonData:data];
+    return [CollectionFactory parseWithJsonString:jsonString
+                                 mustBeOfSubclass:[NSMutableDictionary class]
+                                      makeMutable:YES];
 }
 
-+ (NSMutableDictionary *)mutableDictionaryWithJsonData:(NSData *)rawJson
++ (NSMutableDictionary *)mutableDictionaryWithJsonData:(NSData *)jsonData
 {
-    return (NSMutableDictionary *)[CollectionFactory parseWithJsonData:rawJson
-                                                               options:NSJSONReadingMutableContainers
-                                                      mustBeOfSubclass:[NSDictionary class]];
+    return [CollectionFactory parseWithJsonData:jsonData
+                               mustBeOfSubclass:[NSMutableDictionary class]
+                                    makeMutable:YES];
 }
 
 + (NSMutableDictionary *)mutableDictionaryWithJsonFile:(NSString *)jsonFile
 {
-    NSData *rawJson = [[NSData alloc] initWithContentsOfFile:jsonFile];
-    if(nil == rawJson) {
-        return nil;
-    }
-    return [NSMutableDictionary mutableDictionaryWithJsonData:rawJson];
+    return [CollectionFactory parseWithJsonFile:jsonFile
+                               mustBeOfSubclass:[NSMutableDictionary class]
+                                    makeMutable:YES];
 }
 
 @end

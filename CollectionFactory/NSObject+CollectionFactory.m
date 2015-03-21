@@ -3,7 +3,7 @@
 
 @implementation NSObject (CollectionFactory)
 
-- (NSDictionary *)dictionaryValue
+- (NSDictionary *)jsonDictionary
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
@@ -20,52 +20,38 @@
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
-- (NSString *)jsonValue
+- (NSString *)jsonString
 {
-    if([self isKindOfClass:[NSDictionary class]]) {
-        return [(NSDictionary *)self jsonString];
-    }
-    if([self isKindOfClass:[NSArray class]]) {
-        return [(NSArray *)self jsonString];
-    }
-    if([self isKindOfClass:[NSString class]]) {
-        return [NSString stringWithFormat:@"\"%@\"", [(NSString *)self stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""]];
-    }
-    if([self isKindOfClass:[NSNumber class]]) {
-        NSNumber *number = (NSNumber *)self;
-        if(strcmp([number objCType], @encode(BOOL)) == 0) {
-            if([number boolValue] == YES) {
-                return @"true";
-            }
-            return @"false";
-        }
-        return [number description];
-    }
-    return [[self dictionaryValue] jsonString];
+    // This means its a subclass of NSObject that we do not have an explict way
+    // to encode so we will pull the attributes from the object and encode it
+    // like a dictionary.
+    return [[self jsonDictionary] jsonString];
 }
 
-- (id)objectFromJson:(NSString *)json
++ (id)objectWithJsonString:(NSString *)jsonString
 {
-    if([json isEqualToString:@"true"]) {
-        return [NSNumber numberWithBool:YES];
-    }
-    if([json isEqualToString:@"false"]) {
-        return [NSNumber numberWithBool:NO];
-    }
-    if([json characterAtIndex:0] == '"') {
-        NSString *raw = [json substringWithRange:NSMakeRange(1, [json length] - 2)];
-        return [raw stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
-    }
-    if([json characterAtIndex:0] == '[') {
-        return [NSArray arrayWithJsonString:json];
-    }
-    if([json characterAtIndex:0] == '{') {
-        return [NSDictionary dictionaryWithJsonString:json];
-    }
-    if([json rangeOfString:@"."].location != NSNotFound) {
-        return [NSNumber numberWithDouble:[json doubleValue]];
-    }
-    return [NSNumber numberWithInt:[json intValue]];
+    return [CollectionFactory parseWithJsonString:jsonString
+                                 mustBeOfSubclass:nil
+                                      makeMutable:NO];
+}
+
+- (NSData *)jsonData
+{
+    return [[self jsonString] dataUsingEncoding:NSUTF8StringEncoding];
+}
+
++ (id)objectWithJsonData:(NSData *)jsonData
+{
+    return [CollectionFactory parseWithJsonData:jsonData
+                               mustBeOfSubclass:nil
+                                    makeMutable:NO];
+}
+
++ (id)objectWithJsonFile:(NSString *)jsonFile
+{
+    return [CollectionFactory parseWithJsonFile:jsonFile
+                               mustBeOfSubclass:nil
+                                    makeMutable:NO];
 }
 
 @end

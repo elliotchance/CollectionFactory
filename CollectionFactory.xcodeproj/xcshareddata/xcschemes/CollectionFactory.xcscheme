@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0620"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E697799D49684F57A527D642"
+               BlueprintIdentifier = "75EB540C205E34B0F6EAC80A"
                BuildableName = "libPods-CollectionFactoryTests.a"
                BlueprintName = "Pods-CollectionFactoryTests"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -63,6 +63,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "8B1C0EED19026DD900CCD141"
+            BuildableName = "CollectionFactory.framework"
+            BlueprintName = "CollectionFactory"
+            ReferencedContainer = "container:CollectionFactory.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

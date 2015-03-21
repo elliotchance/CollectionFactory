@@ -7,3 +7,5 @@ CollectionFactory.xcodeproj/xcuserdata
 CollectionFactory.xcworkspace/xcuserdata
 
 /test.json
+
+/CollectionFactoryTests/CollectionFactoryTests.m

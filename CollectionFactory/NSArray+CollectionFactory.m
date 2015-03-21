@@ -4,21 +4,38 @@
 
 + (NSArray *)arrayWithJsonData:(NSData *)rawJson
 {
-    return (NSArray *)[CollectionFactory parseWithJsonData:rawJson
-                                                   options:0
-                                          mustBeOfSubclass:[NSArray class]];
+    return [CollectionFactory parseWithJsonData:rawJson
+                               mustBeOfSubclass:[NSArray class]
+                                    makeMutable:NO];
 }
 
 + (NSArray *)arrayWithJsonString:(NSString *)rawJson
 {
-    NSData* data = [rawJson dataUsingEncoding:NSUTF8StringEncoding];
-    return [NSArray arrayWithJsonData:data];
+    return [CollectionFactory parseWithJsonString:rawJson
+                                 mustBeOfSubclass:[NSArray class]
+                                      makeMutable:NO];
 }
 
 - (NSString *)jsonString
 {
-    NSData *data = [NSJSONSerialization dataWithJSONObject:self options:0 error:nil];
-    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    // Encode each of the elements.
+    NSMutableString *json = [@"[" mutableCopy];
+    for (id item in self) {
+        [json appendFormat:@"%@,", [item jsonString]];
+    }
+    
+    // Replace the last "," with the closing "]".
+    [json replaceCharactersInRange:NSMakeRange(json.length - 1, 1)
+                        withString:@"]"];
+    
+    return json;
+}
+
++ (NSArray *)arrayWithJsonFile:(NSString *)jsonFile
+{
+    return [CollectionFactory parseWithJsonFile:jsonFile
+                               mustBeOfSubclass:[NSArray class]
+                                    makeMutable:NO];
 }
 
 @end
