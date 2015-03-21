@@ -10,6 +10,12 @@ Static methods always return `nil` if an error occurs (such as JSON could not be
 passed, was nil, or was an invalid expected type).
 
 
+* [Converting to JSON](#converting-to-json)
+* [Converting from JSON](#converting-from-json)
+* [Creating Mutable Objects](#creating-mutable-objects)
+* [Loading from Files](#loading-from-files)
+
+
 Converting to JSON
 ------------------
 
@@ -142,6 +148,40 @@ myObject.number;
 // SomeObject *myObject = [NSObject objectWithJsonString:json];
 ```
 
+Objects are contructed recursively by first checking to see if the property
+exists, if it does and the data is not prefixed with `NS` it will create another
+custom object and continue. This means JSON can be used to unpack simple objects
+without any specific code however this has some caveats:
+
+  1. It is dangerous. Not all properties are public or even exist so types can
+     be easily missing and cause serious memory error when trying to use the
+     unpacked objects.
+
+  2. It will always use the `[init]` constructor which may be wrong or not even
+     available making the object constructions impossible.
+
+A much safer way to unpack objects is to override the `[setValue:forProperty:]`
+method. This allows you to control exactly what logic you need with each
+property.
+
+Note: This is is a wrapper for `[setValue:forKey:]` and will call
+`[setValue:forKey:]` if you have not overridden it.
+
+```objc
+@implementation SomeObject
+
+- (void)setValue:(id)value forProperty:(NSString *)key
+{
+    // Only allow these two properties to be set.
+    NSArray *properties = @[@"number", @"string"];
+    if ([properties indexOfObject:key] != NSNotFound) {
+        [self setValue:value forKey:key];
+    }
+}
+
+@end
+```
+
 Creating Mutable Objects
 ------------------------
 
@@ -154,8 +194,8 @@ NSDictionary *d = [NSDictionary dictionaryWithJsonString:json];
 NSMutableDictionary *md = [NSMutableDictionary mutableDictionaryWithJsonString:json];
 ```
 
-Files
------
+Loading from Files
+------------------
 
 Each factory method also has a way to generate the object directly from a file:
 

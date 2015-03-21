@@ -60,7 +60,7 @@
                                      fromDictionary:value];
         }
         
-        [obj setValue:value forKey:key];
+        [obj setValue:value forProperty:key];
     }
     return obj;
 }
@@ -100,6 +100,11 @@
     return [CollectionFactory parseWithJsonFile:jsonFile
                                mustBeOfSubclass:nil
                                     makeMutable:NO];
+}
+
+- (void)setValue:(id)value forProperty:(NSString *)property
+{
+    [self setValue:value forKey:property];
 }
 
 @end

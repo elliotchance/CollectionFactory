@@ -8,5 +8,6 @@
 + (id)objectWithJsonString:(NSString *)jsonString;
 + (id)objectWithJsonData:(NSData *)jsonData;
 + (id)objectWithJsonFile:(NSString *)jsonFile;
+- (void)setValue:(id)value forProperty:(NSString *)key;
 
 @end
