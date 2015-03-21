@@ -4,3 +4,5 @@ xcode_scheme: CollectionFactory
 before_install: 
     - export LC_ALL="en_US.UTF-8"
     - gem install cocoapods
+    - brew install libyaml
+    - pip install -r requirements.txt
