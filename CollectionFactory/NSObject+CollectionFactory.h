@@ -1,5 +1,3 @@
-#import <Foundation/Foundation.h>
-
 @interface NSObject (CollectionFactory)
 
 - (NSDictionary *)jsonDictionary;
