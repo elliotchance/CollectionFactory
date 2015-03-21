@@ -23,4 +23,12 @@
     assertThat(json, equalTo(EXPECTED_JSON));
 }
 
+- (void)testJsonStringToSomeObject
+{
+    SomeObject1 *obj = [SomeObject1 objectWithJsonString:EXPECTED_JSON];
+    assertThat(obj.string, equalTo(@"abc"));
+    assertThatInt(obj.number, equalToInt(123));
+    assertThat(obj.obj.arr, equalTo(@[@1, @"foo"]));
+}
+
 @end
