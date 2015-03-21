@@ -142,7 +142,8 @@ myObject.number;
 // SomeObject *myObject = [NSObject objectWithJsonString:json];
 ```
 
-### Creating Mutable Objects
+Creating Mutable Objects
+------------------------
 
 For every factory method there is a mutable counterpart used for generating
 objects that be safely editly directly after unpacking.
@@ -153,7 +154,8 @@ NSDictionary *d = [NSDictionary dictionaryWithJsonString:json];
 NSMutableDictionary *md = [NSMutableDictionary mutableDictionaryWithJsonString:json];
 ```
 
-### Creating Objects From Files
+Files
+-----
 
 Each factory method also has a way to generate the object directly from a file:
 
