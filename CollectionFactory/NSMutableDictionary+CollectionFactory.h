@@ -1,7 +1,7 @@
 @interface NSMutableDictionary (CollectionFactory)
 
-+ (NSMutableDictionary *)mutableDictionaryWithJsonString:(NSString *)rawJson;
-+ (NSMutableDictionary *)mutableDictionaryWithJsonData:(NSData *)rawJson;
++ (NSMutableDictionary *)mutableDictionaryWithJsonString:(NSString *)jsonString;
++ (NSMutableDictionary *)mutableDictionaryWithJsonData:(NSData *)jsonData;
 + (NSMutableDictionary *)mutableDictionaryWithJsonFile:(NSString *)jsonFile;
 
 @end

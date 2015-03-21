@@ -1,0 +1,128 @@
+# All of the tests are generated from this file. As part of the Xcode build the
+# scipt `generate_tests.py` is run that generates the
+# `CollectionFactoryTests.m`.
+# 
+# 
+# Test Classes
+# ------------
+# 
+# Each of the keys under `tests` represent the actual Objective-C classes. For
+# each class there will be a set of automatic test cases generated:
+# 
+#   1. Invalid JSON string to object - tries to send an invalid chunk of JSON,
+#      in this case "[123" to make sure that `nil` is returned.
+#   2. Invalid JSON data to object - works the same way as above but sends the
+#      same input as an `NSData`.
+#   3. Nil JSON string to object - tries to send a `nil` JSON object that
+#      should always return a `nil`.
+#   4. Nil JSON data to object - works the same as number 3 but sends `nil` to
+#      the respective NSData endpoint.
+#      
+# Note: The test classes are case-sensitive and must reflect classes that exist.
+#      
+#      
+# Test Cases
+# ----------
+# 
+# Beneath each Test Class the actual test cases. For each test case there will
+# be several test cases generated that will test the expression is converted
+# correctly in both directions (to and from JSON).
+# 
+# Note: The test case should have a sentence-case name so that when it is put
+# into the actual test name it follows the case of the surrounding words.
+# 
+# 
+# Single Test Case
+# ----------------
+# 
+# In each single test case you will need two keys;
+# 
+#   * `object` is the Objective-C code uses to generate the object to be
+#     converted to JSON.
+#   * `json` is the string output of the `object` encoded as JSON.
+# 
+# Note: When it generates mutable tests it will wrap the `object` in a
+# [mutableCopy] to generate its mutable version.
+#
+# If the `object` is "nil" then test are only generated to assert that the JSON
+# string/data will return `nil` and not test the other direction (since this
+# would be impossible.)
+# 
+# Each of the JSON values will be wrapped in a variety of whitespace characters
+# to ensure they do not mess with the string/data to object conversions.
+
+tests:
+  NSString:
+    String:
+      object: '@"foo bar"'
+      json: '\"foo bar\"'
+    EscapedString:
+      object: '@"foo \n\"bar"'
+      json: '\"foo \\n\\\"bar\"'
+
+  NSArray:
+    Array:
+      object: '@[@123, @"foo"]'
+      json: '[123,\"foo\"]'
+
+    # Make sure that we are explicitly parsing an array so it will return `nil`
+    # if the JSON is valid but not of the correct type.
+    InvalidArray:
+      object: 'nil'
+      json: '{\"abc\":\"def\"}'
+
+  NSDictionary:
+    Dictionary:
+      object: '@{@"abc": @"def"}'
+      json: '{\"abc\":\"def\"}'
+
+    # Make sure that we are explicitly parsing a dictionary so it will return
+    # `nil` if the JSON is valid but not of the correct type.
+    InvalidDictionary:
+      object: 'nil'
+      json: '[123,\"foo\"]'
+
+  # NSObject and NSNumber do not have a Mutable counterpart so no mutable tests
+  # will be genrated for them.
+  NSObject:
+    ObjectNull:
+      object: "[NSNull null]"
+      json: "null"
+    ObjectYes:
+      object: "@YES"
+      json: "true"
+    ObjectNo:
+      object: "@NO"
+      json: "false"
+    ObjectInteger:
+      object: "@123"
+      json: "123"
+    ObjectDouble:
+      object: "@1.23"
+      json: "1.23"
+    ObjectString:
+      object: '@"foo bar"'
+      json: '\"foo bar\"'
+    ObjectDoubleQuotes:
+      object: '@"foo \"bar"'
+      json: '\"foo \\\"bar\"'
+    ObjectArray:
+      object: '@[@123, @"foo"]'
+      json: '[123,\"foo\"]'
+    ObjectDictionary:
+      object: '@{@"abc": @"def"}'
+      json: '{\"abc\":\"def\"}'
+
+  NSNumber:
+    Yes:
+      object: "[NSNumber numberWithBool:YES]"
+      json: "true"
+    No:
+      object: "[NSNumber numberWithBool:NO]"
+      json: "false"
+    Double:
+      object: "[NSNumber numberWithDouble:1.23]"
+      json: "1.23"
+    Integer:
+      object: "[NSNumber numberWithInt:123]"
+      json: "123"

@@ -13,7 +13,6 @@
 
 @protocol CollectionFactoryStaticTestCases <NSObject>
 
-- (void)testWillThrowInvalidArgumentExceptionWhenInputIsNil;
 - (void)testWillReturnNilWhenJsonStringIsInvalid;
 - (void)testWillReturnNilWhenJsonStringIsValidButOfDifferentJsonType;
 - (void)testWillReturnCorrectObjectWhenJsonIsValid;
