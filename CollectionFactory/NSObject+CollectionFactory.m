@@ -6,6 +6,12 @@
 + (id)setPropertiesOfObject:(id)instance
              fromDictionary:(NSDictionary *)dictionary;
 
++ (void)setRawValue:(id)value forProperty:(NSString *)key onObject:(id)obj;
+
++ (BOOL)propertyAttributesDescribeAnNSClass:(const char *)attrs;
+
++ (NSString *)propertyClassNameFromAttributes:(const char *)attrs;
+
 @end
 
 @implementation NSObject (CollectionFactory)
@@ -39,32 +45,71 @@
     return [[self jsonDictionary] jsonString];
 }
 
+/**
+ Crudely test if property attributes looks like it describes an NS prefixed
+ class. This assumes that nobody would create their own classes with an NS
+ prefix (which they shouldn't) however it does not tell the different between
+ NSNull and NSANull where the latter is not part of the Foundation framework.
+ */
++ (BOOL)propertyAttributesDescribeAnNSClass:(const char *)attrs
+{
+    // propertyAttrs will look something like:
+    // T@"NSString",&,V_string
+    return attrs[1] == '@' && attrs[3] != 'N' && attrs[4] != 'S';
+}
+
+/**
+ Get the name of the class from the property attributes.
+ */
++ (NSString *)propertyClassNameFromAttributes:(const char *)attrs
+{
+    NSString *properties = [NSString stringWithUTF8String:attrs];
+    NSRange lastQuote = [properties rangeOfString:@"\""
+                                          options:NSBackwardsSearch];
+    NSRange range = NSMakeRange(3, lastQuote.location - 3);
+    return [properties substringWithRange:range];
+}
+
+/**
+ This is a private method to set a raw value to a property. A raw value is the
+ value from the JSON that may need translating before assigning it back to the
+ real object property. Ultimately this method will call setValue:forProperty:
+ with the safe value for the key - this method may be overridden by the child
+ class for further customisation of the property.
+ */
++ (void)setRawValue:(id)value forProperty:(NSString *)key onObject:(id)obj
+{
+    // Dictionaries cannot contain a nil value so we use the standard NSNull
+    // object as a placeholder. This also gives us the advantage of knowing the
+    // difference between a key that is not set and one that is actually null.
+    if ([value isKindOfClass:[NSNull class]]) {
+        value = nil;
+    }
+    
+    // We need to check if the property for key is a custom object to recurse
+    // this operation with the new type.
+    Class objectClass = [obj class];
+    objc_property_t property = class_getProperty(objectClass,
+                                                 [key UTF8String]);
+    
+    const char *propertyAttrs = property_getAttributes(property);
+    if ([NSObject propertyAttributesDescribeAnNSClass:propertyAttrs]) {
+        NSString *class = [NSObject propertyClassNameFromAttributes:propertyAttrs];
+        
+        id object = [[NSClassFromString(class) alloc] init];
+        value = [NSObject setPropertiesOfObject:object
+                                 fromDictionary:value];
+    }
+    
+    [obj setValue:value forProperty:key];
+}
+
 + (id)setPropertiesOfObject:(id)obj
              fromDictionary:(NSDictionary *)dictionary
 {
     for (NSString *key in dictionary) {
         id value = [dictionary objectForKey:key];
-        
-        // We need to check if the property for key is a custom object to
-        // recurse this operation with the new type.
-        Class objectClass = [obj class];
-        objc_property_t property = class_getProperty(objectClass,
-                                                     [key UTF8String]);
-        
-        const char *propertyAttrs = property_getAttributes(property);
-        if (propertyAttrs[1] == '@' && propertyAttrs[3] != 'N' && propertyAttrs[4] != 'S') {
-            NSString *properties = [NSString stringWithUTF8String:propertyAttrs];
-            NSRange lastQuote = [properties rangeOfString:@"\""
-                                                  options:NSBackwardsSearch];
-            NSRange range = NSMakeRange(3, lastQuote.location - 3);
-            NSString *propertyClass = [properties substringWithRange:range];
-            
-            id object = [[NSClassFromString(propertyClass) alloc] init];
-            value = [NSObject setPropertiesOfObject:object
-                                     fromDictionary:value];
-        }
-        
-        [obj setValue:value forProperty:key];
+        [self setRawValue:value forProperty:key onObject:obj];
     }
     return obj;
 }
@@ -106,6 +151,10 @@
                                     makeMutable:NO];
 }
 
+/**
+ This can be overridden by your subclass if you need custom logic for unpacking
+ properties.
+ */
 - (void)setValue:(id)value forProperty:(NSString *)property
 {
     [self setValue:value forKey:property];

@@ -38,4 +38,10 @@
     assertThat([obj jsonDictionary], hasEntry(@"string", [NSNull null]));
 }
 
+- (void)testJsonToObjectContainingNilProperties
+{
+    SomeObject1 *obj = [SomeObject1 objectWithJsonString:@"{\"string\":null}"];
+    assertThat(obj.string, nilValue());
+}
+
 @end
