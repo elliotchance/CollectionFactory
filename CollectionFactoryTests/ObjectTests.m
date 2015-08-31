@@ -31,4 +31,11 @@
     assertThat(obj.obj.arr, equalTo(@[@1, @"foo"]));
 }
 
+- (void)testObjectToJsonDictionaryShouldBeSensitiveToNil
+{
+    SomeObject1 *obj = [SomeObject1 new];
+    obj.string = nil;
+    assertThat([obj jsonDictionary], hasEntry(@"string", [NSNull null]));
+}
+
 @end

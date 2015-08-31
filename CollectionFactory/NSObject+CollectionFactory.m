@@ -19,7 +19,11 @@
     
     for (int i = 0; i < count; i++) {
         NSString *key = [NSString stringWithUTF8String:property_getName(properties[i])];
-        [dict setObject:[self valueForKey:key] forKey:key];
+        id object = [self valueForKey:key];
+        if (!object) {
+            object = [NSNull null];
+        }
+        [dict setObject:object forKey:key];
     }
     
     free(properties);
