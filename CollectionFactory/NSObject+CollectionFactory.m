@@ -92,6 +92,9 @@
     objc_property_t property = class_getProperty(objectClass,
                                                  [key UTF8String]);
     
+    if (property == 0) {
+        return;
+    }
     const char *propertyAttrs = property_getAttributes(property);
     if ([NSObject propertyAttributesDescribeAnNSClass:propertyAttrs]) {
         NSString *class = [NSObject propertyClassNameFromAttributes:propertyAttrs];

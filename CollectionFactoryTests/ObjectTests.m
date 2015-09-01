@@ -44,4 +44,9 @@
     assertThat(obj.string, nilValue());
 }
 
+- (void)testExtraPropertyIsIgnored
+{
+    [SomeObject1 objectWithJsonString:@"{\"abc\":123}"];
+}
+
 @end
