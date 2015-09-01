@@ -5,7 +5,9 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/elliotchance/CollectionFactory"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Elliot Chance" => "elliotchance@gmail.com" }
-  s.source       = { :git => "https://github.com/elliotchance/CollectionFactory.git", :tag => "v1.1.1" }
+  s.platform     = :ios, '5.0', :osx, '10.8'
+  s.source       = { :git => "https://github.com/elliotchance/CollectionFactory.git", :tag => "v#{s.version}" }
   s.source_files = 'CollectionFactory/*.{h,m}'
   s.requires_arc = true
 end
+
