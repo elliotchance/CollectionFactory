@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 @interface NSMutableString (CollectionFactory)
 
 + (NSMutableString *)mutableStringWithJsonString:(NSString *)jsonString;

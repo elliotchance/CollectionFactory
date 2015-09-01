@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 @interface NSNumber (CollectionFactory)
 
 + (NSNumber *)numberWithJsonString:(NSString *)jsonString;
