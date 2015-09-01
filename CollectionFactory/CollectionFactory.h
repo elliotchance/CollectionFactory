@@ -1,3 +1,4 @@
+#import <Foundation/Foundation.h>
 #import "NSArray+CollectionFactory.h"
 #import "NSDictionary+CollectionFactory.h"
 #import "NSMutableDictionary+CollectionFactory.h"

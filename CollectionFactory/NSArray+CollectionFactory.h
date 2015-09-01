@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 @interface NSArray (CollectionFactory)
 
 + (NSArray *)arrayWithJsonString:(NSString *)jsonString;
