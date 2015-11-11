@@ -52,7 +52,21 @@ def parse_class(out, className, classTests):
         '    assertThat(object, nilValue());'
     ))
     
-    total += 5
+    # Blank JSON string to object
+    output_test(out, 'BlankJsonStringTo%s' % className[2:], (
+        '    %s *object = [%s %sWithJsonString:@""];' % (className, className, init_name),
+        '    assertThat(object, nilValue());'
+    ))
+    
+    # Blank JSON data to object
+    out.write('- (void)testBlankJsonDataTo%s\n' % className[2:])
+    out.write('{\n')
+    out.write('    NSData *data = [@"" dataUsingEncoding:NSUTF8StringEncoding];\n')
+    out.write('    %s *object = [%s %sWithJsonData:data];\n' % (className, className, init_name))
+    out.write('    assertThat(object, nilValue());\n')
+    out.write('}\n\n')
+    
+    total += 7
     
     for testName, testConditions in classTests.items():
         object = testConditions['object']

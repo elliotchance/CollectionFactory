@@ -8,7 +8,7 @@
 {
     // NSJSONSerialization will throw an NSInvalidArgumentException if
     // `jsonData` is nil but we want to always return `nil` on error.
-    if (nil == jsonString) {
+    if (nil == jsonString || jsonString.length == 0) {
         return nil;
     }
     

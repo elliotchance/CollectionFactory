@@ -1,6 +1,6 @@
 PODS:
   - OCHamcrestExtensions (1.0.1)
-  - OCMock (3.1.5)
+  - OCMock (3.2)
 
 DEPENDENCIES:
   - OCHamcrestExtensions
@@ -8,6 +8,6 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   OCHamcrestExtensions: 0bb3883083fbf302005661a8b7ac4dd1ed231ca4
-  OCMock: 4c2925291f80407c3738dd1db14d21d0cc278864
+  OCMock: 28def049ef47f996b515a8eeea958be7ccab2dbb
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

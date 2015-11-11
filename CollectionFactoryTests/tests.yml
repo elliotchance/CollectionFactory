@@ -17,6 +17,12 @@
 #      should always return a `nil`.
 #   4. Nil JSON data to object - works the same as number 3 but sends `nil` to
 #      the respective NSData endpoint.
+#   5. Missing JSON file to object - trying to create an object from a file that
+#      doesn't exist.
+#   6. Blank string to object - this is always invalid JSON but check that the
+#      parsers can handle an empty string.
+#   7. Blank data to object - this is always invalid JSON but check that the
+#      parsers can handle a chunk of data with zero length.
 #      
 # Note: The test classes are case-sensitive and must reflect classes that exist.
 #      
