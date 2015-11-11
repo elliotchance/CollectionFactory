@@ -52,7 +52,13 @@ def parse_class(out, className, classTests):
         '    assertThat(object, nilValue());'
     ))
     
-    total += 5
+    # Blank JSON string to object
+    output_test(out, 'BlankJsonStringTo%s' % className[2:], (
+        '    %s *object = [%s %sWithJsonString:@""];' % (className, className, init_name),
+        '    assertThat(object, nilValue());'
+    ))
+    
+    total += 6
     
     for testName, testConditions in classTests.items():
         object = testConditions['object']
