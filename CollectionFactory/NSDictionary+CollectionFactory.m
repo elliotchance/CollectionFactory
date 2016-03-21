@@ -12,6 +12,10 @@
 
 - (NSString *)jsonString
 {
+    if ([self count] == 0) {
+        return @"{}";
+    }
+  
     // Encode each of the elements.
     NSMutableString *json = [@"{" mutableCopy];
     for (NSString *key in self) {

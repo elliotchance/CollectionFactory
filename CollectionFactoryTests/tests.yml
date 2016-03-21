@@ -59,14 +59,23 @@
 
 tests:
   NSString:
+    EmptyString:
+      object: '@""'
+      json: '\"\"'
+
     String:
       object: '@"foo bar"'
       json: '\"foo bar\"'
+
     EscapedString:
       object: '@"foo \n\"bar"'
       json: '\"foo \\n\\\"bar\"'
 
   NSArray:
+    EmptyArray:
+      object: '@[]'
+      json: '[]'
+
     Array:
       object: '@[@123, @"foo"]'
       json: '[123,\"foo\"]'
@@ -78,6 +87,10 @@ tests:
       json: '{\"abc\":\"def\"}'
 
   NSDictionary:
+    EmptyDictionary:
+      object: '@{}'
+      json: '{}'
+
     Dictionary:
       object: '@{@"abc": @"def"}'
       json: '{\"abc\":\"def\"}'
@@ -89,32 +102,40 @@ tests:
       json: '[123,\"foo\"]'
 
   # NSObject and NSNumber do not have a Mutable counterpart so no mutable tests
-  # will be genrated for them.
+  # will be generated for them.
   NSObject:
     ObjectNull:
       object: "[NSNull null]"
       json: "null"
+
     ObjectYes:
       object: "@YES"
       json: "true"
+
     ObjectNo:
       object: "@NO"
       json: "false"
+
     ObjectInteger:
       object: "@123"
       json: "123"
+
     ObjectDouble:
       object: "@1.23"
       json: "1.23"
+
     ObjectString:
       object: '@"foo bar"'
       json: '\"foo bar\"'
+
     ObjectDoubleQuotes:
       object: '@"foo \"bar"'
       json: '\"foo \\\"bar\"'
+
     ObjectArray:
       object: '@[@123, @"foo"]'
       json: '[123,\"foo\"]'
+
     ObjectDictionary:
       object: '@{@"abc": @"def"}'
       json: '{\"abc\":\"def\"}'
@@ -123,12 +144,15 @@ tests:
     Yes:
       object: "[NSNumber numberWithBool:YES]"
       json: "true"
+
     No:
       object: "[NSNumber numberWithBool:NO]"
       json: "false"
+
     Double:
       object: "[NSNumber numberWithDouble:1.23]"
       json: "1.23"
+
     Integer:
       object: "[NSNumber numberWithInt:123]"
       json: "123"
