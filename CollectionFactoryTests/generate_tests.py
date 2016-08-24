@@ -123,7 +123,18 @@ def parse_class(out, className, classTests):
         out.write('    assertThat(string, equalTo(@"%s"));\n' % testConditions['json'])
         out.write('}\n\n')
         
-        total += 2
+        # object to pretty JSON string
+        prettyResult = testConditions['json']
+        if 'pretty' in testConditions:
+            prettyResult = testConditions['pretty']
+        
+        out.write('- (void)test%sToPrettyJSONString\n' % testName)
+        out.write('{\n')
+        out.write('    %s *object = %s;\n' % (className, object))
+        out.write('    assertThat([object prettyJSONStringWithIndentationSize:2], equalTo(@"%s"));\n' % prettyResult)
+        out.write('}\n\n')
+        
+        total += 3
 
     return total
 

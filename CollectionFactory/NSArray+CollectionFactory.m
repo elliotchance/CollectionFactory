@@ -42,4 +42,26 @@
                                     makeMutable:NO];
 }
 
+- (NSString *)prettyJSONStringWithIndentationSize:(NSUInteger)indentationSize
+{
+    if ([self count] == 0) {
+        return @"[\n]";
+    }
+    
+    // Encode each of the elements.
+    NSMutableString *json = [@"[\n" mutableCopy];
+    for (id item in self) {
+        [json appendString:[@"" stringByPaddingToLength:indentationSize
+                                             withString:@" "
+                                        startingAtIndex:0]];
+        [json appendFormat:@"%@,\n", [item JSONString]];
+    }
+    
+    // Replace the last "," with the closing "]".
+    [json replaceCharactersInRange:NSMakeRange(json.length - 2, 2)
+                        withString:@"\n]"];
+    
+    return json;
+}
+
 @end

@@ -163,4 +163,13 @@
     [self setValue:value forKey:property];
 }
 
+// This will be overridden by the subclass to handle the formatting of the more
+// specific class. However, only some of the subclasses need to override this
+// since the default fall-though is to use -[JSONString] which suffices in most
+// cases.
+- (NSString *)prettyJSONStringWithIndentationSize:(NSUInteger)indentationSize
+{
+    return [self JSONString];
+}
+
 @end

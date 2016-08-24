@@ -23,6 +23,10 @@
 #      parsers can handle an empty string.
 #   7. Blank data to object - this is always invalid JSON but check that the
 #      parsers can handle a chunk of data with zero length.
+#   8. Pretty formatting - the JSON will be pretty formatted (with a 2 space
+#      indent) and compared against the 'pretty' key. If there is no 'pretty'
+#      key it will be assumed that the formatting will output the same value as
+#      the 'json' key.
 #      
 # Note: The test classes are case-sensitive and must reflect classes that exist.
 #      
@@ -75,10 +79,12 @@ tests:
     EmptyArray:
       object: '@[]'
       json: '[]'
+      pretty: '[\n]'
 
     Array:
       object: '@[@123, @"foo"]'
       json: '[123,\"foo\"]'
+      pretty: '[\n  123,\n  \"foo\"\n]'
 
     # Make sure that we are explicitly parsing an array so it will return `nil`
     # if the JSON is valid but not of the correct type.
@@ -135,6 +141,7 @@ tests:
     ObjectArray:
       object: '@[@123, @"foo"]'
       json: '[123,\"foo\"]'
+      pretty: '[\n  123,\n  \"foo\"\n]'
 
     ObjectDictionary:
       object: '@{@"abc": @"def"}'
