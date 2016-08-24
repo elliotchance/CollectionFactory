@@ -2,23 +2,23 @@
 
 @implementation NSMutableDictionary (CollectionFactory)
 
-+ (NSMutableDictionary *)mutableDictionaryWithJsonString:(NSString *)jsonString
++ (NSMutableDictionary *)mutableDictionaryWithJSONString:(NSString *)jsonString
 {
-    return [CollectionFactory parseWithJsonString:jsonString
+    return [CollectionFactory parseWithJSONString:jsonString
                                  mustBeOfSubclass:[NSMutableDictionary class]
                                       makeMutable:YES];
 }
 
-+ (NSMutableDictionary *)mutableDictionaryWithJsonData:(NSData *)jsonData
++ (NSMutableDictionary *)mutableDictionaryWithJSONData:(NSData *)jsonData
 {
-    return [CollectionFactory parseWithJsonData:jsonData
+    return [CollectionFactory parseWithJSONData:jsonData
                                mustBeOfSubclass:[NSMutableDictionary class]
                                     makeMutable:YES];
 }
 
-+ (NSMutableDictionary *)mutableDictionaryWithJsonFile:(NSString *)jsonFile
++ (NSMutableDictionary *)mutableDictionaryWithJSONFile:(NSString *)jsonFile
 {
-    return [CollectionFactory parseWithJsonFile:jsonFile
+    return [CollectionFactory parseWithJSONFile:jsonFile
                                mustBeOfSubclass:[NSMutableDictionary class]
                                     makeMutable:YES];
 }

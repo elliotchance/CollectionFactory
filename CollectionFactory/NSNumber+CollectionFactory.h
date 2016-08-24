@@ -2,8 +2,8 @@
 
 @interface NSNumber (CollectionFactory)
 
-+ (NSNumber *)numberWithJsonString:(NSString *)jsonString;
-+ (NSNumber *)numberWithJsonData:(NSData *)jsonData;
-+ (NSNumber *)numberWithJsonFile:(NSString *)jsonFile;
++ (NSNumber *)numberWithJSONString:(NSString *)jsonString;
++ (NSNumber *)numberWithJSONData:(NSData *)jsonData;
++ (NSNumber *)numberWithJSONFile:(NSString *)jsonFile;
 
 @end

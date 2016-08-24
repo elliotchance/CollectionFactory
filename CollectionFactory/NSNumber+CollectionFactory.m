@@ -2,16 +2,16 @@
 
 @implementation NSNumber (CollectionFactory)
 
-+ (NSNumber *)numberWithJsonString:(NSString *)jsonString
++ (NSNumber *)numberWithJSONString:(NSString *)jsonString
 {
-    return [CollectionFactory parseWithJsonString:jsonString
+    return [CollectionFactory parseWithJSONString:jsonString
                                  mustBeOfSubclass:[NSNumber class]
                                       makeMutable:NO];
 }
 
-+ (NSNumber *)numberWithJsonData:(NSData *)jsonData
++ (NSNumber *)numberWithJSONData:(NSData *)jsonData
 {
-    return [CollectionFactory parseWithJsonData:jsonData
+    return [CollectionFactory parseWithJSONData:jsonData
                                mustBeOfSubclass:[NSNumber class]
                                     makeMutable:NO];
 }
@@ -27,9 +27,9 @@
     return [self description];
 }
 
-+ (NSNumber *)numberWithJsonFile:(NSString *)jsonFile
++ (NSNumber *)numberWithJSONFile:(NSString *)jsonFile
 {
-    return [CollectionFactory parseWithJsonFile:jsonFile
+    return [CollectionFactory parseWithJSONFile:jsonFile
                                mustBeOfSubclass:[NSNumber class]
                                     makeMutable:NO];
 }

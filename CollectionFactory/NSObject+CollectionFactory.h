@@ -5,9 +5,9 @@
 - (NSDictionary *)jsonDictionary;
 - (NSString *)jsonString;
 - (NSData *)jsonData;
-+ (id)objectWithJsonString:(NSString *)jsonString;
-+ (id)objectWithJsonData:(NSData *)jsonData;
-+ (id)objectWithJsonFile:(NSString *)jsonFile;
++ (id)objectWithJSONString:(NSString *)jsonString;
++ (id)objectWithJSONData:(NSData *)jsonData;
++ (id)objectWithJSONFile:(NSString *)jsonFile;
 - (void)setValue:(id)value forProperty:(NSString *)key;
 
 @end

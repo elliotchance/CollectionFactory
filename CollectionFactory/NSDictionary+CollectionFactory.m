@@ -3,9 +3,9 @@
 
 @implementation NSDictionary (CollectionFactory)
 
-+ (NSDictionary *)dictionaryWithJsonData:(NSData *)jsonData
++ (NSDictionary *)dictionaryWithJSONData:(NSData *)jsonData
 {
-    return [CollectionFactory parseWithJsonData:jsonData
+    return [CollectionFactory parseWithJSONData:jsonData
                                mustBeOfSubclass:[NSDictionary class]
                                     makeMutable:NO];
 }
@@ -30,16 +30,16 @@
     return json;
 }
 
-+ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString
++ (NSDictionary *)dictionaryWithJSONString:(NSString *)jsonString
 {
-    return [CollectionFactory parseWithJsonString:jsonString
+    return [CollectionFactory parseWithJSONString:jsonString
                                  mustBeOfSubclass:[NSDictionary class]
                                       makeMutable:NO];
 }
 
-+ (NSDictionary *)dictionaryWithJsonFile:(NSString *)jsonFile
++ (NSDictionary *)dictionaryWithJSONFile:(NSString *)jsonFile
 {
-    return [CollectionFactory parseWithJsonFile:jsonFile
+    return [CollectionFactory parseWithJSONFile:jsonFile
                                mustBeOfSubclass:[NSDictionary class]
                                     makeMutable:NO];
 }

@@ -2,8 +2,8 @@
 
 @interface NSArray (CollectionFactory)
 
-+ (NSArray *)arrayWithJsonString:(NSString *)jsonString;
-+ (NSArray *)arrayWithJsonData:(NSData *)jsonData;
-+ (NSArray *)arrayWithJsonFile:(NSString *)jsonFile;
++ (NSArray *)arrayWithJSONString:(NSString *)jsonString;
++ (NSArray *)arrayWithJSONData:(NSData *)jsonData;
++ (NSArray *)arrayWithJSONFile:(NSString *)jsonFile;
 
 @end

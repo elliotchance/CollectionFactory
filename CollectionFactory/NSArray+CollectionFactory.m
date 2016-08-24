@@ -2,16 +2,16 @@
 
 @implementation NSArray (CollectionFactory)
 
-+ (NSArray *)arrayWithJsonData:(NSData *)rawJson
++ (NSArray *)arrayWithJSONData:(NSData *)rawJSON
 {
-    return [CollectionFactory parseWithJsonData:rawJson
+    return [CollectionFactory parseWithJSONData:rawJSON
                                mustBeOfSubclass:[NSArray class]
                                     makeMutable:NO];
 }
 
-+ (NSArray *)arrayWithJsonString:(NSString *)rawJson
++ (NSArray *)arrayWithJSONString:(NSString *)rawJSON
 {
-    return [CollectionFactory parseWithJsonString:rawJson
+    return [CollectionFactory parseWithJSONString:rawJSON
                                  mustBeOfSubclass:[NSArray class]
                                       makeMutable:NO];
 }
@@ -35,9 +35,9 @@
     return json;
 }
 
-+ (NSArray *)arrayWithJsonFile:(NSString *)jsonFile
++ (NSArray *)arrayWithJSONFile:(NSString *)jsonFile
 {
-    return [CollectionFactory parseWithJsonFile:jsonFile
+    return [CollectionFactory parseWithJSONFile:jsonFile
                                mustBeOfSubclass:[NSArray class]
                                     makeMutable:NO];
 }

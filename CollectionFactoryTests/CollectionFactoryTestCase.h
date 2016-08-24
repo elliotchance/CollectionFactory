@@ -13,14 +13,14 @@
 
 @protocol CollectionFactoryStaticTestCases <NSObject>
 
-- (void)testWillReturnNilWhenJsonStringIsInvalid;
-- (void)testWillReturnNilWhenJsonStringIsValidButOfDifferentJsonType;
-- (void)testWillReturnCorrectObjectWhenJsonIsValid;
+- (void)testWillReturnNilWhenJSONStringIsInvalid;
+- (void)testWillReturnNilWhenJSONStringIsValidButOfDifferentJSONType;
+- (void)testWillReturnCorrectObjectWhenJSONIsValid;
 
 @end
 
 @protocol CollectionFactoryTestCases <NSObject>
 
-- (void)testWillGenerateCorrectJsonStringFromObject;
+- (void)testWillGenerateCorrectJSONStringFromObject;
 
 @end

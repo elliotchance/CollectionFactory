@@ -117,9 +117,9 @@
     return obj;
 }
 
-+ (id)objectWithJsonString:(NSString *)jsonString
++ (id)objectWithJSONString:(NSString *)jsonString
 {
-    NSDictionary *obj = [CollectionFactory parseWithJsonString:jsonString
+    NSDictionary *obj = [CollectionFactory parseWithJSONString:jsonString
                                               mustBeOfSubclass:nil
                                                    makeMutable:NO];
     
@@ -140,16 +140,16 @@
     return [[self jsonString] dataUsingEncoding:NSUTF8StringEncoding];
 }
 
-+ (id)objectWithJsonData:(NSData *)jsonData
++ (id)objectWithJSONData:(NSData *)jsonData
 {
-    return [CollectionFactory parseWithJsonData:jsonData
+    return [CollectionFactory parseWithJSONData:jsonData
                                mustBeOfSubclass:nil
                                     makeMutable:NO];
 }
 
-+ (id)objectWithJsonFile:(NSString *)jsonFile
++ (id)objectWithJSONFile:(NSString *)jsonFile
 {
-    return [CollectionFactory parseWithJsonFile:jsonFile
+    return [CollectionFactory parseWithJSONFile:jsonFile
                                mustBeOfSubclass:nil
                                     makeMutable:NO];
 }

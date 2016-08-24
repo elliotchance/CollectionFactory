@@ -2,7 +2,7 @@
 
 @implementation CollectionFactory
 
-+ (id)parseWithJsonString:(NSString *)jsonString
++ (id)parseWithJSONString:(NSString *)jsonString
          mustBeOfSubclass:(Class)theClass
               makeMutable:(BOOL)makeMutable
 {
@@ -46,7 +46,7 @@
     return json;
 }
 
-+ (id)parseWithJsonFile:(NSString *)file
++ (id)parseWithJSONFile:(NSString *)file
        mustBeOfSubclass:(Class)class
             makeMutable:(BOOL)makeMutable
 {
@@ -55,12 +55,12 @@
         return nil;
     }
     
-    return [CollectionFactory parseWithJsonData:data
+    return [CollectionFactory parseWithJSONData:data
                                mustBeOfSubclass:class
                                     makeMutable:makeMutable];
 }
 
-+ (id)parseWithJsonData:(NSData *)jsonData
++ (id)parseWithJSONData:(NSData *)jsonData
        mustBeOfSubclass:(Class)theClass
             makeMutable:(BOOL)makeMutable
 {
@@ -70,7 +70,7 @@
     
     NSString *string = [[NSString alloc] initWithData:jsonData
                                              encoding:NSUTF8StringEncoding];
-    return [CollectionFactory parseWithJsonString:string
+    return [CollectionFactory parseWithJSONString:string
                                  mustBeOfSubclass:theClass
                                       makeMutable:makeMutable];
 }

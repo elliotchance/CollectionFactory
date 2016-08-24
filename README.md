@@ -94,7 +94,7 @@ The simplest way to convert JSON to an object is to run it through NSObject:
 
 ```objc
 NSString *json = @"{\"foo\":\"bar\"}";
-id object = [NSObject objectWithJsonString:json];
+id object = [NSObject objectWithJSONString:json];
 ```
 
 However, if you know the type of the incoming value you should use the
@@ -102,7 +102,7 @@ respective class factory (rather than blindly casting):
 
 ```objc
 NSString *json = @"{\"foo\":\"bar\"}";
-NSDictionary *d = [NSDictionary dictionaryWithJsonString:json];
+NSDictionary *d = [NSDictionary dictionaryWithJSONString:json];
 ```
 
 When using a specific class it will not accept a valid JSON value of an
@@ -112,11 +112,11 @@ unexpected type to prevent bugs occuring, for example:
 NSString *json = @"{\"foo\":\"bar\"}";
 
 // `a` is `nil` because we only intend to decode a JSON array.
-NSArray *a = [NSArray arrayWithJsonString:json];
+NSArray *a = [NSArray arrayWithJSONString:json];
 
 // `b` is an instance of `NSDictionary` but future code will be treating it like
 // an `NSArray` which will surely cause very bad things to happen...
-NSArray *b = [NSObject objectWithJsonString:json];
+NSArray *b = [NSObject objectWithJSONString:json];
 ```
 
 ### Custom Types
@@ -133,19 +133,19 @@ Let's say you have this:
 ```
 
 The same method that unwraps native types is used except because the static
-method `[objectWithJsonString:]` is called against `SomeObject` you are saying
+method `[objectWithJSONString:]` is called against `SomeObject` you are saying
 that it must unserialize to that type of object.
 
 ```objc
 NSString *json = @"{\"string\":\"foo\",\"number\":123};
 
-SomeObject *myObject = [SomeObject objectWithJsonString:json];
+SomeObject *myObject = [SomeObject objectWithJSONString:json];
 
 // 123
 myObject.number;
 
 // Do NOT do this. Otherwise you will get an NSDictionary.
-// SomeObject *myObject = [NSObject objectWithJsonString:json];
+// SomeObject *myObject = [NSObject objectWithJSONString:json];
 ```
 
 Objects are contructed recursively by first checking to see if the property
@@ -190,8 +190,8 @@ objects that be safely editly directly after unpacking.
 
 ```objc
 NSString *json = @"{\"foo\":\"bar\"}";
-NSDictionary *d = [NSDictionary dictionaryWithJsonString:json];
-NSMutableDictionary *md = [NSMutableDictionary mutableDictionaryWithJsonString:json];
+NSDictionary *d = [NSDictionary dictionaryWithJSONString:json];
+NSMutableDictionary *md = [NSMutableDictionary mutableDictionaryWithJSONString:json];
 ```
 
 Loading from Files
@@ -200,7 +200,7 @@ Loading from Files
 Each factory method also has a way to generate the object directly from a file:
 
 ```objc
-NSArray *foo = [NSArray arrayWithJsonFile:@"foo.json"];
+NSArray *foo = [NSArray arrayWithJSONFile:@"foo.json"];
 ```
 
 If the file does not exist, there was an error parsing or the JSON was the wrong
@@ -209,5 +209,5 @@ type then `nil` will be returned.
 Futhermore you can create mutable objects from files:
 
 ```objc
-NSMutableArray *foo = [NSMutableArray mutableArrayWithJsonFile:@"foo.json"];
+NSMutableArray *foo = [NSMutableArray mutableArrayWithJSONFile:@"foo.json"];
 ```
