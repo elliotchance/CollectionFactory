@@ -27,6 +27,7 @@
 		8B25AE7A190CBED0001EAA36 /* SomeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE79190CBED0001EAA36 /* SomeObject.m */; };
 		8B25AE81190CCD16001EAA36 /* NSObject+CollectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B25AE7F190CCD16001EAA36 /* NSObject+CollectionFactory.h */; };
 		8B25AE82190CCD16001EAA36 /* NSObject+CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE80190CCD16001EAA36 /* NSObject+CollectionFactory.m */; };
+		8B395FC11D6DC99B00368882 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 8B395FC01D6DC99B00368882 /* .travis.yml */; };
 		8BA29D191AB6CA8000F623AB /* NSNumber+CollectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA29D161AB6CA8000F623AB /* NSNumber+CollectionFactory.h */; };
 		8BA29D1A1AB6CA8000F623AB /* NSNumber+CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA29D171AB6CA8000F623AB /* NSNumber+CollectionFactory.m */; };
 		8BA29D1F1AB6CFE900F623AB /* CollectionFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA29D1E1AB6CFE900F623AB /* CollectionFactoryTests.m */; };
@@ -84,6 +85,7 @@
 		8B25AE79190CBED0001EAA36 /* SomeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeObject.m; sourceTree = "<group>"; };
 		8B25AE7F190CCD16001EAA36 /* NSObject+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSObject+CollectionFactory.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		8B25AE80190CCD16001EAA36 /* NSObject+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSObject+CollectionFactory.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		8B395FC01D6DC99B00368882 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		8BA29D161AB6CA8000F623AB /* NSNumber+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSNumber+CollectionFactory.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		8BA29D171AB6CA8000F623AB /* NSNumber+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSNumber+CollectionFactory.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8BA29D1C1AB6CC2E00F623AB /* tests.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = tests.yml; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		8B1C0EE419026DD900CCD141 = {
 			isa = PBXGroup;
 			children = (
+				8B395FC01D6DC99B00368882 /* .travis.yml */,
 				4D1173ED190DEAD40037E9E0 /* README.md */,
 				4D1173F1190E08C30037E9E0 /* CollectionFactory.podspec */,
 				8B1C0EF719026DD900CCD141 /* CollectionFactory */,
@@ -337,6 +340,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B395FC11D6DC99B00368882 /* .travis.yml in Resources */,
 				8B1C0EFC19026DD900CCD141 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
