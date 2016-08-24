@@ -3,8 +3,7 @@ CollectionFactory
 
 [![Build Status](https://travis-ci.org/elliotchance/CollectionFactory.svg?branch=master)](https://travis-ci.org/elliotchance/CollectionFactory)
 
-Translation between native collections in Objective-C and serialized formats
-like JSON.
+Translation between native collections in Objective-C and JSON.
 
 Static methods always return `nil` if an error occurs (such as JSON could not be
 passed, was nil, or was an invalid expected type).
@@ -12,6 +11,7 @@ passed, was nil, or was an invalid expected type).
 
 * [Converting to JSON](#converting-to-json)
 * [Converting from JSON](#converting-from-json)
+* [Pretty Printing](#pretty-printing)
 * [Creating Mutable Objects](#creating-mutable-objects)
 * [Loading from Files](#loading-from-files)
 
@@ -180,6 +180,22 @@ Note: This is is a wrapper for `[setValue:forKey:]` and will call
 }
 
 @end
+```
+
+Pretty Printing
+---------------
+
+By default serialized JSON will not contain extra spaces which is best for
+transmission and storage but it is less readable for debugging. You can generate
+pretty JSON by specifying the indent size:
+
+```objc
+NSDictionary *object = @{@"abc": @"def"};
+
+// {
+//   "abc": "def"
+// }
+NSString *result = [object prettyJSONStringWithIndentSize:2];
 ```
 
 Creating Mutable Objects
