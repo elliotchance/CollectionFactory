@@ -16,7 +16,7 @@
 
 @implementation NSObject (CollectionFactory)
 
-- (NSDictionary *)jsonDictionary
+- (NSDictionary *)JSONDictionary
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
@@ -37,12 +37,12 @@
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
-- (NSString *)jsonString
+- (NSString *)JSONString
 {
     // This means its a subclass of NSObject that we do not have an explict way
     // to encode so we will pull the attributes from the object and encode it
     // like a dictionary.
-    return [[self jsonDictionary] jsonString];
+    return [[self JSONDictionary] JSONString];
 }
 
 /**
@@ -117,9 +117,9 @@
     return obj;
 }
 
-+ (id)objectWithJSONString:(NSString *)jsonString
++ (id)objectWithJSONString:(NSString *)JSONString
 {
-    NSDictionary *obj = [CollectionFactory parseWithJSONString:jsonString
+    NSDictionary *obj = [CollectionFactory parseWithJSONString:JSONString
                                               mustBeOfSubclass:nil
                                                    makeMutable:NO];
     
@@ -135,21 +135,21 @@
     return obj;
 }
 
-- (NSData *)jsonData
+- (NSData *)JSONData
 {
-    return [[self jsonString] dataUsingEncoding:NSUTF8StringEncoding];
+    return [[self JSONString] dataUsingEncoding:NSUTF8StringEncoding];
 }
 
-+ (id)objectWithJSONData:(NSData *)jsonData
++ (id)objectWithJSONData:(NSData *)JSONData
 {
-    return [CollectionFactory parseWithJSONData:jsonData
+    return [CollectionFactory parseWithJSONData:JSONData
                                mustBeOfSubclass:nil
                                     makeMutable:NO];
 }
 
-+ (id)objectWithJSONFile:(NSString *)jsonFile
++ (id)objectWithJSONFile:(NSString *)pathToJSONFile
 {
-    return [CollectionFactory parseWithJSONFile:jsonFile
+    return [CollectionFactory parseWithJSONFile:pathToJSONFile
                                mustBeOfSubclass:nil
                                     makeMutable:NO];
 }

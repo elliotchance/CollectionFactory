@@ -112,14 +112,14 @@ def parse_class(out, className, classTests):
         out.write('- (void)test%sToJSONString\n' % testName)
         out.write('{\n')
         out.write('    %s *object = %s;\n' % (className, object))
-        out.write('    assertThat([object jsonString], equalTo(@"%s"));\n' % testConditions['json'])
+        out.write('    assertThat([object JSONString], equalTo(@"%s"));\n' % testConditions['json'])
         out.write('}\n\n')
         
         # object to JSON data
         out.write('- (void)test%sToJSONData\n' % testName)
         out.write('{\n')
         out.write('    %s *object = %s;\n' % (className, object))
-        out.write('    NSString *string = [[NSString alloc] initWithData:[object jsonData]\n                                             encoding:NSUTF8StringEncoding];\n')
+        out.write('    NSString *string = [[NSString alloc] initWithData:[object JSONData]\n                                             encoding:NSUTF8StringEncoding];\n')
         out.write('    assertThat(string, equalTo(@"%s"));\n' % testConditions['json'])
         out.write('}\n\n')
         

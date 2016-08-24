@@ -2,21 +2,21 @@
 
 @implementation NSNumber (CollectionFactory)
 
-+ (NSNumber *)numberWithJSONString:(NSString *)jsonString
++ (NSNumber *)numberWithJSONString:(NSString *)JSONString
 {
-    return [CollectionFactory parseWithJSONString:jsonString
+    return [CollectionFactory parseWithJSONString:JSONString
                                  mustBeOfSubclass:[NSNumber class]
                                       makeMutable:NO];
 }
 
-+ (NSNumber *)numberWithJSONData:(NSData *)jsonData
++ (NSNumber *)numberWithJSONData:(NSData *)JSONData
 {
-    return [CollectionFactory parseWithJSONData:jsonData
+    return [CollectionFactory parseWithJSONData:JSONData
                                mustBeOfSubclass:[NSNumber class]
                                     makeMutable:NO];
 }
 
-- (NSString *)jsonString
+- (NSString *)JSONString
 {
     if(strcmp([self objCType], @encode(BOOL)) == 0) {
         if([self boolValue] == YES) {
@@ -27,9 +27,9 @@
     return [self description];
 }
 
-+ (NSNumber *)numberWithJSONFile:(NSString *)jsonFile
++ (NSNumber *)numberWithJSONFile:(NSString *)pathToJSONFile
 {
-    return [CollectionFactory parseWithJSONFile:jsonFile
+    return [CollectionFactory parseWithJSONFile:pathToJSONFile
                                mustBeOfSubclass:[NSNumber class]
                                     makeMutable:NO];
 }

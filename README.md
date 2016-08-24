@@ -21,17 +21,17 @@ Converting to JSON
 
 ### Native Types
 
-You can use `jsonString` or `jsonData` to get the NSString or NSData encoded
+You can use `JSONString` or `JSONData` to get the NSString or NSData encoded
 versions in JSON respectively.
 
 ```objc
 NSDictionary *d = @{@"foo": @"bar"};
 
 // {"foo":"bar"}
-NSString *jsonString = [d jsonString];
+NSString *JSONString = [d JSONString];
 
 // The same value as above but as a NSData
-NSData *jsonData = [d jsonData];
+NSData *JSONData = [d JSONData];
 ```
 
 Both methods are available on `NSNull`, `NSNumber`, `NSArray`, `NSDictionary`,
@@ -56,16 +56,16 @@ myObject.string = @"foo";
 myObject.number = 123;
 
 // {"string":"foo","number":123}
-NSString *json = [myObject jsonString];
+NSString *json = [myObject JSONString];
 ```
 
 If you need to control how custom objects are serialized you may override the
-`[jsonDictionary]` method:
+`[JSONDictionary]` method:
 
 ```objc
 @implementation SomeObject
 
-- (NSDictionary *)jsonDictionary
+- (NSDictionary *)JSONDictionary
 {
     return @{
         @"number": self.number,
@@ -82,7 +82,7 @@ myObject.string = @"foo";
 myObject.number = 123;
 
 // {"number":123,"secret":"bar"}
-NSString *json = [myObject jsonString];
+NSString *json = [myObject JSONString];
 ```
 
 Converting from JSON

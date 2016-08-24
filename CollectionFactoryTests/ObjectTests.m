@@ -12,13 +12,13 @@
 - (void)testObjectToJSONString
 {
     SomeObject1 *obj = [SomeObject1 new];
-    assertThat([obj jsonString], equalTo(EXPECTED_JSON));
+    assertThat([obj JSONString], equalTo(EXPECTED_JSON));
 }
 
 - (void)testObjectToJSONData
 {
     SomeObject1 *obj = [SomeObject1 new];
-    NSString *json = [[NSString alloc] initWithData:[obj jsonData]
+    NSString *json = [[NSString alloc] initWithData:[obj JSONData]
                                            encoding:NSUTF8StringEncoding];
     assertThat(json, equalTo(EXPECTED_JSON));
 }
@@ -35,7 +35,7 @@
 {
     SomeObject1 *obj = [SomeObject1 new];
     obj.string = nil;
-    assertThat([obj jsonDictionary], hasEntry(@"string", [NSNull null]));
+    assertThat([obj JSONDictionary], hasEntry(@"string", [NSNull null]));
 }
 
 - (void)testJSONToObjectContainingNilProperties

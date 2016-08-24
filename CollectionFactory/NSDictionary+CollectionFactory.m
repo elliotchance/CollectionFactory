@@ -3,14 +3,14 @@
 
 @implementation NSDictionary (CollectionFactory)
 
-+ (NSDictionary *)dictionaryWithJSONData:(NSData *)jsonData
++ (NSDictionary *)dictionaryWithJSONData:(NSData *)JSONData
 {
-    return [CollectionFactory parseWithJSONData:jsonData
+    return [CollectionFactory parseWithJSONData:JSONData
                                mustBeOfSubclass:[NSDictionary class]
                                     makeMutable:NO];
 }
 
-- (NSString *)jsonString
+- (NSString *)JSONString
 {
     if ([self count] == 0) {
         return @"{}";
@@ -20,7 +20,7 @@
     NSMutableString *json = [@"{" mutableCopy];
     for (NSString *key in self) {
         id item = [self objectForKey:key];
-        [json appendFormat:@"\"%@\":%@,", key, [item jsonString]];
+        [json appendFormat:@"\"%@\":%@,", key, [item JSONString]];
     }
     
     // Replace the last "," with the closing "}".
@@ -30,16 +30,16 @@
     return json;
 }
 
-+ (NSDictionary *)dictionaryWithJSONString:(NSString *)jsonString
++ (NSDictionary *)dictionaryWithJSONString:(NSString *)JSONString
 {
-    return [CollectionFactory parseWithJSONString:jsonString
+    return [CollectionFactory parseWithJSONString:JSONString
                                  mustBeOfSubclass:[NSDictionary class]
                                       makeMutable:NO];
 }
 
-+ (NSDictionary *)dictionaryWithJSONFile:(NSString *)jsonFile
++ (NSDictionary *)dictionaryWithJSONFile:(NSString *)pathToJSONFile
 {
-    return [CollectionFactory parseWithJSONFile:jsonFile
+    return [CollectionFactory parseWithJSONFile:pathToJSONFile
                                mustBeOfSubclass:[NSDictionary class]
                                     makeMutable:NO];
 }

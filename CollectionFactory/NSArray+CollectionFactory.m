@@ -16,7 +16,7 @@
                                       makeMutable:NO];
 }
 
-- (NSString *)jsonString
+- (NSString *)JSONString
 {
     if ([self count] == 0) {
         return @"[]";
@@ -25,7 +25,7 @@
     // Encode each of the elements.
     NSMutableString *json = [@"[" mutableCopy];
     for (id item in self) {
-        [json appendFormat:@"%@,", [item jsonString]];
+        [json appendFormat:@"%@,", [item JSONString]];
     }
     
     // Replace the last "," with the closing "]".
@@ -35,9 +35,9 @@
     return json;
 }
 
-+ (NSArray *)arrayWithJSONFile:(NSString *)jsonFile
++ (NSArray *)arrayWithJSONFile:(NSString *)pathToJSONFile
 {
-    return [CollectionFactory parseWithJSONFile:jsonFile
+    return [CollectionFactory parseWithJSONFile:pathToJSONFile
                                mustBeOfSubclass:[NSArray class]
                                     makeMutable:NO];
 }
