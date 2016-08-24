@@ -9,6 +9,6 @@
 + (id)objectWithJSONData:(NSData *)JSONData;
 + (id)objectWithJSONFile:(NSString *)pathToJSONFile;
 - (void)setValue:(id)value forProperty:(NSString *)key;
-- (NSString *)prettyJSONStringWithIndentationSize:(NSUInteger)indentationSize;
+- (NSString *)prettyJSONStringWithIndentSize:(NSUInteger)indentSize;
 
 @end

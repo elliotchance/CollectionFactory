@@ -1,4 +1,5 @@
 #import "CollectionFactory.h"
+#import "NSMutableString+CollectionFactoryPrivate.h"
 
 @implementation NSArray (CollectionFactory)
 
@@ -21,7 +22,7 @@
     if ([self count] == 0) {
         return @"[]";
     }
-
+    
     // Encode each of the elements.
     NSMutableString *json = [@"[" mutableCopy];
     for (id item in self) {
@@ -42,24 +43,26 @@
                                     makeMutable:NO];
 }
 
-- (NSString *)prettyJSONStringWithIndentationSize:(NSUInteger)indentationSize
+- (NSString *)prettyJSONStringWithIndentSize:(NSUInteger)indentSize
+                                 indentLevel:(NSUInteger)indentLevel
 {
-    if ([self count] == 0) {
-        return @"[\n]";
-    }
+    NSMutableString *json = [NSMutableString new];
+    NSString *item = nil;
     
-    // Encode each of the elements.
-    NSMutableString *json = [@"[\n" mutableCopy];
-    for (id item in self) {
-        [json appendString:[@"" stringByPaddingToLength:indentationSize
-                                             withString:@" "
-                                        startingAtIndex:0]];
-        [json appendFormat:@"%@,\n", [item JSONString]];
+    [json appendLine:@"[" indentSize:indentSize indentLevel:indentLevel];
+    for (NSUInteger i = 0; i < [self count]; ++i) {
+        item = [self[i] prettyJSONStringWithIndentSize:indentSize
+                                           indentLevel:indentLevel + 1];
+        
+        [json appendString:item];
+        
+        if (i < [self count] - 1) {
+            [json appendString:@",\n"];
+        } else {
+            [json appendString:@"\n"];
+        }
     }
-    
-    // Replace the last "," with the closing "]".
-    [json replaceCharactersInRange:NSMakeRange(json.length - 2, 2)
-                        withString:@"\n]"];
+    [json appendString:@"]" indentSize:indentSize indentLevel:indentLevel];
     
     return json;
 }

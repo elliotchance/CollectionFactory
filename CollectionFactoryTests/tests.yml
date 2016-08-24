@@ -79,12 +79,41 @@ tests:
     EmptyArray:
       object: '@[]'
       json: '[]'
-      pretty: '[\n]'
+      pretty: |-
+        [
+        ]
 
-    Array:
+    ArrayOne:
+      object: '@[[NSNumber numberWithBool:YES]]'
+      json: '[true]'
+      pretty: |-
+        [
+          true
+        ]
+
+    ArrayTwo:
       object: '@[@123, @"foo"]'
       json: '[123,\"foo\"]'
-      pretty: '[\n  123,\n  \"foo\"\n]'
+      pretty: |-
+        [
+          123,
+          \"foo\"
+        ]
+
+    ArrayNested:
+      object: '@[@[@123, @"foo"], @[@456, @"bar"]]'
+      json: '[[123,\"foo\"],[456,\"bar\"]]'
+      pretty: |-
+        [
+          [
+            123,
+            \"foo\"
+          ],
+          [
+            456,
+            \"bar\"
+          ]
+        ]
 
     # Make sure that we are explicitly parsing an array so it will return `nil`
     # if the JSON is valid but not of the correct type.
@@ -96,10 +125,41 @@ tests:
     EmptyDictionary:
       object: '@{}'
       json: '{}'
+      pretty: |-
+        {
+        }
 
-    Dictionary:
+    DictionaryOne:
       object: '@{@"abc": @"def"}'
       json: '{\"abc\":\"def\"}'
+      pretty: |-
+        {
+          \"abc\": \"def\"
+        }
+
+    DictionaryTwo:
+      object: '@{@"abc": @"def", @"xyz": @123}'
+      json: '{\"abc\":\"def\",\"xyz\":123}'
+      pretty: |-
+        {
+          \"abc\": \"def\",
+          \"xyz\": 123
+        }
+
+    DictionaryNested:
+      object: '@{@"abc": @[@123, @"foo"], @"xyz": @[@456, @"bar"]}'
+      json: '{\"abc\":[123,\"foo\"],\"xyz\":[456,\"bar\"]}'
+      pretty: |-
+        {
+          \"abc\": [
+            123,
+            \"foo\"
+          ],
+          \"xyz\": [
+            456,
+            \"bar\"
+          ]
+        }
 
     # Make sure that we are explicitly parsing a dictionary so it will return
     # `nil` if the JSON is valid but not of the correct type.
@@ -141,11 +201,19 @@ tests:
     ObjectArray:
       object: '@[@123, @"foo"]'
       json: '[123,\"foo\"]'
-      pretty: '[\n  123,\n  \"foo\"\n]'
+      pretty: |-
+        [
+          123,
+          \"foo\"
+        ]
 
     ObjectDictionary:
       object: '@{@"abc": @"def"}'
       json: '{\"abc\":\"def\"}'
+      pretty: |-
+        {
+          \"abc\": \"def\"
+        }
 
   NSNumber:
     Yes:

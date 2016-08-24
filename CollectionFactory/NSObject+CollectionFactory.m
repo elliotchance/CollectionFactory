@@ -1,5 +1,6 @@
 #import <objc/runtime.h>
 #import "CollectionFactory.h"
+#import "NSMutableString+CollectionFactoryPrivate.h"
 
 @interface NSObject (CollectionFactoryPrivate)
 
@@ -163,13 +164,24 @@
     [self setValue:value forKey:property];
 }
 
-// This will be overridden by the subclass to handle the formatting of the more
-// specific class. However, only some of the subclasses need to override this
-// since the default fall-though is to use -[JSONString] which suffices in most
-// cases.
-- (NSString *)prettyJSONStringWithIndentationSize:(NSUInteger)indentationSize
+- (NSString *)prettyJSONStringWithIndentSize:(NSUInteger)indentSize
 {
-    return [self JSONString];
+    return [self prettyJSONStringWithIndentSize:indentSize indentLevel:0];
+}
+
+// This will be overridden by the subclass to handle the formatting of the more
+// specific classes. However, only some of the subclasses need to override this
+// since the default fall-through is to use -[JSONString] which suffices in most
+// cases.
+- (NSString *)prettyJSONStringWithIndentSize:(NSUInteger)indentSize
+                                 indentLevel:(NSUInteger)indentLevel
+{
+    NSMutableString *result = [NSMutableString new];
+    [result appendString:[self JSONString]
+              indentSize:indentSize
+             indentLevel:indentLevel];
+    
+    return result;
 }
 
 @end

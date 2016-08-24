@@ -124,14 +124,15 @@ def parse_class(out, className, classTests):
         out.write('}\n\n')
         
         # object to pretty JSON string
-        prettyResult = testConditions['json']
+        pretty_result = testConditions['json']
         if 'pretty' in testConditions:
-            prettyResult = testConditions['pretty']
+            pretty_result = testConditions['pretty']
         
         out.write('- (void)test%sToPrettyJSONString\n' % testName)
         out.write('{\n')
         out.write('    %s *object = %s;\n' % (className, object))
-        out.write('    assertThat([object prettyJSONStringWithIndentationSize:2], equalTo(@"%s"));\n' % prettyResult)
+        out.write('    NSString *result = [object prettyJSONStringWithIndentSize:2];\n')
+        out.write('    assertThat(result, equalTo(@"%s"));\n' % pretty_result.replace('\n', '\\n'))
         out.write('}\n\n')
         
         total += 3
