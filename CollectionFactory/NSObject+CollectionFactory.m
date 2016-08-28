@@ -1,5 +1,6 @@
 #import <objc/runtime.h>
 #import "CollectionFactory.h"
+#import "NSMutableString+CollectionFactoryPrivate.h"
 
 @interface NSObject (CollectionFactoryPrivate)
 
@@ -16,7 +17,7 @@
 
 @implementation NSObject (CollectionFactory)
 
-- (NSDictionary *)jsonDictionary
+- (NSDictionary *)JSONDictionary
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
@@ -37,12 +38,12 @@
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
-- (NSString *)jsonString
+- (NSString *)JSONString
 {
     // This means its a subclass of NSObject that we do not have an explict way
     // to encode so we will pull the attributes from the object and encode it
     // like a dictionary.
-    return [[self jsonDictionary] jsonString];
+    return [[self JSONDictionary] JSONString];
 }
 
 /**
@@ -117,9 +118,9 @@
     return obj;
 }
 
-+ (id)objectWithJsonString:(NSString *)jsonString
++ (id)objectWithJSONString:(NSString *)JSONString
 {
-    NSDictionary *obj = [CollectionFactory parseWithJsonString:jsonString
+    NSDictionary *obj = [CollectionFactory parseWithJSONString:JSONString
                                               mustBeOfSubclass:nil
                                                    makeMutable:NO];
     
@@ -135,21 +136,21 @@
     return obj;
 }
 
-- (NSData *)jsonData
+- (NSData *)JSONData
 {
-    return [[self jsonString] dataUsingEncoding:NSUTF8StringEncoding];
+    return [[self JSONString] dataUsingEncoding:NSUTF8StringEncoding];
 }
 
-+ (id)objectWithJsonData:(NSData *)jsonData
++ (id)objectWithJSONData:(NSData *)JSONData
 {
-    return [CollectionFactory parseWithJsonData:jsonData
+    return [CollectionFactory parseWithJSONData:JSONData
                                mustBeOfSubclass:nil
                                     makeMutable:NO];
 }
 
-+ (id)objectWithJsonFile:(NSString *)jsonFile
++ (id)objectWithJSONFile:(NSString *)pathToJSONFile
 {
-    return [CollectionFactory parseWithJsonFile:jsonFile
+    return [CollectionFactory parseWithJSONFile:pathToJSONFile
                                mustBeOfSubclass:nil
                                     makeMutable:NO];
 }
@@ -161,6 +162,26 @@
 - (void)setValue:(id)value forProperty:(NSString *)property
 {
     [self setValue:value forKey:property];
+}
+
+- (NSString *)prettyJSONStringWithIndentSize:(NSUInteger)indentSize
+{
+    return [self prettyJSONStringWithIndentSize:indentSize indentLevel:0];
+}
+
+// This will be overridden by the subclass to handle the formatting of the more
+// specific classes. However, only some of the subclasses need to override this
+// since the default fall-through is to use -[JSONString] which suffices in most
+// cases.
+- (NSString *)prettyJSONStringWithIndentSize:(NSUInteger)indentSize
+                                 indentLevel:(NSUInteger)indentLevel
+{
+    NSMutableString *result = [NSMutableString new];
+    [result appendString:[self JSONString]
+              indentSize:indentSize
+             indentLevel:indentLevel];
+    
+    return result;
 }
 
 @end

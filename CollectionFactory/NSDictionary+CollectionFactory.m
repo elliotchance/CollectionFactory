@@ -1,16 +1,17 @@
 #import <objc/runtime.h>
 #import "CollectionFactory.h"
+#import "NSMutableString+CollectionFactoryPrivate.h"
 
 @implementation NSDictionary (CollectionFactory)
 
-+ (NSDictionary *)dictionaryWithJsonData:(NSData *)jsonData
++ (NSDictionary *)dictionaryWithJSONData:(NSData *)JSONData
 {
-    return [CollectionFactory parseWithJsonData:jsonData
+    return [CollectionFactory parseWithJSONData:JSONData
                                mustBeOfSubclass:[NSDictionary class]
                                     makeMutable:NO];
 }
 
-- (NSString *)jsonString
+- (NSString *)JSONString
 {
     if ([self count] == 0) {
         return @"{}";
@@ -20,7 +21,7 @@
     NSMutableString *json = [@"{" mutableCopy];
     for (NSString *key in self) {
         id item = [self objectForKey:key];
-        [json appendFormat:@"\"%@\":%@,", key, [item jsonString]];
+        [json appendFormat:@"\"%@\":%@,", key, [item JSONString]];
     }
     
     // Replace the last "," with the closing "}".
@@ -30,18 +31,49 @@
     return json;
 }
 
-+ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString
++ (NSDictionary *)dictionaryWithJSONString:(NSString *)JSONString
 {
-    return [CollectionFactory parseWithJsonString:jsonString
+    return [CollectionFactory parseWithJSONString:JSONString
                                  mustBeOfSubclass:[NSDictionary class]
                                       makeMutable:NO];
 }
 
-+ (NSDictionary *)dictionaryWithJsonFile:(NSString *)jsonFile
++ (NSDictionary *)dictionaryWithJSONFile:(NSString *)pathToJSONFile
 {
-    return [CollectionFactory parseWithJsonFile:jsonFile
+    return [CollectionFactory parseWithJSONFile:pathToJSONFile
                                mustBeOfSubclass:[NSDictionary class]
                                     makeMutable:NO];
+}
+
+- (NSString *)prettyJSONStringWithIndentSize:(NSUInteger)indentSize
+                                 indentLevel:(NSUInteger)indentLevel
+{
+    NSMutableString *json = [NSMutableString new];
+    NSString *item = nil;
+    NSArray *keys = [self allKeys];
+    
+    [json appendLine:@"{" indentSize:indentSize indentLevel:indentLevel];
+    for (NSUInteger i = 0; i < [keys count]; ++i) {
+        item = [self[keys[i]] prettyJSONStringWithIndentSize:indentSize
+                                                 indentLevel:indentLevel + 1];
+        
+        // The `item` will have the indent level on every line, but since we
+        // start the nested item on the same line as the key we need to trim the
+        // initial spaces off.
+        item = [item stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        
+        [json appendString:@"" indentSize:indentSize indentLevel:indentLevel + 1];
+        [json appendFormat:@"\"%@\": %@", keys[i], item];
+        
+        if (i < [keys count] - 1) {
+            [json appendString:@",\n"];
+        } else {
+            [json appendString:@"\n"];
+        }
+    }
+    [json appendString:@"}" indentSize:indentSize indentLevel:indentLevel];
+    
+    return json;
 }
 
 @end

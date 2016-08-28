@@ -2,8 +2,8 @@
 
 @interface NSMutableString (CollectionFactory)
 
-+ (NSMutableString *)mutableStringWithJsonString:(NSString *)jsonString;
-+ (NSMutableString *)mutableStringWithJsonData:(NSData *)jsonData;
-+ (NSMutableString *)mutableStringWithJsonFile:(NSString *)jsonFile;
++ (NSMutableString *)mutableStringWithJSONString:(NSString *)JSONString;
++ (NSMutableString *)mutableStringWithJSONData:(NSData *)JSONData;
++ (NSMutableString *)mutableStringWithJSONFile:(NSString *)pathToJSONFile;
 
 @end

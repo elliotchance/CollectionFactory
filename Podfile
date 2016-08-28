@@ -1,4 +1,4 @@
-target :CollectionFactoryTests, :exclusive => true do
+target :CollectionFactoryTests do
   	pod 'OCMock'
   	pod 'OCHamcrestExtensions'
 end

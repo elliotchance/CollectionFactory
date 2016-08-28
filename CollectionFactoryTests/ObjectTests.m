@@ -9,44 +9,44 @@
 
 @implementation ObjectTests
 
-- (void)testObjectToJsonString
+- (void)testObjectToJSONString
 {
     SomeObject1 *obj = [SomeObject1 new];
-    assertThat([obj jsonString], equalTo(EXPECTED_JSON));
+    assertThat([obj JSONString], equalTo(EXPECTED_JSON));
 }
 
-- (void)testObjectToJsonData
+- (void)testObjectToJSONData
 {
     SomeObject1 *obj = [SomeObject1 new];
-    NSString *json = [[NSString alloc] initWithData:[obj jsonData]
+    NSString *json = [[NSString alloc] initWithData:[obj JSONData]
                                            encoding:NSUTF8StringEncoding];
     assertThat(json, equalTo(EXPECTED_JSON));
 }
 
-- (void)testJsonStringToSomeObject
+- (void)testJSONStringToSomeObject
 {
-    SomeObject1 *obj = [SomeObject1 objectWithJsonString:EXPECTED_JSON];
+    SomeObject1 *obj = [SomeObject1 objectWithJSONString:EXPECTED_JSON];
     assertThat(obj.string, equalTo(@"abc"));
     assertThatInt(obj.number, equalToInt(123));
     assertThat(obj.obj.arr, equalTo(@[@1, @"foo"]));
 }
 
-- (void)testObjectToJsonDictionaryShouldBeSensitiveToNil
+- (void)testObjectToJSONDictionaryShouldBeSensitiveToNil
 {
     SomeObject1 *obj = [SomeObject1 new];
     obj.string = nil;
-    assertThat([obj jsonDictionary], hasEntry(@"string", [NSNull null]));
+    assertThat([obj JSONDictionary], hasEntry(@"string", [NSNull null]));
 }
 
-- (void)testJsonToObjectContainingNilProperties
+- (void)testJSONToObjectContainingNilProperties
 {
-    SomeObject1 *obj = [SomeObject1 objectWithJsonString:@"{\"string\":null}"];
+    SomeObject1 *obj = [SomeObject1 objectWithJSONString:@"{\"string\":null}"];
     assertThat(obj.string, nilValue());
 }
 
 - (void)testExtraPropertyIsIgnored
 {
-    [SomeObject1 objectWithJsonString:@"{\"abc\":123}"];
+    [SomeObject1 objectWithJSONString:@"{\"abc\":123}"];
 }
 
 @end

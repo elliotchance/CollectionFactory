@@ -1,31 +1,32 @@
 #import "CollectionFactory.h"
+#import "NSMutableString+CollectionFactoryPrivate.h"
 
 @implementation NSArray (CollectionFactory)
 
-+ (NSArray *)arrayWithJsonData:(NSData *)rawJson
++ (NSArray *)arrayWithJSONData:(NSData *)rawJSON
 {
-    return [CollectionFactory parseWithJsonData:rawJson
+    return [CollectionFactory parseWithJSONData:rawJSON
                                mustBeOfSubclass:[NSArray class]
                                     makeMutable:NO];
 }
 
-+ (NSArray *)arrayWithJsonString:(NSString *)rawJson
++ (NSArray *)arrayWithJSONString:(NSString *)rawJSON
 {
-    return [CollectionFactory parseWithJsonString:rawJson
+    return [CollectionFactory parseWithJSONString:rawJSON
                                  mustBeOfSubclass:[NSArray class]
                                       makeMutable:NO];
 }
 
-- (NSString *)jsonString
+- (NSString *)JSONString
 {
     if ([self count] == 0) {
         return @"[]";
     }
-
+    
     // Encode each of the elements.
     NSMutableString *json = [@"[" mutableCopy];
     for (id item in self) {
-        [json appendFormat:@"%@,", [item jsonString]];
+        [json appendFormat:@"%@,", [item JSONString]];
     }
     
     // Replace the last "," with the closing "]".
@@ -35,11 +36,35 @@
     return json;
 }
 
-+ (NSArray *)arrayWithJsonFile:(NSString *)jsonFile
++ (NSArray *)arrayWithJSONFile:(NSString *)pathToJSONFile
 {
-    return [CollectionFactory parseWithJsonFile:jsonFile
+    return [CollectionFactory parseWithJSONFile:pathToJSONFile
                                mustBeOfSubclass:[NSArray class]
                                     makeMutable:NO];
+}
+
+- (NSString *)prettyJSONStringWithIndentSize:(NSUInteger)indentSize
+                                 indentLevel:(NSUInteger)indentLevel
+{
+    NSMutableString *json = [NSMutableString new];
+    NSString *item = nil;
+    
+    [json appendLine:@"[" indentSize:indentSize indentLevel:indentLevel];
+    for (NSUInteger i = 0; i < [self count]; ++i) {
+        item = [self[i] prettyJSONStringWithIndentSize:indentSize
+                                           indentLevel:indentLevel + 1];
+        
+        [json appendString:item];
+        
+        if (i < [self count] - 1) {
+            [json appendString:@",\n"];
+        } else {
+            [json appendString:@"\n"];
+        }
+    }
+    [json appendString:@"]" indentSize:indentSize indentLevel:indentLevel];
+    
+    return json;
 }
 
 @end

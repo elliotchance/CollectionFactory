@@ -2,24 +2,24 @@
 
 @implementation CollectionFactory
 
-+ (id)parseWithJsonString:(NSString *)jsonString
++ (id)parseWithJSONString:(NSString *)JSONString
          mustBeOfSubclass:(Class)theClass
               makeMutable:(BOOL)makeMutable
 {
     // NSJSONSerialization will throw an NSInvalidArgumentException if
-    // `jsonData` is nil but we want to always return `nil` on error.
-    if (nil == jsonString || jsonString.length == 0) {
+    // `JSONData` is nil but we want to always return `nil` on error.
+    if (nil == JSONString || JSONString.length == 0) {
         return nil;
     }
     
     // Trim off any surrounding spaces.
     NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-    jsonString = [jsonString stringByTrimmingCharactersInSet:whitespace];
+    JSONString = [JSONString stringByTrimmingCharactersInSet:whitespace];
     
     // NSJSONSerialization can not handle single values so we wrap the "JSON" in
     // another array to make sure it is parsed and then access the element that
     // way.
-    jsonString = [NSString stringWithFormat:@"[%@]", jsonString];
+    JSONString = [NSString stringWithFormat:@"[%@]", JSONString];
     
     // If the result is to be mutable we need to make sure all the containers
     // that are generated are mutaable - not just the top level.
@@ -29,24 +29,24 @@
     }
     
     // Now try to decode the JSON.
-    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSArray *parsed = [NSJSONSerialization JSONObjectWithData:jsonData
+    NSData *JSONData = [JSONString dataUsingEncoding:NSUTF8StringEncoding];
+    NSArray *parsed = [NSJSONSerialization JSONObjectWithData:JSONData
                                                       options:options
                                                         error:nil];
-    id json = [parsed objectAtIndex:0];
+    id theJSONObject = [parsed objectAtIndex:0];
     
     // The result object must be a subclass of what we expect it to be,
     // otherwise this is considered a failure and we return nil. If `theClass`
     // is `nil` then we do not do type checking.
-    if(nil != theClass && ![[json class] isSubclassOfClass:theClass]) {
+    if(nil != theClass && ![[theJSONObject class] isSubclassOfClass:theClass]) {
         return nil;
     }
     
     // Everything checks out.
-    return json;
+    return theJSONObject;
 }
 
-+ (id)parseWithJsonFile:(NSString *)file
++ (id)parseWithJSONFile:(NSString *)file
        mustBeOfSubclass:(Class)class
             makeMutable:(BOOL)makeMutable
 {
@@ -55,22 +55,22 @@
         return nil;
     }
     
-    return [CollectionFactory parseWithJsonData:data
+    return [CollectionFactory parseWithJSONData:data
                                mustBeOfSubclass:class
                                     makeMutable:makeMutable];
 }
 
-+ (id)parseWithJsonData:(NSData *)jsonData
++ (id)parseWithJSONData:(NSData *)JSONData
        mustBeOfSubclass:(Class)theClass
             makeMutable:(BOOL)makeMutable
 {
-    if (nil == jsonData) {
+    if (nil == JSONData) {
         return nil;
     }
     
-    NSString *string = [[NSString alloc] initWithData:jsonData
+    NSString *string = [[NSString alloc] initWithData:JSONData
                                              encoding:NSUTF8StringEncoding];
-    return [CollectionFactory parseWithJsonString:string
+    return [CollectionFactory parseWithJSONString:string
                                  mustBeOfSubclass:theClass
                                       makeMutable:makeMutable];
 }

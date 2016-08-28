@@ -2,7 +2,7 @@
 
 @implementation NSNull (CollectionFactory)
 
-- (NSString *)jsonString
+- (NSString *)JSONString
 {
     return @"null";
 }

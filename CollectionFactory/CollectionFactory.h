@@ -11,15 +11,15 @@
 
 @interface CollectionFactory : NSObject
 
-+ (id)parseWithJsonString:(NSString *)jsonString
++ (id)parseWithJSONString:(NSString *)JSONString
          mustBeOfSubclass:(Class)theClass
               makeMutable:(BOOL)makeMutable;
 
-+ (id)parseWithJsonData:(NSData *)jsonData
++ (id)parseWithJSONData:(NSData *)JSONData
        mustBeOfSubclass:(Class)theClass
             makeMutable:(BOOL)makeMutable;
 
-+ (id)parseWithJsonFile:(NSString *)file
++ (id)parseWithJSONFile:(NSString *)pathToJSONFile
        mustBeOfSubclass:(Class)theClass
             makeMutable:(BOOL)makeMutable;
 

@@ -15,7 +15,7 @@
 		4DC169921906349E00234129 /* NSDictionary+CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC1698F1906349E00234129 /* NSDictionary+CollectionFactory.m */; };
 		4DC1699A190635BE00234129 /* NSArray+CollectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DC16998190635BE00234129 /* NSArray+CollectionFactory.h */; };
 		4DC1699B190635BE00234129 /* NSArray+CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC16999190635BE00234129 /* NSArray+CollectionFactory.m */; };
-		5BAA0174DB8C4C13B4FA5C83 /* libPods-CollectionFactoryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 945B3E07BC384568B40C56EA /* libPods-CollectionFactoryTests.a */; };
+		5204AB397FA0558D96AA1458 /* libPods-CollectionFactoryTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C318D1EF4CADB03FBD6A8D8D /* libPods-CollectionFactoryTests.a */; };
 		8B1C0EF219026DD900CCD141 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B1C0EF119026DD900CCD141 /* Cocoa.framework */; };
 		8B1C0EFC19026DD900CCD141 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B1C0EFA19026DD900CCD141 /* InfoPlist.strings */; };
 		8B1C0F0019026DD900CCD141 /* CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1C0EFF19026DD900CCD141 /* CollectionFactory.m */; };
@@ -27,6 +27,9 @@
 		8B25AE7A190CBED0001EAA36 /* SomeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE79190CBED0001EAA36 /* SomeObject.m */; };
 		8B25AE81190CCD16001EAA36 /* NSObject+CollectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B25AE7F190CCD16001EAA36 /* NSObject+CollectionFactory.h */; };
 		8B25AE82190CCD16001EAA36 /* NSObject+CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B25AE80190CCD16001EAA36 /* NSObject+CollectionFactory.m */; };
+		8B395FC11D6DC99B00368882 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 8B395FC01D6DC99B00368882 /* .travis.yml */; };
+		8B395FC41D6DE99600368882 /* NSMutableString+CollectionFactoryPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B395FC21D6DE99600368882 /* NSMutableString+CollectionFactoryPrivate.h */; };
+		8B395FC51D6DE99600368882 /* NSMutableString+CollectionFactoryPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B395FC31D6DE99600368882 /* NSMutableString+CollectionFactoryPrivate.m */; };
 		8BA29D191AB6CA8000F623AB /* NSNumber+CollectionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BA29D161AB6CA8000F623AB /* NSNumber+CollectionFactory.h */; };
 		8BA29D1A1AB6CA8000F623AB /* NSNumber+CollectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA29D171AB6CA8000F623AB /* NSNumber+CollectionFactory.m */; };
 		8BA29D1F1AB6CFE900F623AB /* CollectionFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA29D1E1AB6CFE900F623AB /* CollectionFactoryTests.m */; };
@@ -55,14 +58,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29326A8A4DCF4EF2D66E5F80 /* Pods-CollectionFactoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionFactoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionFactoryTests/Pods-CollectionFactoryTests.release.xcconfig"; sourceTree = "<group>"; };
 		4D1173ED190DEAD40037E9E0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		4D1173F1190E08C30037E9E0 /* CollectionFactory.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = CollectionFactory.podspec; sourceTree = "<group>"; };
-		4D5E19B81906326800C781CB /* NSMutableDictionary+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+CollectionFactory.h"; sourceTree = "<group>"; };
-		4D5E19B91906326800C781CB /* NSMutableDictionary+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+CollectionFactory.m"; sourceTree = "<group>"; };
-		4DC1698E1906349E00234129 /* NSDictionary+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CollectionFactory.h"; sourceTree = "<group>"; };
-		4DC1698F1906349E00234129 /* NSDictionary+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CollectionFactory.m"; sourceTree = "<group>"; };
-		4DC16998190635BE00234129 /* NSArray+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CollectionFactory.h"; sourceTree = "<group>"; };
-		4DC16999190635BE00234129 /* NSArray+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CollectionFactory.m"; sourceTree = "<group>"; };
+		4D5E19B81906326800C781CB /* NSMutableDictionary+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSMutableDictionary+CollectionFactory.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		4D5E19B91906326800C781CB /* NSMutableDictionary+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSMutableDictionary+CollectionFactory.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		4DC1698E1906349E00234129 /* NSDictionary+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSDictionary+CollectionFactory.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		4DC1698F1906349E00234129 /* NSDictionary+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSDictionary+CollectionFactory.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		4DC16998190635BE00234129 /* NSArray+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSArray+CollectionFactory.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		4DC16999190635BE00234129 /* NSArray+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSArray+CollectionFactory.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8B1C0EEE19026DD900CCD141 /* CollectionFactory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CollectionFactory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B1C0EF119026DD900CCD141 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		8B1C0EF419026DD900CCD141 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -71,34 +75,36 @@
 		8B1C0EF919026DD900CCD141 /* CollectionFactory-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CollectionFactory-Info.plist"; sourceTree = "<group>"; };
 		8B1C0EFB19026DD900CCD141 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8B1C0EFD19026DD900CCD141 /* CollectionFactory-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CollectionFactory-Prefix.pch"; sourceTree = "<group>"; };
-		8B1C0EFE19026DD900CCD141 /* CollectionFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionFactory.h; sourceTree = "<group>"; };
-		8B1C0EFF19026DD900CCD141 /* CollectionFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionFactory.m; sourceTree = "<group>"; };
+		8B1C0EFE19026DD900CCD141 /* CollectionFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CollectionFactory.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8B1C0EFF19026DD900CCD141 /* CollectionFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CollectionFactory.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8B1C0F0519026DD900CCD141 /* CollectionFactoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollectionFactoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B1C0F0619026DD900CCD141 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		8B1C0F0E19026DD900CCD141 /* CollectionFactoryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CollectionFactoryTests-Info.plist"; sourceTree = "<group>"; };
 		8B1C0F1019026DD900CCD141 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8B1C0F1E1903271600CCD141 /* CollectionFactoryTestCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionFactoryTestCase.h; sourceTree = "<group>"; };
-		8B25AE76190CBE02001EAA36 /* ObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectTests.m; sourceTree = "<group>"; };
+		8B1C0F1E1903271600CCD141 /* CollectionFactoryTestCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CollectionFactoryTestCase.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8B25AE76190CBE02001EAA36 /* ObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ObjectTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8B25AE78190CBED0001EAA36 /* SomeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeObject.h; sourceTree = "<group>"; };
 		8B25AE79190CBED0001EAA36 /* SomeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SomeObject.m; sourceTree = "<group>"; };
-		8B25AE7F190CCD16001EAA36 /* NSObject+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CollectionFactory.h"; sourceTree = "<group>"; };
-		8B25AE80190CCD16001EAA36 /* NSObject+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CollectionFactory.m"; sourceTree = "<group>"; };
-		8BA29D161AB6CA8000F623AB /* NSNumber+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+CollectionFactory.h"; sourceTree = "<group>"; };
-		8BA29D171AB6CA8000F623AB /* NSNumber+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+CollectionFactory.m"; sourceTree = "<group>"; };
+		8B25AE7F190CCD16001EAA36 /* NSObject+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSObject+CollectionFactory.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8B25AE80190CCD16001EAA36 /* NSObject+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSObject+CollectionFactory.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		8B395FC01D6DC99B00368882 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
+		8B395FC21D6DE99600368882 /* NSMutableString+CollectionFactoryPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+CollectionFactoryPrivate.h"; sourceTree = "<group>"; };
+		8B395FC31D6DE99600368882 /* NSMutableString+CollectionFactoryPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+CollectionFactoryPrivate.m"; sourceTree = "<group>"; };
+		8BA29D161AB6CA8000F623AB /* NSNumber+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSNumber+CollectionFactory.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8BA29D171AB6CA8000F623AB /* NSNumber+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSNumber+CollectionFactory.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8BA29D1C1AB6CC2E00F623AB /* tests.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = tests.yml; sourceTree = "<group>"; };
-		8BA29D1D1AB6CCE300F623AB /* generate_tests.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = generate_tests.py; sourceTree = "<group>"; };
-		8BA29D1E1AB6CFE900F623AB /* CollectionFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionFactoryTests.m; sourceTree = "<group>"; };
-		8BA29D211AB6DFF900F623AB /* NSString+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CollectionFactory.h"; sourceTree = "<group>"; };
-		8BA29D221AB6DFF900F623AB /* NSString+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CollectionFactory.m"; sourceTree = "<group>"; };
-		8BA29D261AB7104E00F623AB /* NSMutableString+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+CollectionFactory.h"; sourceTree = "<group>"; };
-		8BA29D271AB7104E00F623AB /* NSMutableString+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+CollectionFactory.m"; sourceTree = "<group>"; };
-		8BA29D2B1AB7117200F623AB /* NSMutableArray+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+CollectionFactory.h"; sourceTree = "<group>"; };
-		8BA29D2C1AB7117200F623AB /* NSMutableArray+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+CollectionFactory.m"; sourceTree = "<group>"; };
+		8BA29D1D1AB6CCE300F623AB /* generate_tests.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; lineEnding = 0; path = generate_tests.py; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.python; };
+		8BA29D1E1AB6CFE900F623AB /* CollectionFactoryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CollectionFactoryTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		8BA29D211AB6DFF900F623AB /* NSString+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSString+CollectionFactory.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8BA29D221AB6DFF900F623AB /* NSString+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSString+CollectionFactory.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		8BA29D261AB7104E00F623AB /* NSMutableString+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSMutableString+CollectionFactory.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8BA29D271AB7104E00F623AB /* NSMutableString+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSMutableString+CollectionFactory.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		8BA29D2B1AB7117200F623AB /* NSMutableArray+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSMutableArray+CollectionFactory.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8BA29D2C1AB7117200F623AB /* NSMutableArray+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSMutableArray+CollectionFactory.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8BA29D301AB81E9500F623AB /* NSNull+CollectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+CollectionFactory.h"; sourceTree = "<group>"; };
 		8BA29D311AB81E9500F623AB /* NSNull+CollectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+CollectionFactory.m"; sourceTree = "<group>"; };
-		945B3E07BC384568B40C56EA /* libPods-CollectionFactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CollectionFactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D051D8495545F4D3D53DA044 /* Pods-CollectionFactoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionFactoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionFactoryTests/Pods-CollectionFactoryTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E90154D8C99064CAF9E5362D /* Pods-CollectionFactoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionFactoryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionFactoryTests/Pods-CollectionFactoryTests.release.xcconfig"; sourceTree = "<group>"; };
+		C318D1EF4CADB03FBD6A8D8D /* libPods-CollectionFactoryTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CollectionFactoryTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD5802147822BE40E19E355E /* Pods-CollectionFactoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollectionFactoryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CollectionFactoryTests/Pods-CollectionFactoryTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,23 +123,33 @@
 				8B1C0F0B19026DD900CCD141 /* CollectionFactory.framework in Frameworks */,
 				8B1C0F0819026DD900CCD141 /* Cocoa.framework in Frameworks */,
 				8B1C0F0719026DD900CCD141 /* XCTest.framework in Frameworks */,
-				5BAA0174DB8C4C13B4FA5C83 /* libPods-CollectionFactoryTests.a in Frameworks */,
+				5204AB397FA0558D96AA1458 /* libPods-CollectionFactoryTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		69A2D9CE1327EB672A2F551B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DD5802147822BE40E19E355E /* Pods-CollectionFactoryTests.debug.xcconfig */,
+				29326A8A4DCF4EF2D66E5F80 /* Pods-CollectionFactoryTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8B1C0EE419026DD900CCD141 = {
 			isa = PBXGroup;
 			children = (
+				8B395FC01D6DC99B00368882 /* .travis.yml */,
 				4D1173ED190DEAD40037E9E0 /* README.md */,
 				4D1173F1190E08C30037E9E0 /* CollectionFactory.podspec */,
 				8B1C0EF719026DD900CCD141 /* CollectionFactory */,
 				8B1C0F0C19026DD900CCD141 /* CollectionFactoryTests */,
 				8B1C0EF019026DD900CCD141 /* Frameworks */,
 				8B1C0EEF19026DD900CCD141 /* Products */,
-				EC0EF8F9B458AD991AF1E974 /* Pods */,
+				69A2D9CE1327EB672A2F551B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,7 +168,7 @@
 				8B1C0EF119026DD900CCD141 /* Cocoa.framework */,
 				8B1C0F0619026DD900CCD141 /* XCTest.framework */,
 				8B1C0EF319026DD900CCD141 /* Other Frameworks */,
-				945B3E07BC384568B40C56EA /* libPods-CollectionFactoryTests.a */,
+				C318D1EF4CADB03FBD6A8D8D /* libPods-CollectionFactoryTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -182,6 +198,8 @@
 				4D5E19B91906326800C781CB /* NSMutableDictionary+CollectionFactory.m */,
 				8BA29D261AB7104E00F623AB /* NSMutableString+CollectionFactory.h */,
 				8BA29D271AB7104E00F623AB /* NSMutableString+CollectionFactory.m */,
+				8B395FC21D6DE99600368882 /* NSMutableString+CollectionFactoryPrivate.h */,
+				8B395FC31D6DE99600368882 /* NSMutableString+CollectionFactoryPrivate.m */,
 				8BA29D301AB81E9500F623AB /* NSNull+CollectionFactory.h */,
 				8BA29D311AB81E9500F623AB /* NSNull+CollectionFactory.m */,
 				8BA29D161AB6CA8000F623AB /* NSNumber+CollectionFactory.h */,
@@ -229,15 +247,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EC0EF8F9B458AD991AF1E974 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D051D8495545F4D3D53DA044 /* Pods-CollectionFactoryTests.debug.xcconfig */,
-				E90154D8C99064CAF9E5362D /* Pods-CollectionFactoryTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -249,6 +258,7 @@
 				8BA29D231AB6DFF900F623AB /* NSString+CollectionFactory.h in Headers */,
 				8BA29D281AB7104E00F623AB /* NSMutableString+CollectionFactory.h in Headers */,
 				8BA29D321AB81E9500F623AB /* NSNull+CollectionFactory.h in Headers */,
+				8B395FC41D6DE99600368882 /* NSMutableString+CollectionFactoryPrivate.h in Headers */,
 				8BA29D191AB6CA8000F623AB /* NSNumber+CollectionFactory.h in Headers */,
 				8B25AE81190CCD16001EAA36 /* NSObject+CollectionFactory.h in Headers */,
 				8BA29D2D1AB7117200F623AB /* NSMutableArray+CollectionFactory.h in Headers */,
@@ -282,13 +292,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B1C0F1919026DD900CCD141 /* Build configuration list for PBXNativeTarget "CollectionFactoryTests" */;
 			buildPhases = (
-				72A100EC368145D49B676657 /* Check Pods Manifest.lock */,
+				99521E3C3AE43C806B90D4F2 /* [CP] Check Pods Manifest.lock */,
 				8BA29D201AB6D2C600F623AB /* ShellScript */,
 				8B1C0F0119026DD900CCD141 /* Sources */,
 				8B1C0F0219026DD900CCD141 /* Frameworks */,
 				8B1C0F0319026DD900CCD141 /* Resources */,
-				D681C735926C4D0AB20577F8 /* Copy Pods Resources */,
-				F6382FDC0F228DE239E60634 /* Embed Pods Frameworks */,
+				76E223977F06999EA29DDDE6 /* [CP] Embed Pods Frameworks */,
+				0B5DA7A0C4155F6CF28E30D8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -337,6 +347,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B395FC11D6DC99B00368882 /* .travis.yml in Resources */,
 				8B1C0EFC19026DD900CCD141 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,19 +363,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		72A100EC368145D49B676657 /* Check Pods Manifest.lock */ = {
+		0B5DA7A0C4155F6CF28E30D8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CollectionFactoryTests/Pods-CollectionFactoryTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76E223977F06999EA29DDDE6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CollectionFactoryTests/Pods-CollectionFactoryTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8BA29D201AB6D2C600F623AB /* ShellScript */ = {
@@ -380,34 +406,19 @@
 			shellPath = /bin/sh;
 			shellScript = "cd CollectionFactoryTests\npython generate_tests.py";
 		};
-		D681C735926C4D0AB20577F8 /* Copy Pods Resources */ = {
+		99521E3C3AE43C806B90D4F2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CollectionFactoryTests/Pods-CollectionFactoryTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6382FDC0F228DE239E60634 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CollectionFactoryTests/Pods-CollectionFactoryTests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -421,6 +432,7 @@
 				4DC1699B190635BE00234129 /* NSArray+CollectionFactory.m in Sources */,
 				8BA29D331AB81E9500F623AB /* NSNull+CollectionFactory.m in Sources */,
 				8BA29D2E1AB7117200F623AB /* NSMutableArray+CollectionFactory.m in Sources */,
+				8B395FC51D6DE99600368882 /* NSMutableString+CollectionFactoryPrivate.m in Sources */,
 				8BA29D291AB7104E00F623AB /* NSMutableString+CollectionFactory.m in Sources */,
 				8BA29D1A1AB6CA8000F623AB /* NSNumber+CollectionFactory.m in Sources */,
 				8BA29D241AB6DFF900F623AB /* NSString+CollectionFactory.m in Sources */,
@@ -578,7 +590,7 @@
 		};
 		8B1C0F1A19026DD900CCD141 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D051D8495545F4D3D53DA044 /* Pods-CollectionFactoryTests.debug.xcconfig */;
+			baseConfigurationReference = DD5802147822BE40E19E355E /* Pods-CollectionFactoryTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CollectionFactory.framework/Versions/A/CollectionFactory";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -601,7 +613,7 @@
 		};
 		8B1C0F1B19026DD900CCD141 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E90154D8C99064CAF9E5362D /* Pods-CollectionFactoryTests.release.xcconfig */;
+			baseConfigurationReference = 29326A8A4DCF4EF2D66E5F80 /* Pods-CollectionFactoryTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CollectionFactory.framework/Versions/A/CollectionFactory";
 				COMBINE_HIDPI_IMAGES = YES;

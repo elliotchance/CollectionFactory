@@ -19,50 +19,50 @@ def parse_class(out, className, classTests):
         init_name = 'mutable%s%s' % (className[9].upper(), className[10:])
     
     # Invalid JSON string to object
-    output_test(out, 'InvalidJsonStringTo%s' % className[2:], (
-        '    %s *object = [%s %sWithJsonString:@"[123"];' % (className, className, init_name),
+    output_test(out, 'InvalidJSONStringTo%s' % className[2:], (
+        '    %s *object = [%s %sWithJSONString:@"[123"];' % (className, className, init_name),
         '    assertThat(object, nilValue());'
     ))
     
     # Invalid JSON data to object
-    out.write('- (void)testInvalidJsonDataTo%s\n' % className[2:])
+    out.write('- (void)testInvalidJSONDataTo%s\n' % className[2:])
     out.write('{\n')
     out.write('    NSData *data = [@"[123" dataUsingEncoding:NSUTF8StringEncoding];\n')
-    out.write('    %s *object = [%s %sWithJsonData:data];\n' % (className, className, init_name))
+    out.write('    %s *object = [%s %sWithJSONData:data];\n' % (className, className, init_name))
     out.write('    assertThat(object, nilValue());\n')
     out.write('}\n\n')
         
     # Nil JSON string to object
-    out.write('- (void)testNilJsonStringTo%s\n' % className[2:])
+    out.write('- (void)testNilJSONStringTo%s\n' % className[2:])
     out.write('{\n')
-    out.write('    %s *object = [%s %sWithJsonString:nil];\n' % (className, className, init_name))
+    out.write('    %s *object = [%s %sWithJSONString:nil];\n' % (className, className, init_name))
     out.write('    assertThat(object, nilValue());\n')
     out.write('}\n\n')
         
     # Nil JSON data to object
-    out.write('- (void)testNilJsonDataTo%s\n' % className[2:])
+    out.write('- (void)testNilJSONDataTo%s\n' % className[2:])
     out.write('{\n')
-    out.write('    %s *object = [%s %sWithJsonData:nil];\n' % (className, className, init_name))
+    out.write('    %s *object = [%s %sWithJSONData:nil];\n' % (className, className, init_name))
     out.write('    assertThat(object, nilValue());\n')
     out.write('}\n\n')
     
     # File does not exist
-    output_test(out, 'MissingJsonFileTo%s' % className[2:], (
-        '    %s *object = [%s %sWithJsonFile:@"does_not_exist"];' % (className, className, init_name),
+    output_test(out, 'MissingJSONFileTo%s' % className[2:], (
+        '    %s *object = [%s %sWithJSONFile:@"does_not_exist"];' % (className, className, init_name),
         '    assertThat(object, nilValue());'
     ))
     
     # Blank JSON string to object
-    output_test(out, 'BlankJsonStringTo%s' % className[2:], (
-        '    %s *object = [%s %sWithJsonString:@""];' % (className, className, init_name),
+    output_test(out, 'BlankJSONStringTo%s' % className[2:], (
+        '    %s *object = [%s %sWithJSONString:@""];' % (className, className, init_name),
         '    assertThat(object, nilValue());'
     ))
     
     # Blank JSON data to object
-    out.write('- (void)testBlankJsonDataTo%s\n' % className[2:])
+    out.write('- (void)testBlankJSONDataTo%s\n' % className[2:])
     out.write('{\n')
     out.write('    NSData *data = [@"" dataUsingEncoding:NSUTF8StringEncoding];\n')
-    out.write('    %s *object = [%s %sWithJsonData:data];\n' % (className, className, init_name))
+    out.write('    %s *object = [%s %sWithJSONData:data];\n' % (className, className, init_name))
     out.write('    assertThat(object, nilValue());\n')
     out.write('}\n\n')
     
@@ -81,24 +81,24 @@ def parse_class(out, className, classTests):
         padded_json = ' \\t\\n\\r%s \\t\\n\\r' % testConditions['json']
         
         # JSON string to object
-        out.write('- (void)testJsonStringTo%s\n' % testName)
+        out.write('- (void)testJSONStringTo%s\n' % testName)
         out.write('{\n')
-        out.write('    %s *object = [%s %sWithJsonString:@"%s"];\n' % (className, className, init_name, padded_json))
+        out.write('    %s *object = [%s %sWithJSONString:@"%s"];\n' % (className, className, init_name, padded_json))
         out.write('    assertThat(object, equalTo(%s));\n' % object)
         out.write('}\n\n')
         
         # JSON data to object
-        out.write('- (void)testJsonDataTo%s\n' % testName)
+        out.write('- (void)testJSONDataTo%s\n' % testName)
         out.write('{\n')
         out.write('    NSData *data = [@"%s" dataUsingEncoding:NSUTF8StringEncoding];\n' % padded_json)
-        out.write('    %s *object = [%s %sWithJsonData:data];\n' % (className, className, init_name))
+        out.write('    %s *object = [%s %sWithJSONData:data];\n' % (className, className, init_name))
         out.write('    assertThat(object, equalTo(%s));\n' % object)
         out.write('}\n\n')
     
         # From file
-        output_test(out, '%sJsonFileTo%s' % (className[2:], testName), (
+        output_test(out, '%sJSONFileTo%s' % (className[2:], testName), (
             '    [@"%s" writeToFile:@"test.json" atomically:NO encoding:NSUTF8StringEncoding error:nil];' % padded_json,
-            '    %s *object = [%s %sWithJsonFile:@"test.json"];' % (className, className, init_name),
+            '    %s *object = [%s %sWithJSONFile:@"test.json"];' % (className, className, init_name),
             '    assertThat(object, equalTo(%s));\n' % object
         ))
         
@@ -109,21 +109,33 @@ def parse_class(out, className, classTests):
             continue
         
         # object to JSON string
-        out.write('- (void)test%sToJsonString\n' % testName)
+        out.write('- (void)test%sToJSONString\n' % testName)
         out.write('{\n')
         out.write('    %s *object = %s;\n' % (className, object))
-        out.write('    assertThat([object jsonString], equalTo(@"%s"));\n' % testConditions['json'])
+        out.write('    assertThat([object JSONString], equalTo(@"%s"));\n' % testConditions['json'])
         out.write('}\n\n')
         
         # object to JSON data
-        out.write('- (void)test%sToJsonData\n' % testName)
+        out.write('- (void)test%sToJSONData\n' % testName)
         out.write('{\n')
         out.write('    %s *object = %s;\n' % (className, object))
-        out.write('    NSString *string = [[NSString alloc] initWithData:[object jsonData]\n                                             encoding:NSUTF8StringEncoding];\n')
+        out.write('    NSString *string = [[NSString alloc] initWithData:[object JSONData]\n                                             encoding:NSUTF8StringEncoding];\n')
         out.write('    assertThat(string, equalTo(@"%s"));\n' % testConditions['json'])
         out.write('}\n\n')
         
-        total += 2
+        # object to pretty JSON string
+        pretty_result = testConditions['json']
+        if 'pretty' in testConditions:
+            pretty_result = testConditions['pretty']
+        
+        out.write('- (void)test%sToPrettyJSONString\n' % testName)
+        out.write('{\n')
+        out.write('    %s *object = %s;\n' % (className, object))
+        out.write('    NSString *result = [object prettyJSONStringWithIndentSize:2];\n')
+        out.write('    assertThat(result, equalTo(@"%s"));\n' % pretty_result.replace('\n', '\\n'))
+        out.write('}\n\n')
+        
+        total += 3
 
     return total
 

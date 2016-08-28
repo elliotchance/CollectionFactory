@@ -2,12 +2,13 @@
 
 @interface NSObject (CollectionFactory)
 
-- (NSDictionary *)jsonDictionary;
-- (NSString *)jsonString;
-- (NSData *)jsonData;
-+ (id)objectWithJsonString:(NSString *)jsonString;
-+ (id)objectWithJsonData:(NSData *)jsonData;
-+ (id)objectWithJsonFile:(NSString *)jsonFile;
+- (NSDictionary *)JSONDictionary;
+- (NSString *)JSONString;
+- (NSData *)JSONData;
++ (id)objectWithJSONString:(NSString *)JSONString;
++ (id)objectWithJSONData:(NSData *)JSONData;
++ (id)objectWithJSONFile:(NSString *)pathToJSONFile;
 - (void)setValue:(id)value forProperty:(NSString *)key;
+- (NSString *)prettyJSONStringWithIndentSize:(NSUInteger)indentSize;
 
 @end

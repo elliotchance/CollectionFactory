@@ -2,21 +2,21 @@
 
 @implementation NSString (CollectionFactory)
 
-+ (NSString *)stringWithJsonString:(NSString *)jsonString
++ (NSString *)stringWithJSONString:(NSString *)JSONString
 {
-    return [CollectionFactory parseWithJsonString:jsonString
+    return [CollectionFactory parseWithJSONString:JSONString
                                  mustBeOfSubclass:[NSString class]
                                       makeMutable:NO];
 }
 
-+ (NSString *)stringWithJsonData:(NSData *)jsonData
++ (NSString *)stringWithJSONData:(NSData *)JSONData
 {
-    return [CollectionFactory parseWithJsonData:jsonData
+    return [CollectionFactory parseWithJSONData:JSONData
                                mustBeOfSubclass:[NSString class]
                                     makeMutable:NO];
 }
 
-- (NSString *)jsonString
+- (NSString *)JSONString
 {
     // We use the NSJSONSerialization so we don't have to encode all the special
     // characters like \n manually.
@@ -33,9 +33,9 @@
     return [string substringWithRange:range];
 }
 
-+ (NSString *)stringWithJsonFile:(NSString *)jsonFile
++ (NSString *)stringWithJSONFile:(NSString *)pathToJSONFile
 {
-    return [CollectionFactory parseWithJsonFile:jsonFile
+    return [CollectionFactory parseWithJSONFile:pathToJSONFile
                                mustBeOfSubclass:[NSString class]
                                     makeMutable:NO];
 }
