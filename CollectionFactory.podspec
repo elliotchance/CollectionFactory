@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CollectionFactory"
-  s.version      = "1.1.3"
+  s.version      = "1.2.0"
   s.summary      = "Translation between native collections in Objective-C and serialized formats like JSON."
   s.homepage     = "https://github.com/elliotchance/CollectionFactory"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
@@ -10,4 +10,3 @@ Pod::Spec.new do |s|
   s.source_files = 'CollectionFactory/*.{h,m}'
   s.requires_arc = true
 end
-
