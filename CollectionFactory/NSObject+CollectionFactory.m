@@ -42,7 +42,7 @@
             // some reason it causes an infinite recursion. Our only option is
             // to totally escape from parsing.
             NSString *reason = [NSString stringWithFormat:
-                                @"Unable to encode JSON: %@", e.reason]
+                                @"Unable to encode JSON: %@", e.reason];
             @throw [NSException exceptionWithName:NSGenericException
                                            reason:reason
                                          userInfo:@{@"object": self}];

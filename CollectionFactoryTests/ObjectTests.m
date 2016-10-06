@@ -62,4 +62,12 @@
     assertThat([url JSONString], equalTo(@"http://google.com/foo?bar"));
 }
 
+- (void)testURLToJSONData
+{
+    NSURL *url = [NSURL URLWithString:@"http://google.com/foo?bar"];
+    NSData *expected = [@"http://google.com/foo?bar"
+                        dataUsingEncoding:NSUTF8StringEncoding];
+    assertThat([url JSONData], equalTo(expected));
+}
+
 @end
