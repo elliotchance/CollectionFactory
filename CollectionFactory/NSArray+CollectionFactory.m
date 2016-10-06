@@ -50,6 +50,7 @@
 
 - (NSString *)prettyJSONStringWithIndentSize:(NSUInteger)indentSize
                                  indentLevel:(NSUInteger)indentLevel
+                                       error:(NSError **)error
 {
     NSMutableString *json = [NSMutableString new];
     NSString *item = nil;
@@ -57,7 +58,8 @@
     [json appendLine:@"[" indentSize:indentSize indentLevel:indentLevel];
     for (NSUInteger i = 0; i < [self count]; ++i) {
         item = [self[i] prettyJSONStringWithIndentSize:indentSize
-                                           indentLevel:indentLevel + 1];
+                                           indentLevel:indentLevel + 1
+                                                 error:error];
         
         [json appendString:item];
         

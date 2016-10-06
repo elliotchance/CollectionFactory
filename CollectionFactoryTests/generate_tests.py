@@ -154,7 +154,16 @@ def parse_class(out, className, classTests):
         out.write('    assertThat(result, equalTo(@"%s"));\n' % pretty_result.replace('\n', '\\n'))
         out.write('}\n\n')
         
-        total += 5
+        out.write('- (void)test%sToPrettyJSONStringOrError\n' % testName)
+        out.write('{\n')
+        out.write('    %s *object = %s;\n' % (className, object))
+        out.write('    NSError *error;\n')
+        out.write('    NSString *result = [object prettyJSONStringWithIndentSize:2 error:&error];\n')
+        out.write('    assertThat(result, equalTo(@"%s"));\n' % pretty_result.replace('\n', '\\n'))
+        out.write('    assertThat(error, nilValue());\n')
+        out.write('}\n\n')
+        
+        total += 6
 
     return total
 

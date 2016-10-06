@@ -14,6 +14,9 @@
 + (id)objectWithJSONFile:(NSString *)pathToJSONFile;
 
 - (void)setValue:(id)value forProperty:(NSString *)key;
+
 - (NSString *)prettyJSONStringWithIndentSize:(NSUInteger)indentSize;
+- (NSString *)prettyJSONStringWithIndentSize:(NSUInteger)indentSize
+                                       error:(NSError **)error;
 
 @end

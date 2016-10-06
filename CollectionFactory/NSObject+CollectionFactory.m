@@ -229,7 +229,16 @@
 
 - (NSString *)prettyJSONStringWithIndentSize:(NSUInteger)indentSize
 {
-    return [self prettyJSONStringWithIndentSize:indentSize indentLevel:0];
+    return [self prettyJSONStringWithIndentSize:indentSize
+                                          error:nil];
+}
+
+- (NSString *)prettyJSONStringWithIndentSize:(NSUInteger)indentSize
+                                       error:(NSError **)error
+{
+    return [self prettyJSONStringWithIndentSize:indentSize
+                                    indentLevel:0
+                                          error:error];
 }
 
 // This will be overridden by the subclass to handle the formatting of the more
@@ -238,9 +247,15 @@
 // cases.
 - (NSString *)prettyJSONStringWithIndentSize:(NSUInteger)indentSize
                                  indentLevel:(NSUInteger)indentLevel
+                                       error:(NSError **)error
 {
+    NSString *string = [self JSONStringOrError:error];
+    if (string == nil) {
+        return nil;
+    }
+    
     NSMutableString *result = [NSMutableString new];
-    [result appendString:[self JSONString]
+    [result appendString:string
               indentSize:indentSize
              indentLevel:indentLevel];
     

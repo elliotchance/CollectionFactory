@@ -14,6 +14,7 @@ passed, was nil, or was an invalid expected type).
 * [Pretty Printing](#pretty-printing)
 * [Creating Mutable Objects](#creating-mutable-objects)
 * [Loading from Files](#loading-from-files)
+* [Handling Errors](#handling-errors)
 
 
 Converting to JSON
@@ -227,3 +228,22 @@ Futhermore you can create mutable objects from files:
 ```objc
 NSMutableArray *foo = [NSMutableArray mutableArrayWithJSONFile:@"foo.json"];
 ```
+
+Handling Errors
+---------------
+
+In most cases you will not run into problems. However, the default behavior is
+to return `nil` and have the error reason suppressed. If you want to handle the
+error more safely you can provide a reference to an `NSError`:
+
+```objc
+NSError *error;
+NSString *result = [object JSONStringOrError:&error];
+if (error) {
+    // Use these:
+    //   error.localizedDescription
+    //   error.localizedFailureReason
+}
+```
+
+This works the same way for `JSONDataOrError:` and `JSONDictionaryOrError:`.
