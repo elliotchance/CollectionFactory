@@ -25,8 +25,27 @@
     objc_property_t *properties = class_copyPropertyList([self class], &count);
     
     for (int i = 0; i < count; i++) {
-        NSString *key = [NSString stringWithUTF8String:property_getName(properties[i])];
-        id object = [self valueForKey:key];
+        const char *propertyName = property_getName(properties[i]);
+        NSString *key = [NSString stringWithUTF8String:propertyName];
+        
+        id object;
+        @try {
+            object = [self valueForKey:key];
+        } @catch (NSException *e) {
+            // There are some special cases where valueForKey: tries to access a
+            // property from a class that *is* key-value compliant but still
+            // throws an exception in some cases. Another way to look at it is
+            // if valueForKey: throws an exception for any reason we want to
+            // handle the situation the same way.
+            //
+            // It would be fair to say that we just skip that property but for
+            // some reason it causes an infinite recursion. Our only option is
+            // to totally escape from parsing.
+            @throw [NSException exceptionWithName:NSGenericException
+                                           reason:[NSString stringWithFormat:@"Unable to encode JSON: %@", e.reason]
+                                         userInfo:@{@"object": self}];
+        }
+
         if (!object) {
             object = [NSNull null];
         }

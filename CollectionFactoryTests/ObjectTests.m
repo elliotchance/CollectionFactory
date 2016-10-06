@@ -1,5 +1,6 @@
 #import "CollectionFactoryTestCase.h"
 #import "SomeObject.h"
+#import "NotKeyValueCompliant.h"
 
 #define EXPECTED_JSON @"{\"string\":\"abc\",\"number\":123,\"obj\":{\"arr\":[1,\"foo\"]}}"
 
@@ -47,6 +48,12 @@
 - (void)testExtraPropertyIsIgnored
 {
     [SomeObject1 objectWithJSONString:@"{\"abc\":123}"];
+}
+
+- (void)testObjectIsNotKeyValueCompliant
+{
+    NotKeyValueCompliant *badObject = [NotKeyValueCompliant new];
+    assertThat([badObject JSONDictionary], willThrowException());
 }
 
 @end
