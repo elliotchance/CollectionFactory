@@ -56,4 +56,10 @@
     assertThat([badObject JSONDictionary], willThrowException());
 }
 
+- (void)testURLToJSONString
+{
+    NSURL *url = [NSURL URLWithString:@"http://google.com/foo?bar"];
+    assertThat([url JSONString], equalTo(@"http://google.com/foo?bar"));
+}
+
 @end

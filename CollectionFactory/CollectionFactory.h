@@ -8,6 +8,7 @@
 #import "NSMutableString+CollectionFactory.h"
 #import "NSMutableArray+CollectionFactory.h"
 #import "NSNull+CollectionFactory.h"
+#import "NSURL+CollectionFactory.h"
 
 @interface CollectionFactory : NSObject
 
