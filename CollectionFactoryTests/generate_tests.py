@@ -108,19 +108,38 @@ def parse_class(out, className, classTests):
         if object == 'nil':
             continue
         
-        # object to JSON string
+        # object to JSON string, ignoring error
         out.write('- (void)test%sToJSONString\n' % testName)
         out.write('{\n')
         out.write('    %s *object = %s;\n' % (className, object))
         out.write('    assertThat([object JSONString], equalTo(@"%s"));\n' % testConditions['json'])
         out.write('}\n\n')
+
+        # object to JSON string, capturing error
+        out.write('- (void)test%sToJSONStringOrError\n' % testName)
+        out.write('{\n')
+        out.write('    %s *object = %s;\n' % (className, object))
+        out.write('    __block NSError *error;\n')
+        out.write('    assertThat([object JSONStringOrError:&error], equalTo(@"%s"));\n' % testConditions['json'])
+        out.write('    assertThat(error, nilValue());\n')
+        out.write('}\n\n')
         
-        # object to JSON data
+        # object to JSON data, ignoring error
         out.write('- (void)test%sToJSONData\n' % testName)
         out.write('{\n')
         out.write('    %s *object = %s;\n' % (className, object))
         out.write('    NSString *string = [[NSString alloc] initWithData:[object JSONData]\n                                             encoding:NSUTF8StringEncoding];\n')
         out.write('    assertThat(string, equalTo(@"%s"));\n' % testConditions['json'])
+        out.write('}\n\n')
+
+        # object to JSON data, capturing error
+        out.write('- (void)test%sToJSONDataOrError\n' % testName)
+        out.write('{\n')
+        out.write('    %s *object = %s;\n' % (className, object))
+        out.write('    __block NSError *error;\n')
+        out.write('    NSString *string = [[NSString alloc] initWithData:[object JSONDataOrError:&error]\n                                             encoding:NSUTF8StringEncoding];\n')
+        out.write('    assertThat(string, equalTo(@"%s"));\n' % testConditions['json'])
+        out.write('    assertThat(error, nilValue());\n')
         out.write('}\n\n')
         
         # object to pretty JSON string
@@ -135,7 +154,7 @@ def parse_class(out, className, classTests):
         out.write('    assertThat(result, equalTo(@"%s"));\n' % pretty_result.replace('\n', '\\n'))
         out.write('}\n\n')
         
-        total += 3
+        total += 5
 
     return total
 

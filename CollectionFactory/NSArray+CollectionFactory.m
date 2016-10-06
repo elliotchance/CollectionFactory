@@ -17,7 +17,7 @@
                                       makeMutable:NO];
 }
 
-- (NSString *)JSONString
+- (NSString *)JSONStringOrError:(NSError **)error
 {
     if ([self count] == 0) {
         return @"[]";
@@ -26,7 +26,12 @@
     // Encode each of the elements.
     NSMutableString *json = [@"[" mutableCopy];
     for (id item in self) {
-        [json appendFormat:@"%@,", [item JSONString]];
+        NSString *string = [item JSONStringOrError:error];
+        if (string == nil) {
+            return nil;
+        }
+
+        [json appendFormat:@"%@,", string];
     }
     
     // Replace the last "," with the closing "]".

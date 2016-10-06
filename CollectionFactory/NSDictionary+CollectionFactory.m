@@ -11,7 +11,7 @@
                                     makeMutable:NO];
 }
 
-- (NSString *)JSONString
+- (NSString *)JSONStringOrError:(NSError **)error
 {
     if ([self count] == 0) {
         return @"{}";
@@ -21,7 +21,13 @@
     NSMutableString *json = [@"{" mutableCopy];
     for (NSString *key in self) {
         id item = [self objectForKey:key];
-        [json appendFormat:@"\"%@\":%@,", key, [item JSONString]];
+
+        NSString *string = [item JSONStringOrError:error];
+        if (string == nil) {
+            return nil;
+        }
+
+        [json appendFormat:@"\"%@\":%@,", key, string];
     }
     
     // Replace the last "," with the closing "}".

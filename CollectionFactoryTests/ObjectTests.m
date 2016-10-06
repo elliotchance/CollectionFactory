@@ -53,7 +53,12 @@
 - (void)testObjectIsNotKeyValueCompliant
 {
     NotKeyValueCompliant *badObject = [NotKeyValueCompliant new];
-    assertThat([badObject JSONDictionary], willThrowException());
+    NSError *error;
+    id result = [badObject JSONDictionaryOrError:&error];
+    
+    assertThat(result, nilValue());
+    assertThat(error.localizedDescription, equalTo(@"<NotKeyValueCompliant> raised 'NSGenericException' and could not proceed."));
+    assertThat(error.localizedFailureReason, equalTo(@"Something bad."));
 }
 
 - (void)testURLToJSONString

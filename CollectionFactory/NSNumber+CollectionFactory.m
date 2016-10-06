@@ -16,7 +16,7 @@
                                     makeMutable:NO];
 }
 
-- (NSString *)JSONString
+- (NSString *)JSONStringOrError:(NSError **)error
 {
     if(strcmp([self objCType], @encode(BOOL)) == 0) {
         if([self boolValue] == YES) {

@@ -2,9 +2,9 @@
 
 @implementation NSURL (CollectionFactory)
 
-- (NSString *)JSONString
+- (NSString *)JSONStringOrError:(NSError **)error
 {
-    return [[self absoluteString] JSONString];
+    return [[self absoluteString] JSONStringOrError:error];
 }
 
 @end

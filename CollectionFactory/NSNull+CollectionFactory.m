@@ -2,7 +2,7 @@
 
 @implementation NSNull (CollectionFactory)
 
-- (NSString *)JSONString
+- (NSString *)JSONStringOrError:(NSError **)error
 {
     return @"null";
 }

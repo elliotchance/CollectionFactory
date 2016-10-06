@@ -19,52 +19,80 @@
 
 - (NSDictionary *)JSONDictionary
 {
+    return [self JSONDictionaryOrError:nil];
+}
+
+- (NSDictionary *)JSONDictionaryOrError:(NSError **)error
+{
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     
     unsigned count;
     objc_property_t *properties = class_copyPropertyList([self class], &count);
     
-    for (int i = 0; i < count; i++) {
-        const char *propertyName = property_getName(properties[i]);
-        NSString *key = [NSString stringWithUTF8String:propertyName];
+    @try {
+        for (int i = 0; i < count; i++) {
+            const char *propertyName = property_getName(properties[i]);
+            NSString *key = [NSString stringWithUTF8String:propertyName];
+            
+            id object = [self valueForKey:key];
+            
+            if (!object) {
+                object = [NSNull null];
+            }
+            [dict setObject:object forKey:key];
+        }
+    } @catch (NSException *e) {
+        // There are some special cases where valueForKey: tries to access a
+        // property from a class that *is* key-value compliant but still throws
+        // an exception in some cases. Another way to look at it is if
+        // valueForKey: throws an exception for any reason we want to handle the
+        // situation the same way.
+        //
+        // It would be fair to say that we just skip that property but for some
+        // reason it causes an infinite recursion. Our only option is to totally
+        // escape from parsing.
+        NSString *description = [NSString stringWithFormat:
+            @"<%@> raised '%@' and could not proceed.", [self class], e.name];
+        NSDictionary *userInfo = @{
+            NSLocalizedDescriptionKey: NSLocalizedString(description, nil),
+            NSLocalizedFailureReasonErrorKey:
+                NSLocalizedString(e.reason, nil),
+        };
         
-        id object;
-        @try {
-            object = [self valueForKey:key];
-        } @catch (NSException *e) {
-            // There are some special cases where valueForKey: tries to access a
-            // property from a class that *is* key-value compliant but still
-            // throws an exception in some cases. Another way to look at it is
-            // if valueForKey: throws an exception for any reason we want to
-            // handle the situation the same way.
-            //
-            // It would be fair to say that we just skip that property but for
-            // some reason it causes an infinite recursion. Our only option is
-            // to totally escape from parsing.
-            NSString *reason = [NSString stringWithFormat:
-                                @"Unable to encode JSON: %@", e.reason];
-            @throw [NSException exceptionWithName:NSGenericException
-                                           reason:reason
-                                         userInfo:@{@"object": self}];
+        if (error) {
+            *error = [NSError errorWithDomain:NSCocoaErrorDomain
+                                         code:-1
+                                     userInfo:userInfo];
         }
-
-        if (!object) {
-            object = [NSNull null];
-        }
-        [dict setObject:object forKey:key];
+        
+        return nil;
+    } @finally {
+        free(properties);
     }
-    
-    free(properties);
     
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
 - (NSString *)JSONString
 {
+    return [self JSONStringOrError:nil];
+}
+
+- (NSString *)JSONStringOrError:(NSError **)error
+{
     // This means its a subclass of NSObject that we do not have an explict way
     // to encode so we will pull the attributes from the object and encode it
     // like a dictionary.
-    return [[self JSONDictionary] JSONString];
+    NSDictionary *dictionary = [self JSONDictionaryOrError:error];
+    
+    // `nil` is only a possible return value if JSONDictionaryOrError: failed.
+    // We do not rely on the error itself because there may not be a real
+    // reference to the error.
+    if (dictionary == nil) {
+        return nil;
+    }
+    
+    return [dictionary JSONStringOrError:error];
 }
 
 /**
@@ -159,7 +187,21 @@
 
 - (NSData *)JSONData
 {
-    return [[self JSONString] dataUsingEncoding:NSUTF8StringEncoding];
+    return [self JSONDataOrError:nil];
+}
+
+- (NSData *)JSONDataOrError:(NSError **)error
+{
+    NSString *string = [self JSONStringOrError:error];
+    
+    // `nil` is only a possible return value if JSONStringOrError: failed.
+    // We do not rely on the error itself because there may not be a real
+    // reference to the error.
+    if (string == nil) {
+        return nil;
+    }
+    
+    return [string dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 + (id)objectWithJSONData:(NSData *)JSONData
