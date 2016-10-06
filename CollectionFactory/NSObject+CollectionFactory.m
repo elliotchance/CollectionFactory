@@ -41,8 +41,10 @@
             // It would be fair to say that we just skip that property but for
             // some reason it causes an infinite recursion. Our only option is
             // to totally escape from parsing.
+            NSString *reason = [NSString stringWithFormat:
+                                @"Unable to encode JSON: %@", e.reason]
             @throw [NSException exceptionWithName:NSGenericException
-                                           reason:[NSString stringWithFormat:@"Unable to encode JSON: %@", e.reason]
+                                           reason:reason
                                          userInfo:@{@"object": self}];
         }
 
