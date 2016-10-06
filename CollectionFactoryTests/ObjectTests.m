@@ -76,4 +76,10 @@
     assertThat([url JSONData], equalTo(expected));
 }
 
+- (void)testPrettyPrintingContainsNewlines
+{
+    NSString *string = [@{@"foo": @"bar"} prettyJSONStringWithIndentSize:2];
+    assertThat(string, containsString(@"\n"));
+}
+
 @end
