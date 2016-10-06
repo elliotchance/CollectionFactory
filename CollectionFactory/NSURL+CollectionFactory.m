@@ -4,7 +4,7 @@
 
 - (NSString *)JSONString
 {
-    return [self absoluteString];
+    return [[self absoluteString] JSONString];
 }
 
 @end
