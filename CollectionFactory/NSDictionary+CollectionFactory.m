@@ -11,7 +11,7 @@
                                     makeMutable:NO];
 }
 
-- (NSString *)JSONString
+- (NSString *)JSONStringOrError:(NSError **)error
 {
     if ([self count] == 0) {
         return @"{}";
@@ -21,7 +21,13 @@
     NSMutableString *json = [@"{" mutableCopy];
     for (NSString *key in self) {
         id item = [self objectForKey:key];
-        [json appendFormat:@"\"%@\":%@,", key, [item JSONString]];
+
+        NSString *string = [item JSONStringOrError:error];
+        if (string == nil) {
+            return nil;
+        }
+
+        [json appendFormat:@"\"%@\":%@,", key, string];
     }
     
     // Replace the last "," with the closing "}".
@@ -47,6 +53,7 @@
 
 - (NSString *)prettyJSONStringWithIndentSize:(NSUInteger)indentSize
                                  indentLevel:(NSUInteger)indentLevel
+                                       error:(NSError **)error
 {
     NSMutableString *json = [NSMutableString new];
     NSString *item = nil;
@@ -55,14 +62,18 @@
     [json appendLine:@"{" indentSize:indentSize indentLevel:indentLevel];
     for (NSUInteger i = 0; i < [keys count]; ++i) {
         item = [self[keys[i]] prettyJSONStringWithIndentSize:indentSize
-                                                 indentLevel:indentLevel + 1];
+                                                 indentLevel:indentLevel + 1
+                                                       error:error];
         
         // The `item` will have the indent level on every line, but since we
         // start the nested item on the same line as the key we need to trim the
         // initial spaces off.
-        item = [item stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        item = [item stringByTrimmingCharactersInSet:
+                [NSCharacterSet whitespaceCharacterSet]];
         
-        [json appendString:@"" indentSize:indentSize indentLevel:indentLevel + 1];
+        [json appendString:@""
+                indentSize:indentSize
+               indentLevel:indentLevel + 1];
         [json appendFormat:@"\"%@\": %@", keys[i], item];
         
         if (i < [keys count] - 1) {

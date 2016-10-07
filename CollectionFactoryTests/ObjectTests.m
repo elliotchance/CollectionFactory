@@ -1,5 +1,6 @@
 #import "CollectionFactoryTestCase.h"
 #import "SomeObject.h"
+#import "NotKeyValueCompliant.h"
 
 #define EXPECTED_JSON @"{\"string\":\"abc\",\"number\":123,\"obj\":{\"arr\":[1,\"foo\"]}}"
 
@@ -47,6 +48,38 @@
 - (void)testExtraPropertyIsIgnored
 {
     [SomeObject1 objectWithJSONString:@"{\"abc\":123}"];
+}
+
+- (void)testObjectIsNotKeyValueCompliant
+{
+    NotKeyValueCompliant *badObject = [NotKeyValueCompliant new];
+    NSError *error;
+    id result = [badObject JSONDictionaryOrError:&error];
+    
+    assertThat(result, nilValue());
+    assertThat(error.localizedDescription, equalTo(@"<NotKeyValueCompliant> raised 'NSGenericException' and could not proceed."));
+    assertThat(error.localizedFailureReason, equalTo(@"Something bad."));
+}
+
+- (void)testURLToJSONString
+{
+    NSURL *url = [NSURL URLWithString:@"http://google.com/foo?bar"];
+    assertThat([url JSONString],
+               equalTo(@"\"http:\\/\\/google.com\\/foo?bar\""));
+}
+
+- (void)testURLToJSONData
+{
+    NSURL *url = [NSURL URLWithString:@"http://google.com/foo?bar"];
+    NSData *expected = [@"\"http:\\/\\/google.com\\/foo?bar\""
+                        dataUsingEncoding:NSUTF8StringEncoding];
+    assertThat([url JSONData], equalTo(expected));
+}
+
+- (void)testPrettyPrintingContainsNewlines
+{
+    NSString *string = [@{@"foo": @"bar"} prettyJSONStringWithIndentSize:2];
+    assertThat(string, containsString(@"\n"));
 }
 
 @end

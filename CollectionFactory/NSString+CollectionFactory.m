@@ -16,13 +16,16 @@
                                     makeMutable:NO];
 }
 
-- (NSString *)JSONString
+- (NSString *)JSONStringOrError:(NSError **)error
 {
     // We use the NSJSONSerialization so we don't have to encode all the special
     // characters like \n manually.
     NSData *data = [NSJSONSerialization dataWithJSONObject:@[self]
                                                    options:0
-                                                     error:nil];
+                                                     error:error];
+    if (data == nil) {
+        return nil;
+    }
     
     // Since NSJSONSerialization does not encode single values like NSString, we
     // have to wrap it in an array and chop off the geenrated square brackets.
